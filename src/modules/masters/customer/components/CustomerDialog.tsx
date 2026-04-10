@@ -9,8 +9,8 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
-import { MasterFormFields } from "@/modules/masters/shared/MasterFormFields";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
+import { ResourceFormFields } from "@/modules/common/shared-crud/ResourceFormFields";
 import type { Customer, CustomerType } from "@/modules/masters/customer/types";
 import {
   customerSchema,
@@ -26,7 +26,7 @@ import {
   CUSTOMER_FINANCIAL_FIELDS,
   CUSTOMER_LOCATION_FIELDS,
   CUSTOMER_MAIN_FIELDS,
-} from "@/modules/masters/customer/components/customerDialog.fields";
+} from "@/modules/masters/customer/constants/customerDialog.fields";
 
 interface CustomerDialogProps {
   open: boolean;
@@ -144,7 +144,7 @@ export function CustomerDialog({
   }
 
   return (
-    <MasterDialog<Customer, CustomerSchema, never>
+    <ResourceDialog<Customer, CustomerSchema, never>
       open={open}
       onOpenChange={onOpenChange}
       mode={mode}
@@ -220,16 +220,19 @@ export function CustomerDialog({
             </div>
           </Field>
 
-          <MasterFormFields form={form} fields={CUSTOMER_MAIN_FIELDS} />
+          <ResourceFormFields form={form} fields={CUSTOMER_MAIN_FIELDS} />
 
           <div className="grid grid-cols-1 gap-4 md:col-span-5 md:grid-cols-2">
-            <MasterFormFields form={form} fields={CUSTOMER_LOCATION_FIELDS} />
+            <ResourceFormFields form={form} fields={CUSTOMER_LOCATION_FIELDS} />
           </div>
 
-          <MasterFormFields form={form} fields={CUSTOMER_CONTACT_FIELDS} />
+          <ResourceFormFields form={form} fields={CUSTOMER_CONTACT_FIELDS} />
 
           <div className="grid grid-cols-1 gap-4 md:col-span-5 md:grid-cols-2">
-            <MasterFormFields form={form} fields={CUSTOMER_FINANCIAL_FIELDS} />
+            <ResourceFormFields
+              form={form}
+              fields={CUSTOMER_FINANCIAL_FIELDS}
+            />
           </div>
         </div>
       )}

@@ -1,11 +1,11 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { TermsDialog } from "@/modules/masters/terms/components/TermsDialog";
 import { useDeleteTerms, useTerms } from "@/modules/masters/terms/hooks";
 import type { Terms } from "@/modules/masters/terms/types";
 
 export function TermsListPage() {
   return (
-    <MasterListPage<
+    <ResourceListPage<
       Terms,
       {
         search?: string;

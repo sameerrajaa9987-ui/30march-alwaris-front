@@ -1,4 +1,4 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   Customer,
   CustomerListQuery,
@@ -10,7 +10,7 @@ type CustomerCreatePayload = Omit<
   "id" | "code" | "customerType" | "createdAt" | "updatedAt"
 >;
 
-const customerApi = createMasterApi<
+const customerApi = createResourceApi<
   Customer,
   CustomerListQuery,
   CustomerCreatePayload

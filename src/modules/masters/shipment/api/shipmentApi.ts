@@ -1,11 +1,11 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   Shipment,
   ShipmentListQuery,
   ShipmentListResult,
 } from "@/modules/masters/shipment/types";
 
-const shipmentApi = createMasterApi<
+const shipmentApi = createResourceApi<
   Shipment,
   ShipmentListQuery,
   Pick<Shipment, "shipmentType">

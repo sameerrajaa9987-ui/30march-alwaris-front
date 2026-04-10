@@ -1,4 +1,4 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { TariffDescriptionDialog } from "@/modules/masters/tariff-description/components/TariffDescriptionDialog";
 import {
   useDeleteTariffDescription,
@@ -7,7 +7,7 @@ import {
 
 export function TariffDescriptionListPage() {
   return (
-    <MasterListPage
+    <ResourceListPage
       title="Tariff Description"
       subtitle="Manage tariff descriptions."
       newButtonText="New Income Header"

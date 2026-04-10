@@ -1,4 +1,4 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   CustomerType,
   CustomerTypeListQuery,
@@ -7,7 +7,7 @@ import type {
 
 type CustomerTypePayload = Pick<CustomerType, "customerType">;
 
-const customerTypeApi = createMasterApi<
+const customerTypeApi = createResourceApi<
   CustomerType,
   CustomerTypeListQuery,
   CustomerTypePayload

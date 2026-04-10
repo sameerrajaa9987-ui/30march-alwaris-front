@@ -8,9 +8,9 @@ import type {
   TermsListQuery,
   TermsListResult,
 } from "@/modules/masters/terms/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const termsHooks = createMasterHooks<
+const termsHooks = createResourceHooks<
   TermsListQuery,
   Parameters<typeof createTerms>[0],
   TermsListResult

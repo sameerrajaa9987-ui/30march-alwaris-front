@@ -5,9 +5,9 @@ import {
   deleteShipment,
 } from "@/modules/masters/shipment/api/shipmentApi";
 import type { ShipmentListQuery } from "@/modules/masters/shipment/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const shipmentHooks = createMasterHooks("shipments", {
+const shipmentHooks = createResourceHooks("shipments", {
   list: listShipments,
   create: createShipment,
   update: updateShipment,

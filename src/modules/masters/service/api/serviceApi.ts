@@ -1,11 +1,11 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   Service,
   ServiceListQuery,
   ServiceListResult,
 } from "@/modules/masters/service/types";
 
-const serviceApi = createMasterApi<
+const serviceApi = createResourceApi<
   Service,
   ServiceListQuery,
   Pick<Service, "serviceType">

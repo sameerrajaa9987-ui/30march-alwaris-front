@@ -30,7 +30,13 @@ export const MENU: MenuItem[] = [
           { label: "Details", to: "/masters/details" },
         ],
       },
-      { label: "Vendor / Agent", to: "/masters/vendor-agent" },
+      {
+        label: "Vendor / Agent",
+        children: [
+          { label: "Type", to: "/masters/vendor/type" },
+          { label: "Details", to: "/masters/vendor/details" },
+        ],
+      },
       { label: "Vessel", to: "/masters/vessel" },
       { label: "Port", to: "/masters/port" },
       { label: "Terms", to: "/masters/terms" },

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import {
   Select,
   SelectContent,
@@ -10,35 +10,35 @@ import { VendorAgentDialog } from "@/modules/masters/vendor-agent/components/Ven
 import {
   useVendorAgents,
   useDeleteVendorAgent,
+  useVendorTypes,
 } from "@/modules/masters/vendor-agent/hooks";
-import { useCustomerTypes } from "@/modules/masters/customer/hooks";
 import type { VendorAgent } from "@/modules/masters/vendor-agent/types";
 
-const ALL_CUSTOMER_TYPES = "__all__";
+const ALL_VENDOR_TYPES = "__all__";
 
 export function VendorAgentListPage() {
-  const [selectedCustomerType, setSelectedCustomerType] = useState("");
+  const [selectedVendorType, setSelectedVendorType] = useState("");
 
-  const customerTypeQuery = {
+  const vendorTypeQuery = {
     page: 1,
     limit: 200,
-    sortBy: "customerType" as const,
+    sortBy: "vendorType" as const,
     sortDir: "asc" as const,
   };
 
-  const customerTypesRes = useCustomerTypes(customerTypeQuery);
-  const customerTypes = customerTypesRes.data?.items ?? [];
+  const vendorTypesRes = useVendorTypes(vendorTypeQuery);
+  const vendorTypes = vendorTypesRes.data?.items ?? [];
 
-  const selectedCustomerTypeLabel = customerTypes.find(
-    (t) => t.id === selectedCustomerType,
-  )?.customerType;
+  const selectedVendorTypeLabel = vendorTypes.find(
+    (t) => t.id === selectedVendorType,
+  )?.vendorType;
 
   return (
-    <MasterListPage<
+    <ResourceListPage<
       VendorAgent,
       {
         search?: string;
-        customerTypeId?: string;
+        vendorTypeId?: string;
         page: number;
         limit: number;
         sortBy: "createdAt";
@@ -53,10 +53,10 @@ export function VendorAgentListPage() {
       deleteConfirmText="Delete this vendor / agent?"
       defaultSortBy="createdAt"
       hideIdColumn
-      disableCreate={customerTypes.length === 0}
+      disableCreate={vendorTypes.length === 0}
       buildQuery={({ search }) => ({
         search: search.trim() || undefined,
-        customerTypeId: selectedCustomerType || undefined,
+        vendorTypeId: selectedVendorType || undefined,
         page: 1,
         limit: 50,
         sortBy: "createdAt",
@@ -73,36 +73,36 @@ export function VendorAgentListPage() {
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Code, Customer Name, Email, City, State, Contact..."
+                  placeholder="Code, Vendor Name, Email, City, State, Contact..."
                   className="flex h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] md:text-sm"
                 />
               </div>
               <div className="md:col-span-4">
                 <label className="text-xs font-medium text-muted-foreground">
-                  Customer Type
+                  Vendor Type
                 </label>
                 <Select
-                  value={selectedCustomerType || ALL_CUSTOMER_TYPES}
+                  value={selectedVendorType || ALL_VENDOR_TYPES}
                   onValueChange={(value) =>
-                    setSelectedCustomerType(
-                      value && value !== ALL_CUSTOMER_TYPES ? value : "",
+                    setSelectedVendorType(
+                      value && value !== ALL_VENDOR_TYPES ? value : "",
                     )
                   }
                 >
                   <SelectTrigger className="w-full">
                     <span
                       className={
-                        selectedCustomerTypeLabel ? "" : "text-muted-foreground"
+                        selectedVendorTypeLabel ? "" : "text-muted-foreground"
                       }
                     >
-                      {selectedCustomerTypeLabel ?? "All customer types"}
+                      {selectedVendorTypeLabel ?? "All vendor types"}
                     </span>
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value={ALL_CUSTOMER_TYPES}>All</SelectItem>
-                    {customerTypes.map((type) => (
+                    <SelectItem value={ALL_VENDOR_TYPES}>All</SelectItem>
+                    {vendorTypes.map((type) => (
                       <SelectItem key={type.id} value={type.id}>
-                        {type.customerType}
+                        {type.vendorType}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -111,19 +111,19 @@ export function VendorAgentListPage() {
             </div>
           </div>
 
-          {customerTypesRes.error ? (
+          {vendorTypesRes.error ? (
             <div className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
-              {customerTypesRes.error instanceof Error
-                ? customerTypesRes.error.message
-                : "Failed to load customer types"}
+              {vendorTypesRes.error instanceof Error
+                ? vendorTypesRes.error.message
+                : "Failed to load vendor types"}
             </div>
           ) : null}
         </>
       )}
       columns={[
         {
-          header: "Customer Type",
-          getValue: (item) => item.customerType || "-",
+          header: "Vendor Type",
+          getValue: (item) => item.vendorType || "-",
         },
         {
           header: "Code",
@@ -131,8 +131,8 @@ export function VendorAgentListPage() {
           valueClassName: "font-mono",
         },
         {
-          header: "Customer Name",
-          getValue: (item) => item.customerName,
+          header: "Vendor Name",
+          getValue: (item) => item.vendorName,
           valueClassName: "font-medium",
         },
         { header: "Address", getValue: (item) => item.address },
@@ -162,7 +162,7 @@ export function VendorAgentListPage() {
       useList={
         useVendorAgents as (query: {
           search?: string;
-          customerTypeId?: string;
+          vendorTypeId?: string;
           page: number;
           limit: number;
           sortBy: "createdAt";
@@ -181,7 +181,7 @@ export function VendorAgentListPage() {
           onOpenChange={onOpenChange}
           mode={mode}
           value={value}
-          customerTypes={customerTypes}
+          vendorTypes={vendorTypes}
           onSuccess={onSuccess}
         />
       )}

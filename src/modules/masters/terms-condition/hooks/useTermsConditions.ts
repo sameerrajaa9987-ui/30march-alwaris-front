@@ -8,9 +8,9 @@ import type {
   TermsConditionListQuery,
   TermsConditionListResult,
 } from "@/modules/masters/terms-condition/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const termsConditionHooks = createMasterHooks<
+const termsConditionHooks = createResourceHooks<
   TermsConditionListQuery,
   Parameters<typeof createTermsCondition>[0],
   TermsConditionListResult

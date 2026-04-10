@@ -1,10 +1,10 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { Service } from "@/modules/masters/service/types";
 import {
   useCreateService,
   useUpdateService,
 } from "@/modules/masters/service/hooks";
-import { SERVICE_DIALOG_FIELDS } from "@/modules/masters/service/components/serviceDialog.fields";
+import { SERVICE_DIALOG_FIELDS } from "@/modules/masters/service/constants/serviceDialog.fields";
 
 interface ServiceDialogProps {
   open: boolean;
@@ -22,7 +22,7 @@ export function ServiceDialog({
   onSuccess,
 }: ServiceDialogProps) {
   return (
-    <MasterDialog<Service, Pick<Service, "serviceType">, "serviceType">
+    <ResourceDialog<Service, Pick<Service, "serviceType">, "serviceType">
       open={open}
       onOpenChange={onOpenChange}
       mode={mode}

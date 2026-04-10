@@ -1,10 +1,10 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { CustomerType } from "@/modules/masters/customer/types";
 import {
   useCreateCustomerType,
   useUpdateCustomerType,
 } from "@/modules/masters/customer/hooks";
-import { CUSTOMER_TYPE_DIALOG_FIELDS } from "@/modules/masters/customer/components/customerTypeDialog.fields";
+import { CUSTOMER_TYPE_DIALOG_FIELDS } from "@/modules/masters/customer/constants/customerTypeDialog.fields";
 
 interface CustomerTypeDialogProps {
   open: boolean;
@@ -22,7 +22,7 @@ export function CustomerTypeDialog({
   onSuccess,
 }: CustomerTypeDialogProps) {
   return (
-    <MasterDialog<
+    <ResourceDialog<
       CustomerType,
       Pick<CustomerType, "customerType">,
       "customerType"

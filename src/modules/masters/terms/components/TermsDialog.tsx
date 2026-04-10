@@ -1,7 +1,7 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { Terms } from "@/modules/masters/terms/types";
 import { useCreateTerms, useUpdateTerms } from "@/modules/masters/terms/hooks";
-import { TERMS_DIALOG_FIELDS } from "@/modules/masters/terms/components/termsDialog.fields";
+import { TERMS_DIALOG_FIELDS } from "@/modules/masters/terms/constants/termsDialog.fields";
 
 interface TermsDialogProps {
   open: boolean;
@@ -19,7 +19,7 @@ export function TermsDialog({
   onSuccess,
 }: TermsDialogProps) {
   return (
-    <MasterDialog<
+    <ResourceDialog<
       Terms,
       Pick<Terms, "terms" | "description">,
       "terms" | "description"

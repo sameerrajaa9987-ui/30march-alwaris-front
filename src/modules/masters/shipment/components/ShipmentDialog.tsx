@@ -1,10 +1,10 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { Shipment } from "@/modules/masters/shipment/types";
 import {
   useCreateShipment,
   useUpdateShipment,
 } from "@/modules/masters/shipment/hooks";
-import { SHIPMENT_DIALOG_FIELDS } from "@/modules/masters/shipment/components/shipmentDialog.fields";
+import { SHIPMENT_DIALOG_FIELDS } from "@/modules/masters/shipment/constants/shipmentDialog.fields";
 
 interface ShipmentDialogProps {
   open: boolean;
@@ -22,7 +22,7 @@ export function ShipmentDialog({
   onSuccess,
 }: ShipmentDialogProps) {
   return (
-    <MasterDialog<Shipment, Pick<Shipment, "shipmentType">, "shipmentType">
+    <ResourceDialog<Shipment, Pick<Shipment, "shipmentType">, "shipmentType">
       open={open}
       onOpenChange={onOpenChange}
       mode={mode}

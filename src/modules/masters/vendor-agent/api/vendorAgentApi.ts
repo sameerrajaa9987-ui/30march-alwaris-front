@@ -1,4 +1,4 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   VendorAgent,
   VendorAgentListQuery,
@@ -7,10 +7,10 @@ import type {
 
 type VendorAgentCreatePayload = Omit<
   VendorAgent,
-  "id" | "code" | "customerType" | "createdAt" | "updatedAt"
+  "id" | "code" | "vendorType" | "createdAt" | "updatedAt"
 >;
 
-const vendorAgentApi = createMasterApi<
+const vendorAgentApi = createResourceApi<
   VendorAgent,
   VendorAgentListQuery,
   VendorAgentCreatePayload

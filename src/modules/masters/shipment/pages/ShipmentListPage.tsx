@@ -1,4 +1,4 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { ShipmentDialog } from "@/modules/masters/shipment/components/ShipmentDialog";
 import {
   useDeleteShipment,
@@ -7,7 +7,7 @@ import {
 
 export function ShipmentListPage() {
   return (
-    <MasterListPage
+    <ResourceListPage
       title="Shipment"
       subtitle="Manage shipment master data."
       newButtonText="New Shipment Type"

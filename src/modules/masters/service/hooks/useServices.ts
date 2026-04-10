@@ -5,9 +5,9 @@ import {
   deleteService,
 } from "@/modules/masters/service/api/serviceApi";
 import type { ServiceListQuery } from "@/modules/masters/service/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const serviceHooks = createMasterHooks("services", {
+const serviceHooks = createResourceHooks("services", {
   list: listServices,
   create: createService,
   update: updateService,

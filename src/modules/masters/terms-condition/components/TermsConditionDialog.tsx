@@ -7,15 +7,15 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
-import { MasterFormFields } from "@/modules/masters/shared/MasterFormFields";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
+import { ResourceFormFields } from "@/modules/common/shared-crud/ResourceFormFields";
 import { useLineOfBix } from "@/modules/masters/line-of-bix/hooks";
 import type { TermsCondition } from "@/modules/masters/terms-condition/types";
 import {
   termsConditionSchema,
   type TermsConditionSchema,
 } from "@/modules/masters/terms-condition/validations/termsCondition.validation";
-import { TERMS_CONDITION_DESCRIPTION_FIELD } from "@/modules/masters/terms-condition/components/termsConditionDialog.fields";
+import { TERMS_CONDITION_DESCRIPTION_FIELD } from "@/modules/masters/terms-condition/constants/termsConditionDialog.fields";
 import {
   useCreateTermsCondition,
   useUpdateTermsCondition,
@@ -94,7 +94,7 @@ export function TermsConditionDialog({
   }
 
   return (
-    <MasterDialog<TermsCondition, TermsConditionSchema, never>
+    <ResourceDialog<TermsCondition, TermsConditionSchema, never>
       open={open}
       onOpenChange={onOpenChange}
       mode={mode}
@@ -159,7 +159,7 @@ export function TermsConditionDialog({
             </div>
 
             <div>
-              <MasterFormFields
+              <ResourceFormFields
                 form={form}
                 fields={TERMS_CONDITION_DESCRIPTION_FIELD}
               />

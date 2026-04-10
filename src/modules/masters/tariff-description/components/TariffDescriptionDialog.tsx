@@ -1,10 +1,10 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { TariffDescription } from "@/modules/masters/tariff-description/types";
 import {
   useCreateTariffDescription,
   useUpdateTariffDescription,
 } from "@/modules/masters/tariff-description/hooks";
-import { TARIFF_DESCRIPTION_DIALOG_FIELDS } from "@/modules/masters/tariff-description/components/tariffDescriptionDialog.fields";
+import { TARIFF_DESCRIPTION_DIALOG_FIELDS } from "@/modules/masters/tariff-description/constants/tariffDescriptionDialog.fields";
 
 interface TariffDescriptionDialogProps {
   open: boolean;
@@ -22,7 +22,7 @@ export function TariffDescriptionDialog({
   onSuccess,
 }: TariffDescriptionDialogProps) {
   return (
-    <MasterDialog<
+    <ResourceDialog<
       TariffDescription,
       Pick<TariffDescription, "description">,
       "description"

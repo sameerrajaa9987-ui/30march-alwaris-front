@@ -11,6 +11,7 @@ import { LineOfBixListPage } from "@/modules/masters/line-of-bix/pages/LineOfBix
 import { TermsConditionListPage } from "@/modules/masters/terms-condition/pages/TermsConditionListPage";
 import { TariffDescriptionListPage } from "@/modules/masters/tariff-description/pages/TariffDescriptionListPage";
 import { VendorAgentListPage } from "@/modules/masters/vendor-agent/pages/VendorAgentListPage";
+import { VendorTypePage } from "@/modules/masters/vendor-agent/pages/VendorTypePage";
 import { PlaceholderPage } from "@/shared/components/PlaceholderPage";
 
 export const MASTERS_DEFAULT_PATH = "/masters/employee";
@@ -25,9 +26,14 @@ export function MastersRouter() {
       <Route path="customer" element={<PlaceholderPage title="Customer" />} />
       <Route path="type" element={<CustomerTypePage />} />
       <Route path="details" element={<CustomerListPage />} />
+      <Route path="vendor">
+        <Route index element={<Navigate to="details" replace />} />
+        <Route path="type" element={<VendorTypePage />} />
+        <Route path="details" element={<VendorAgentListPage />} />
+      </Route>
       <Route
         path="vendor-agent"
-        element={<VendorAgentListPage />}
+        element={<Navigate to="vendor/details" replace />}
       />
       <Route path="vessel" element={<VesselListPage />} />
       <Route path="port" element={<PortListPage />} />

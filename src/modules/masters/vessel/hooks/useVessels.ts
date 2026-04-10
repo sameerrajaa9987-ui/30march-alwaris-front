@@ -5,9 +5,9 @@ import {
   deleteVessel,
 } from "@/modules/masters/vessel/api/vesselApi";
 import type { VesselListQuery } from "@/modules/masters/vessel/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const vesselHooks = createMasterHooks("vessels", {
+const vesselHooks = createResourceHooks("vessels", {
   list: listVessels,
   create: createVessel,
   update: updateVessel,

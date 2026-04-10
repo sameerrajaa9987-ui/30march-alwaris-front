@@ -1,4 +1,4 @@
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 import {
   listCustomerTypes,
   createCustomerType,
@@ -7,7 +7,7 @@ import {
 } from "@/modules/masters/customer/api/customerTypeApi";
 import type { CustomerTypeListQuery } from "@/modules/masters/customer/types";
 
-const customerTypeCrud = createMasterHooks<
+const customerTypeCrud = createResourceHooks<
   CustomerTypeListQuery,
   Parameters<typeof createCustomerType>[0],
   Awaited<ReturnType<typeof listCustomerTypes>>

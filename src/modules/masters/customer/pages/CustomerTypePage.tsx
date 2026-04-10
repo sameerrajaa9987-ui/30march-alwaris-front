@@ -1,4 +1,4 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { CustomerTypeDialog } from "@/modules/masters/customer/components/CustomerTypeDialog";
 import {
   useCustomerTypes,
@@ -8,7 +8,7 @@ import type { CustomerType } from "@/modules/masters/customer/types";
 
 export function CustomerTypePage() {
   return (
-    <MasterListPage<
+    <ResourceListPage<
       CustomerType,
       {
         search?: string;

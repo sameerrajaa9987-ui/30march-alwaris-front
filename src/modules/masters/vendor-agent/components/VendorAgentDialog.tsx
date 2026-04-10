@@ -9,10 +9,12 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
-import { MasterFormFields } from "@/modules/masters/shared/MasterFormFields";
-import type { CustomerType } from "@/modules/masters/customer/types";
-import type { VendorAgent } from "@/modules/masters/vendor-agent/types";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
+import { ResourceFormFields } from "@/modules/common/shared-crud/ResourceFormFields";
+import type {
+  VendorAgent,
+  VendorType,
+} from "@/modules/masters/vendor-agent/types";
 import {
   vendorAgentSchema,
   parseAdditionalEmails,
@@ -27,13 +29,13 @@ import {
   VENDOR_AGENT_FINANCIAL_FIELDS,
   VENDOR_AGENT_LOCATION_FIELDS,
   VENDOR_AGENT_MAIN_FIELDS,
-} from "@/modules/masters/vendor-agent/components/vendorAgentDialog.fields";
+} from "@/modules/masters/vendor-agent/constants/vendorAgentDialog.fields";
 
 interface VendorAgentDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   mode: "create" | "edit";
-  customerTypes: CustomerType[];
+  vendorTypes: VendorType[];
   value?: VendorAgent | null;
   onSuccess?: () => void;
 }
@@ -42,7 +44,7 @@ export function VendorAgentDialog({
   open,
   onOpenChange,
   mode,
-  customerTypes,
+  vendorTypes,
   value,
   onSuccess,
 }: VendorAgentDialogProps) {
@@ -52,9 +54,9 @@ export function VendorAgentDialog({
 
   const defaults = useMemo<VendorAgentSchema>(
     () => ({
-      customerTypeId: "",
+      vendorTypeId: "",
       mail: "",
-      customerName: "",
+      vendorName: "",
       address: "",
       city: "",
       country: "",
@@ -78,15 +80,15 @@ export function VendorAgentDialog({
     mode: "onChange",
   });
 
-  const customerTypeId = useWatch({
+  const vendorTypeId = useWatch({
     control: form.control,
-    name: "customerTypeId",
+    name: "vendorTypeId",
   });
   const mail = useWatch({ control: form.control, name: "mail" });
 
-  const selectedCustomerType = useMemo(
-    () => customerTypes.find((t) => t.id === customerTypeId),
-    [customerTypes, customerTypeId],
+  const selectedVendorType = useMemo(
+    () => vendorTypes.find((t) => t.id === vendorTypeId),
+    [vendorTypes, vendorTypeId],
   );
 
   useEffect(() => {
@@ -94,9 +96,9 @@ export function VendorAgentDialog({
     form.reset(
       mode === "edit" && value
         ? {
-            customerTypeId: value.customerTypeId,
+            vendorTypeId: value.vendorTypeId,
             mail: value.mail,
-            customerName: value.customerName,
+            vendorName: value.vendorName,
             address: value.address,
             city: value.city,
             country: value.country,
@@ -117,9 +119,9 @@ export function VendorAgentDialog({
 
   async function onSubmit(values: VendorAgentSchema) {
     const payload = {
-      customerTypeId: values.customerTypeId,
+      vendorTypeId: values.vendorTypeId,
       mail: values.mail || "",
-      customerName: values.customerName,
+      vendorName: values.vendorName,
       address: values.address,
       city: values.city,
       country: values.country,
@@ -128,7 +130,9 @@ export function VendorAgentDialog({
       contactPerson: values.contactPerson,
       contactNo: values.contactNo,
       emailId: values.emailId,
-      additionalEmailIds: parseAdditionalEmails(values.additionalEmailIds || ""),
+      additionalEmailIds: parseAdditionalEmails(
+        values.additionalEmailIds || "",
+      ),
       gstVatNo: values.gstVatNo || "",
       creditDays: values.creditDays,
       stateCode: values.stateCode || "",
@@ -143,7 +147,7 @@ export function VendorAgentDialog({
   }
 
   return (
-    <MasterDialog<VendorAgent, VendorAgentSchema, never>
+    <ResourceDialog<VendorAgent, VendorAgentSchema, never>
       open={open}
       onOpenChange={onOpenChange}
       mode={mode}
@@ -162,31 +166,29 @@ export function VendorAgentDialog({
       renderBody={() => (
         <div className="grid grid-cols-1 gap-4 py-4 md:grid-cols-12">
           <Field
-            label="Customer Type"
+            label="Vendor Type"
             className="md:col-span-3"
-            error={form.formState.errors.customerTypeId?.message}
+            error={form.formState.errors.vendorTypeId?.message}
           >
             <Select
-              value={customerTypeId || undefined}
+              value={vendorTypeId || undefined}
               onValueChange={(v) =>
-                form.setValue("customerTypeId", v || "", {
+                form.setValue("vendorTypeId", v || "", {
                   shouldValidate: true,
                 })
               }
             >
               <SelectTrigger className="w-full">
                 <span
-                  className={
-                    selectedCustomerType ? "" : "text-muted-foreground"
-                  }
+                  className={selectedVendorType ? "" : "text-muted-foreground"}
                 >
-                  {selectedCustomerType?.customerType ?? "---Select---"}
+                  {selectedVendorType?.vendorType ?? "---Select---"}
                 </span>
               </SelectTrigger>
               <SelectContent>
-                {customerTypes.map((type) => (
+                {vendorTypes.map((type) => (
                   <SelectItem key={type.id} value={type.id}>
-                    {type.customerType}
+                    {type.vendorType}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -219,16 +221,25 @@ export function VendorAgentDialog({
             </div>
           </Field>
 
-          <MasterFormFields form={form} fields={VENDOR_AGENT_MAIN_FIELDS} />
+          <ResourceFormFields form={form} fields={VENDOR_AGENT_MAIN_FIELDS} />
 
           <div className="grid grid-cols-1 gap-4 md:col-span-5 md:grid-cols-2">
-            <MasterFormFields form={form} fields={VENDOR_AGENT_LOCATION_FIELDS} />
+            <ResourceFormFields
+              form={form}
+              fields={VENDOR_AGENT_LOCATION_FIELDS}
+            />
           </div>
 
-          <MasterFormFields form={form} fields={VENDOR_AGENT_CONTACT_FIELDS} />
+          <ResourceFormFields
+            form={form}
+            fields={VENDOR_AGENT_CONTACT_FIELDS}
+          />
 
           <div className="grid grid-cols-1 gap-4 md:col-span-5 md:grid-cols-2">
-            <MasterFormFields form={form} fields={VENDOR_AGENT_FINANCIAL_FIELDS} />
+            <ResourceFormFields
+              form={form}
+              fields={VENDOR_AGENT_FINANCIAL_FIELDS}
+            />
           </div>
         </div>
       )}

@@ -1,10 +1,10 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { Vessel } from "@/modules/masters/vessel/types";
 import {
   useCreateVessel,
   useUpdateVessel,
 } from "@/modules/masters/vessel/hooks";
-import { VESSEL_DIALOG_FIELDS } from "@/modules/masters/vessel/components/vesselDialog.fields";
+import { VESSEL_DIALOG_FIELDS } from "@/modules/masters/vessel/constants/vesselDialog.fields";
 
 interface VesselDialogProps {
   open: boolean;
@@ -22,7 +22,7 @@ export function VesselDialog({
   onSuccess,
 }: VesselDialogProps) {
   return (
-    <MasterDialog<Vessel, Pick<Vessel, "vesselName">, "vesselName">
+    <ResourceDialog<Vessel, Pick<Vessel, "vesselName">, "vesselName">
       open={open}
       onOpenChange={onOpenChange}
       mode={mode}

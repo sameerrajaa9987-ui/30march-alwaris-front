@@ -9,6 +9,8 @@ import {
   MASTERS_DEFAULT_PATH,
   MastersRouter,
 } from "./modules/masters/MastersRouter";
+import { BookingRouter } from "./modules/booking/BookingRouter";
+import { BillOfLadingRouter } from "./modules/bill-of-lading/BillOfLadingRouter";
 import { PlaceholderPage } from "./shared/components/PlaceholderPage";
 
 function LogoutRoute() {
@@ -36,16 +38,9 @@ export default function App() {
       >
         <Route index element={<Navigate to={MASTERS_DEFAULT_PATH} replace />} />
         <Route path="masters/*" element={<MastersRouter />} />
+        <Route path="booking/*" element={<BookingRouter />} />
 
-        <Route path="booking">
-          <Route path="sea" element={<PlaceholderPage title="Sea Booking" />} />
-          <Route path="air" element={<PlaceholderPage title="Air Booking" />} />
-        </Route>
-
-        <Route
-          path="bill-of-lading"
-          element={<PlaceholderPage title="Bill of Lading" />}
-        />
+        <Route path="bill-of-lading/*" element={<BillOfLadingRouter />} />
         <Route
           path="document-upload/vendor-documents"
           element={<PlaceholderPage title="Vendor Documents" />}

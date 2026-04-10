@@ -1,4 +1,4 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { LineOfBixDialog } from "@/modules/masters/line-of-bix/components/LineOfBixDialog";
 import {
   useDeleteLineOfBix,
@@ -8,7 +8,7 @@ import type { LineOfBix } from "@/modules/masters/line-of-bix/types";
 
 export function LineOfBixListPage() {
   return (
-    <MasterListPage<
+    <ResourceListPage<
       LineOfBix,
       {
         search?: string;

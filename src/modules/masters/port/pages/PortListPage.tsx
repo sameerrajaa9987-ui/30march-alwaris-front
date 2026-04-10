@@ -1,11 +1,11 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { PortDialog } from "@/modules/masters/port/components/PortDialog";
 import { useDeletePort, usePorts } from "@/modules/masters/port/hooks";
 import type { Port } from "@/modules/masters/port/types";
 
 export function PortListPage() {
   return (
-    <MasterListPage<
+    <ResourceListPage<
       Port,
       {
         search?: string;

@@ -1,5 +1,5 @@
 import { http } from "@/shared/api/http";
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   Employee,
   EmployeeListQuery,
@@ -11,7 +11,7 @@ type EmployeeCreatePayload = Omit<
   "id" | "employeeId" | "createdAt" | "updatedAt"
 >;
 
-const employeeApi = createMasterApi<
+const employeeApi = createResourceApi<
   Employee,
   EmployeeListQuery,
   EmployeeCreatePayload

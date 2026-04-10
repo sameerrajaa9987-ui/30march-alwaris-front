@@ -1,11 +1,11 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   TariffDescription,
   TariffDescriptionListQuery,
   TariffDescriptionListResult,
 } from "@/modules/masters/tariff-description/types";
 
-const tariffDescriptionApi = createMasterApi<
+const tariffDescriptionApi = createResourceApi<
   TariffDescription,
   TariffDescriptionListQuery,
   Pick<TariffDescription, "description">

@@ -1,10 +1,10 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { LineOfBix } from "@/modules/masters/line-of-bix/types";
 import {
   useCreateLineOfBix,
   useUpdateLineOfBix,
 } from "@/modules/masters/line-of-bix/hooks";
-import { LINE_OF_BIX_DIALOG_FIELDS } from "@/modules/masters/line-of-bix/components/lineOfBixDialog.fields";
+import { LINE_OF_BIX_DIALOG_FIELDS } from "@/modules/masters/line-of-bix/constants/lineOfBixDialog.fields";
 
 interface LineOfBixDialogProps {
   open: boolean;
@@ -22,7 +22,7 @@ export function LineOfBixDialog({
   onSuccess,
 }: LineOfBixDialogProps) {
   return (
-    <MasterDialog<
+    <ResourceDialog<
       LineOfBix,
       Pick<LineOfBix, "code" | "lineOfBix">,
       "code" | "lineOfBix"

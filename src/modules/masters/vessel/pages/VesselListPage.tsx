@@ -1,10 +1,10 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { VesselDialog } from "@/modules/masters/vessel/components/VesselDialog";
 import { useDeleteVessel, useVessels } from "@/modules/masters/vessel/hooks";
 
 export function VesselListPage() {
   return (
-    <MasterListPage
+    <ResourceListPage
       title="Vessel"
       subtitle="Manage vessel master data."
       newButtonText="New Vessel"

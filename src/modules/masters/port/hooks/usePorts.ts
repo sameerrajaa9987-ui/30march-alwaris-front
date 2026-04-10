@@ -8,9 +8,9 @@ import type {
   PortListQuery,
   PortListResult,
 } from "@/modules/masters/port/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const portHooks = createMasterHooks<
+const portHooks = createResourceHooks<
   PortListQuery,
   Parameters<typeof createPort>[0],
   PortListResult

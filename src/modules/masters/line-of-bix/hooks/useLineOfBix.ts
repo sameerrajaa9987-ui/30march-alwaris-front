@@ -8,9 +8,9 @@ import type {
   LineOfBixListQuery,
   LineOfBixListResult,
 } from "@/modules/masters/line-of-bix/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const lineOfBixHooks = createMasterHooks<
+const lineOfBixHooks = createResourceHooks<
   LineOfBixListQuery,
   Parameters<typeof createLineOfBix>[0],
   LineOfBixListResult

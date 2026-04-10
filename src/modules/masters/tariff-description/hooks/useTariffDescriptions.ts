@@ -5,9 +5,9 @@ import {
   deleteTariffDescription,
 } from "@/modules/masters/tariff-description/api/tariffDescriptionApi";
 import type { TariffDescriptionListQuery } from "@/modules/masters/tariff-description/types";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 
-const tariffDescriptionHooks = createMasterHooks("tariff-descriptions", {
+const tariffDescriptionHooks = createResourceHooks("tariff-descriptions", {
   list: listTariffDescriptions,
   create: createTariffDescription,
   update: updateTariffDescription,

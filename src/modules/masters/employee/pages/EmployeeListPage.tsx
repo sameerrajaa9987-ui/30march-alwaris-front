@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import {
   EmployeeFilters,
   type EmployeeFiltersValue,
@@ -19,7 +19,7 @@ export function EmployeeListPage() {
   });
 
   return (
-    <MasterListPage<
+    <ResourceListPage<
       Employee,
       {
         search?: string;

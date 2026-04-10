@@ -1,11 +1,11 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   Port,
   PortListQuery,
   PortListResult,
 } from "@/modules/masters/port/types";
 
-const portApi = createMasterApi<
+const portApi = createResourceApi<
   Port,
   PortListQuery,
   Pick<Port, "portCode" | "portName">

@@ -1,10 +1,10 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { ServiceDialog } from "@/modules/masters/service/components/ServiceDialog";
 import { useDeleteService, useServices } from "@/modules/masters/service/hooks";
 
 export function ServiceListPage() {
   return (
-    <MasterListPage
+    <ResourceListPage
       title="Service"
       subtitle="Manage service master data."
       newButtonText="New Service Type"

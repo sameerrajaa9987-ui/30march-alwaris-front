@@ -1,4 +1,4 @@
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import { TermsConditionDialog } from "@/modules/masters/terms-condition/components/TermsConditionDialog";
 import {
   useDeleteTermsCondition,
@@ -8,7 +8,7 @@ import type { TermsCondition } from "@/modules/masters/terms-condition/types";
 
 export function TermsConditionListPage() {
   return (
-    <MasterListPage<
+    <ResourceListPage<
       TermsCondition,
       {
         search?: string;

@@ -1,11 +1,11 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   LineOfBix,
   LineOfBixListQuery,
   LineOfBixListResult,
 } from "@/modules/masters/line-of-bix/types";
 
-const lineOfBixApi = createMasterApi<
+const lineOfBixApi = createResourceApi<
   LineOfBix,
   LineOfBixListQuery,
   Pick<LineOfBix, "code" | "lineOfBix">

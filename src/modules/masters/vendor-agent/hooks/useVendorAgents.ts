@@ -1,4 +1,4 @@
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 import {
   listVendorAgents,
   createVendorAgent,
@@ -7,7 +7,7 @@ import {
 } from "@/modules/masters/vendor-agent/api/vendorAgentApi";
 import type { VendorAgentListQuery } from "@/modules/masters/vendor-agent/types";
 
-const vendorAgentCrud = createMasterHooks<
+const vendorAgentCrud = createResourceHooks<
   VendorAgentListQuery,
   Parameters<typeof createVendorAgent>[0],
   Awaited<ReturnType<typeof listVendorAgents>>

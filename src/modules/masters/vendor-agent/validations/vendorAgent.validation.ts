@@ -13,9 +13,9 @@ function isValidEmailList(input: string): boolean {
 }
 
 export const vendorAgentSchema = z.object({
-  customerTypeId: z.string().trim().min(1, "Customer Type is required"),
+  vendorTypeId: z.string().trim().min(1, "Vendor Type is required"),
   mail: z.string().trim().optional(),
-  customerName: z.string().trim().min(1, "Customer Name is required"),
+  vendorName: z.string().trim().min(1, "Vendor Name is required"),
   address: z.string().trim().min(1, "Address is required"),
   city: z.string().trim().min(1, "City is required"),
   country: z.string().trim().min(1, "Country is required"),

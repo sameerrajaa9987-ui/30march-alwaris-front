@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { createMasterHooks } from "@/modules/masters/shared/createMasterHooks";
+import { createResourceHooks } from "@/modules/common/shared-crud/createResourceHooks";
 import {
   listEmployees,
   createEmployee,
@@ -8,7 +8,7 @@ import {
   getEmployee,
 } from "@/modules/masters/employee/api/employeeApi";
 
-const employeeCrud = createMasterHooks("employees", {
+const employeeCrud = createResourceHooks("employees", {
   list: listEmployees,
   create: createEmployee,
   update: updateEmployee,

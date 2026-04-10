@@ -11,8 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
-import { MasterFormFields } from "@/modules/masters/shared/MasterFormFields";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
+import { ResourceFormFields } from "@/modules/common/shared-crud/ResourceFormFields";
 import {
   useCreateEmployee,
   useUpdateEmployee,
@@ -23,7 +23,7 @@ import {
 } from "@/modules/masters/employee/constants";
 import { employeeSchema } from "@/modules/masters/employee/validations/employee.validation";
 import type { Employee } from "@/modules/masters/employee/types";
-import { EMPLOYEE_DIALOG_FIELDS } from "@/modules/masters/employee/components/employeeDialog.fields";
+import { EMPLOYEE_DIALOG_FIELDS } from "@/modules/masters/employee/constants/employeeDialog.fields";
 
 const schema = employeeSchema;
 
@@ -107,7 +107,7 @@ export function EmployeeDialog({
   }
 
   return (
-    <MasterDialog<Employee, FormValues, never>
+    <ResourceDialog<Employee, FormValues, never>
       open={open}
       onOpenChange={onOpenChange}
       mode={mode}
@@ -184,7 +184,7 @@ export function EmployeeDialog({
             </Select>
           </Field>
 
-          <MasterFormFields
+          <ResourceFormFields
             form={form}
             fields={EMPLOYEE_DIALOG_FIELDS.filter(
               (field) => field.name !== "employeeName",

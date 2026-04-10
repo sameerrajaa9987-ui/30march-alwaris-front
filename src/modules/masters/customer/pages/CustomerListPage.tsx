@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MasterListPage } from "@/modules/masters/shared/MasterListPage";
+import { ResourceListPage } from "@/modules/common/shared-crud/ResourceListPage";
 import {
   Select,
   SelectContent,
@@ -34,7 +34,7 @@ export function CustomerListPage() {
   )?.customerType;
 
   return (
-    <MasterListPage<
+    <ResourceListPage<
       Customer,
       {
         search?: string;

@@ -1,7 +1,7 @@
-import { MasterDialog } from "@/modules/masters/shared/MasterDialog";
+import { ResourceDialog } from "@/modules/common/shared-crud/ResourceDialog";
 import type { Port } from "@/modules/masters/port/types";
 import { useCreatePort, useUpdatePort } from "@/modules/masters/port/hooks";
-import { PORT_DIALOG_FIELDS } from "@/modules/masters/port/components/portDialog.fields";
+import { PORT_DIALOG_FIELDS } from "@/modules/masters/port/constants/portDialog.fields";
 
 interface PortDialogProps {
   open: boolean;
@@ -19,7 +19,7 @@ export function PortDialog({
   onSuccess,
 }: PortDialogProps) {
   return (
-    <MasterDialog<
+    <ResourceDialog<
       Port,
       Pick<Port, "portCode" | "portName">,
       "portCode" | "portName"

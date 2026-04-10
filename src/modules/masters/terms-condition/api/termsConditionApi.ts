@@ -1,11 +1,11 @@
-import { createMasterApi } from "@/modules/masters/shared/createMasterApi";
+import { createResourceApi } from "@/modules/common/shared-crud/createResourceApi";
 import type {
   TermsCondition,
   TermsConditionListQuery,
   TermsConditionListResult,
 } from "@/modules/masters/terms-condition/types";
 
-const termsConditionApi = createMasterApi<
+const termsConditionApi = createResourceApi<
   TermsCondition,
   TermsConditionListQuery,
   Pick<TermsCondition, "lineOfBixId" | "description">
