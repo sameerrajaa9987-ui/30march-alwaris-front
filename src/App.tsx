@@ -11,6 +11,7 @@ import {
 } from "./modules/masters/MastersRouter";
 import { BookingRouter } from "./modules/booking/BookingRouter";
 import { BillOfLadingRouter } from "./modules/bill-of-lading/BillOfLadingRouter";
+import { VendorDocumentsPage } from "./modules/document-upload/vendor-documents/pages/VendorDocumentsPage";
 import { PlaceholderPage } from "./shared/components/PlaceholderPage";
 
 function LogoutRoute() {
@@ -43,11 +44,11 @@ export default function App() {
         <Route path="bill-of-lading/*" element={<BillOfLadingRouter />} />
         <Route
           path="document-upload/vendor-documents"
-          element={<PlaceholderPage title="Vendor Documents" />}
+          element={<VendorDocumentsPage />}
         />
         <Route
           path="document-upload/master-bl-upload"
-          element={<PlaceholderPage title="Master BL Upload" />}
+          element={<VendorDocumentsPage />}
         />
 
         <Route

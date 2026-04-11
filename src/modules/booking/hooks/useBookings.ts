@@ -11,7 +11,6 @@ import type {
   SeaBookingPayload,
   SeaBookingListQuery,
   SeaBookingListResult,
-  SeaBookingTableQuery,
 } from "@/modules/booking/types";
 
 const bookingCrud = createResourceHooks<
@@ -29,10 +28,6 @@ export const useBookings = bookingCrud.useList;
 export const useCreateBooking = bookingCrud.useCreate;
 export const useUpdateBooking = bookingCrud.useUpdate;
 export const useDeleteBooking = bookingCrud.useDelete;
-
-export function useSeaBookingTable(query: SeaBookingTableQuery) {
-  return useBookings(query);
-}
 
 export function useGenerateBookingReference() {
   return useMutation({ mutationFn: getNextBookingReference });

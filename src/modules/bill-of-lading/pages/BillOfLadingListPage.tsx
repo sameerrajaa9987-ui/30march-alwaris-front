@@ -4,7 +4,7 @@ import { BillOfLadingDialog } from "@/modules/bill-of-lading/components/BillOfLa
 import { BillOfLadingFilters } from "@/modules/bill-of-lading/components/BillOfLadingFilters";
 import { buildBillOfLadingTableQuery } from "@/modules/bill-of-lading/constants/billOfLading.queries";
 import {
-  useBillOfLadingTable,
+  useBillOfLading,
   useDeleteBillOfLading,
 } from "@/modules/bill-of-lading/hooks/useBillOfLading";
 import type {
@@ -83,7 +83,7 @@ export function BillOfLadingListPage() {
         },
       ]}
       getIdValue={(item) => item.id}
-      useList={useBillOfLadingTable}
+      useList={useBillOfLading}
       useDelete={useDeleteBillOfLading}
       renderDialog={({ open, onOpenChange, mode, value, onSuccess }) => (
         <BillOfLadingDialog

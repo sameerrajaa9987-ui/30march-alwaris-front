@@ -12,7 +12,6 @@ import type {
   BillOfLadingListQuery,
   BillOfLadingListResult,
   BillOfLadingPayload,
-  BillOfLadingTableQuery,
 } from "@/modules/bill-of-lading/types";
 
 const billOfLadingCrud = createResourceHooks<
@@ -30,10 +29,6 @@ export const useBillOfLading = billOfLadingCrud.useList;
 export const useCreateBillOfLading = billOfLadingCrud.useCreate;
 export const useUpdateBillOfLading = billOfLadingCrud.useUpdate;
 export const useDeleteBillOfLading = billOfLadingCrud.useDelete;
-
-export function useBillOfLadingTable(query: BillOfLadingTableQuery) {
-  return useBillOfLading(query);
-}
 
 export function useGenerateBlNumber() {
   return useMutation({ mutationFn: getNextBlNumber });

@@ -6,6 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import { CustomerDialog } from "@/modules/masters/customer/components/CustomerDialog";
 import {
   useCustomers,
@@ -70,11 +71,10 @@ export function CustomerListPage() {
                 <label className="text-xs font-medium text-muted-foreground">
                   Search
                 </label>
-                <input
+                <Input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Code, Customer Name, Email, City, State, Contact..."
-                  className="flex h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] md:text-sm"
                 />
               </div>
               <div className="md:col-span-4">

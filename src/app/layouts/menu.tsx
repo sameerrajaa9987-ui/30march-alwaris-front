@@ -67,10 +67,6 @@ export const MENU: MenuItem[] = [
     label: "Document Upload",
     to: "/document-upload/vendor-documents",
     icon: Upload,
-    children: [
-      { label: "Vendor Documents", to: "/document-upload/vendor-documents" },
-      { label: "Master BL Upload", to: "/document-upload/master-bl-upload" },
-    ],
   },
   {
     label: "Cost Sheet",

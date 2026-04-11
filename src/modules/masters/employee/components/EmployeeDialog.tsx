@@ -126,7 +126,7 @@ export function EmployeeDialog({
       renderBody={() => (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 py-4">
           <div className="md:col-span-12 flex flex-wrap gap-6">
-            <label className="inline-flex items-center gap-2 text-sm text-slate-700">
+            <label className="inline-flex items-center gap-2 text-sm text-foreground/85">
               <Checkbox
                 checked={isActive}
                 onCheckedChange={(checked) =>
@@ -137,7 +137,7 @@ export function EmployeeDialog({
               />
               <span>Active</span>
             </label>
-            <label className="inline-flex items-center gap-2 text-sm text-slate-700">
+            <label className="inline-flex items-center gap-2 text-sm text-foreground/85">
               <Checkbox
                 checked={isApproved}
                 onCheckedChange={(checked) =>
@@ -209,7 +209,9 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label className="text-xs font-medium text-slate-600">{label}</label>
+      <label className="text-xs font-medium text-muted-foreground">
+        {label}
+      </label>
       <div className="mt-1">{children}</div>
       {error && <div className="mt-1 text-xs text-red-600">{error}</div>}
     </div>

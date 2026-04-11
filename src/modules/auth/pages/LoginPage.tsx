@@ -46,21 +46,21 @@ export function LoginPage() {
 
   return (
     <div className="min-h-full flex items-center justify-center p-4">
-      <div className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="text-lg font-semibold text-slate-900">Login</div>
-        <div className="mt-1 text-sm text-slate-600">
+      <div className="w-full max-w-md rounded-lg border border-border bg-card p-6 shadow-sm">
+        <div className="text-lg font-semibold text-foreground">Login</div>
+        <div className="mt-1 text-sm text-muted-foreground">
           Admin and Operator access only.
         </div>
 
         {error ? (
-          <div className="mt-3 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+          <div className="mt-3 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
             {error}
           </div>
         ) : null}
 
         <form className="mt-4 space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-1">
-            <label className="text-sm font-medium text-slate-700">Email</label>
+            <label className="text-sm font-medium text-foreground">Email</label>
             <Input
               placeholder="name@companyname.com"
               autoComplete="email"
@@ -74,7 +74,7 @@ export function LoginPage() {
           </div>
 
           <div className="space-y-1">
-            <label className="text-sm font-medium text-slate-700">
+            <label className="text-sm font-medium text-foreground">
               Password
             </label>
             <Input
@@ -97,7 +97,7 @@ export function LoginPage() {
             {loginMutation.isPending ? "Signing in..." : "Sign in"}
           </Button>
 
-          <div className="text-xs text-slate-500">
+          <div className="text-xs text-muted-foreground">
             Tip: run backend seed once to create an Admin.
           </div>
         </form>

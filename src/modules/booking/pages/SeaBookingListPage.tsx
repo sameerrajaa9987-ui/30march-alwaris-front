@@ -7,8 +7,8 @@ import {
 } from "@/modules/booking/components/SeaBookingFilters";
 import { buildSeaBookingTableQuery } from "@/modules/booking/constants/seaBooking.queries";
 import {
+  useBookings,
   useDeleteBooking,
-  useSeaBookingTable,
 } from "@/modules/booking/hooks/useBookings";
 import { useSeaBookingMasterData } from "@/modules/booking/hooks/useSeaBookingMasterData";
 import type { SeaBooking, SeaBookingTableQuery } from "@/modules/booking/types";
@@ -89,7 +89,7 @@ export function SeaBookingListPage() {
         },
       ]}
       getIdValue={(item) => item.id}
-      useList={useSeaBookingTable}
+      useList={useBookings}
       useDelete={useDeleteBooking}
       renderDialog={({ open, onOpenChange, mode, value, onSuccess }) => (
         <SeaBookingDialog

@@ -196,7 +196,7 @@ export function ResourceDialog<
         </DialogHeader>
 
         {error ? (
-          <div className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+          <div className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
             {error}
           </div>
         ) : null}

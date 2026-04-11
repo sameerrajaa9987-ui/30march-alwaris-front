@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { clearAuth } from "@/modules/auth/authSlice";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Button } from "@/components/ui/button";
 
 export function Topbar() {
   const dispatch = useAppDispatch();
@@ -27,13 +28,13 @@ export function Topbar() {
             </div>
           </div>
           <UserCircle2 className="h-8 w-8 text-primary/70" />
-          <Link
-            to="/logout"
+          <Button
+            variant="outline"
+            render={<Link to="/logout" />}
             onClick={() => dispatch(clearAuth())}
-            className="rounded-md border border-border bg-background px-3 py-2 text-sm font-medium hover:bg-muted"
           >
             Logout
-          </Link>
+          </Button>
         </div>
       </div>
     </header>
