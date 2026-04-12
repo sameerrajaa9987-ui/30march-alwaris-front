@@ -33,6 +33,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { getApiErrorMessage } from "@/shared/api/http";
 import { toast } from "@/shared/lib/toast";
 
@@ -131,6 +141,8 @@ export function ResourceListPage<
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<"create" | "edit">("create");
   const [editing, setEditing] = useState<TItem | null>(null);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   function setSearchAndResetPage(value: string) {
     setSearch(value);
@@ -221,13 +233,21 @@ export function ResourceListPage<
     setOpen(true);
   }
 
-  async function onDelete(id: string) {
-    if (!window.confirm(deleteConfirmText)) return;
+  function attemptDelete(id: string) {
+    setDeletingId(id);
+    setDeleteDialogOpen(true);
+  }
+
+  async function confirmDelete() {
+    if (!deletingId) return;
     try {
-      await deleteMutation.mutateAsync(id);
+      await deleteMutation.mutateAsync(deletingId);
       toast.success("Deleted successfully");
     } catch (error) {
       toast.error(getApiErrorMessage(error));
+    } finally {
+      setDeleteDialogOpen(false);
+      setDeletingId(null);
     }
   }
 
@@ -321,7 +341,7 @@ export function ResourceListPage<
                       <Button
                         size="sm"
                         variant="destructive"
-                        onClick={() => onDelete(item.id)}
+                        onClick={() => attemptDelete(item.id)}
                       >
                         <Trash2 className="mr-2 h-4 w-4" />
                         Delete
@@ -463,6 +483,26 @@ export function ResourceListPage<
           Page {page} of {totalPages}
         </div>
       </div>
+
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>{deleteConfirmText}</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setDeletingId(null)}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       {renderDialog({
         open,
