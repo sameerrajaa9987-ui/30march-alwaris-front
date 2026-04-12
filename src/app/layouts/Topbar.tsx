@@ -31,6 +31,7 @@ export function Topbar() {
           <Button
             variant="outline"
             render={<Link to="/logout" />}
+            nativeButton={false}
             onClick={() => dispatch(clearAuth())}
           >
             Logout
