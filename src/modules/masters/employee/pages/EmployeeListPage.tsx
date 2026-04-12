@@ -108,7 +108,15 @@ export function EmployeeListPage() {
           sortBy: "createdAt";
           sortDir: "desc";
         }) => {
-          data?: { items: Employee[]; total: number };
+          data?: {
+            items: Employee[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

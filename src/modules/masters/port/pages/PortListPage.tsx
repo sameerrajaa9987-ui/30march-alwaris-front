@@ -43,7 +43,15 @@ export function PortListPage() {
           sortBy: "createdAt" | "portName";
           sortDir: "asc" | "desc";
         }) => {
-          data?: { items: Port[]; total: number };
+          data?: {
+            items: Port[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

@@ -17,5 +17,13 @@ export type TermsListQuery = {
 
 export type TermsListResult = {
   items: Terms[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

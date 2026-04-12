@@ -17,5 +17,13 @@ export type PortListQuery = {
 
 export type PortListResult = {
   items: Port[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

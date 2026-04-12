@@ -51,7 +51,15 @@ export function TermsConditionListPage() {
           sortBy: "createdAt" | "counter";
           sortDir: "asc" | "desc";
         }) => {
-          data?: { items: TermsCondition[]; total: number };
+          data?: {
+            items: TermsCondition[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

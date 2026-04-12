@@ -162,7 +162,14 @@ export type SeaBookingTableQuery = {
 
 export type SeaBookingListResult = {
   items: SeaBooking[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
 
 export type SeaBookingPayload = {

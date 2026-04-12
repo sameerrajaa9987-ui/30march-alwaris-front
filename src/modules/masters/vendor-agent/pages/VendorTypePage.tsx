@@ -42,7 +42,15 @@ export function VendorTypePage() {
           sortBy: "createdAt" | "vendorType";
           sortDir: "asc" | "desc";
         }) => {
-          data?: { items: VendorType[]; total: number };
+          data?: {
+            items: VendorType[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

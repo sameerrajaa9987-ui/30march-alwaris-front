@@ -24,7 +24,7 @@ export function createResourceApi<
       });
       return {
         items: res.data.data,
-        total: res.data.meta.total,
+        meta: res.data.meta,
       };
     },
 

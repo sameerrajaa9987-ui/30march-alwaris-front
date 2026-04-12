@@ -42,7 +42,15 @@ export function CustomerTypePage() {
           sortBy: "createdAt" | "customerType";
           sortDir: "asc" | "desc";
         }) => {
-          data?: { items: CustomerType[]; total: number };
+          data?: {
+            items: CustomerType[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

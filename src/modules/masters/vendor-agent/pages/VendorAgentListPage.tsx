@@ -168,7 +168,15 @@ export function VendorAgentListPage() {
           sortBy: "createdAt";
           sortDir: "desc";
         }) => {
-          data?: { items: VendorAgent[]; total: number };
+          data?: {
+            items: VendorAgent[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

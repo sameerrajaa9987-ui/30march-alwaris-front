@@ -49,10 +49,25 @@ export type VendorTypeListQuery = {
 
 export type VendorAgentListResult = {
   items: VendorAgent[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
 
 export type VendorTypeListResult = {
   items: VendorType[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

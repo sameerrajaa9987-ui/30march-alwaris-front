@@ -43,7 +43,15 @@ export function TermsListPage() {
           sortBy: "createdAt" | "terms";
           sortDir: "asc" | "desc";
         }) => {
-          data?: { items: Terms[]; total: number };
+          data?: {
+            items: Terms[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

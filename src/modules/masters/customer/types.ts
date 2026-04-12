@@ -49,10 +49,25 @@ export type CustomerListQuery = {
 
 export type CustomerListResult = {
   items: Customer[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
 
 export type CustomerTypeListResult = {
   items: CustomerType[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

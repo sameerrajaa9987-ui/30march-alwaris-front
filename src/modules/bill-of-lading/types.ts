@@ -105,7 +105,14 @@ export type BillOfLadingTableQuery = {
 
 export type BillOfLadingListResult = {
   items: BillOfLading[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
 
 export type BillOfLadingJobContainerOption = {

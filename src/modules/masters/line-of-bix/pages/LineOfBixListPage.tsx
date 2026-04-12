@@ -46,7 +46,15 @@ export function LineOfBixListPage() {
           sortBy: "createdAt" | "lineOfBix";
           sortDir: "asc" | "desc";
         }) => {
-          data?: { items: LineOfBix[]; total: number };
+          data?: {
+            items: LineOfBix[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

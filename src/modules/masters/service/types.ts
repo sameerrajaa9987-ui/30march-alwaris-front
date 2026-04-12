@@ -16,5 +16,13 @@ export type ServiceListQuery = {
 
 export type ServiceListResult = {
   items: Service[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

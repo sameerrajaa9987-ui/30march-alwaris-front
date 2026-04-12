@@ -166,7 +166,15 @@ export function CustomerListPage() {
           sortBy: "createdAt";
           sortDir: "desc";
         }) => {
-          data?: { items: Customer[]; total: number };
+          data?: {
+            items: Customer[];
+            meta: {
+              total: number;
+              totalPages: number;
+              hasNextPage: boolean;
+              hasPrevPage: boolean;
+            };
+          };
           isLoading: boolean;
           error: unknown;
           refetch: () => Promise<unknown>;

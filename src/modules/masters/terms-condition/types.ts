@@ -19,5 +19,13 @@ export type TermsConditionListQuery = {
 
 export type TermsConditionListResult = {
   items: TermsCondition[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

@@ -77,7 +77,10 @@ interface ResourceListPageProps<
   hideDefaultSearch?: boolean;
   hideIdColumn?: boolean;
   useList: (query: TQuery) => {
-    data?: { items: TItem[]; total: number };
+    data?: { 
+      items: TItem[]; 
+      meta: { total: number; totalPages: number; hasNextPage: boolean; hasPrevPage: boolean };
+    };
     isLoading: boolean;
     error: unknown;
     refetch: () => Promise<unknown>;
@@ -163,29 +166,29 @@ export function ResourceListPage<
     ];
   }
 
-  const query = buildQuery
-    ? ({
-        ...buildQuery({
-          search,
-          page,
-          limit: pageSize,
-        }),
-        page,
-        limit: pageSize,
-      } as TQuery)
-    : ({
-        search: search.trim() || undefined,
-        page,
-        limit: pageSize,
-        sortBy: defaultSortBy,
-        sortDir: "desc" as const,
-      } as TQuery);
+  const baseQuery = buildQuery?.({
+    search,
+    page,
+    limit: pageSize,
+  });
+
+  const query = {
+    ...(baseQuery ?? {
+      search: search.trim() || undefined,
+      sortBy: defaultSortBy,
+      sortDir: "desc",
+    }),
+    page,
+    limit: pageSize,
+  } as TQuery;
 
   const { data, isLoading, error, refetch } = useList(query);
   const deleteMutation = useDelete();
   const items = data?.items ?? [];
-  const total = data?.total ?? 0;
-  const totalPages = Math.max(1, Math.ceil(total / pageSize));
+  const total = data?.meta?.total ?? 0;
+  const totalPages = Math.max(1, data?.meta?.totalPages ?? 1);
+  const hasNextPage = data?.meta?.hasNextPage ?? false;
+  const hasPrevPage = data?.meta?.hasPrevPage ?? false;
   const pageItems = useMemo(
     () => buildPageItems(page, totalPages),
     [page, totalPages],
@@ -379,7 +382,7 @@ export function ResourceListPage<
                     setPage(1);
                   }}
                   className={
-                    page <= 1 ? "pointer-events-none opacity-50" : undefined
+                    !hasPrevPage ? "pointer-events-none opacity-50" : undefined
                   }
                 >
                   <ChevronsLeft className="h-4 w-4" />
@@ -391,10 +394,10 @@ export function ResourceListPage<
                   href="#"
                   onClick={(e) => {
                     e.preventDefault();
-                    setPage((prev) => Math.max(1, prev - 1));
+                    if (hasPrevPage) setPage((prev) => prev - 1);
                   }}
                   className={
-                    page <= 1 ? "pointer-events-none opacity-50" : undefined
+                    !hasPrevPage ? "pointer-events-none opacity-50" : undefined
                   }
                 />
               </PaginationItem>
@@ -425,10 +428,10 @@ export function ResourceListPage<
                   href="#"
                   onClick={(e) => {
                     e.preventDefault();
-                    setPage((prev) => Math.min(totalPages, prev + 1));
+                    if (hasNextPage) setPage((prev) => prev + 1);
                   }}
                   className={
-                    page >= totalPages
+                    !hasNextPage
                       ? "pointer-events-none opacity-50"
                       : undefined
                   }
@@ -443,7 +446,7 @@ export function ResourceListPage<
                     setPage(totalPages);
                   }}
                   className={
-                    page >= totalPages
+                    !hasNextPage
                       ? "pointer-events-none opacity-50"
                       : undefined
                   }

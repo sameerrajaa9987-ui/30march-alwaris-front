@@ -16,5 +16,13 @@ export type VesselListQuery = {
 
 export type VesselListResult = {
   items: Vessel[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

@@ -17,5 +17,13 @@ export type LineOfBixListQuery = {
 
 export type LineOfBixListResult = {
   items: LineOfBix[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

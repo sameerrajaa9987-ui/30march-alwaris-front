@@ -16,5 +16,13 @@ export type ShipmentListQuery = {
 
 export type ShipmentListResult = {
   items: Shipment[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

@@ -16,5 +16,13 @@ export type TariffDescriptionListQuery = {
 
 export type TariffDescriptionListResult = {
   items: TariffDescription[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+

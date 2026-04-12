@@ -31,5 +31,13 @@ export type EmployeeListQuery = {
 
 export type EmployeeListResult = {
   items: Employee[];
-  total: number;
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
 };
+
