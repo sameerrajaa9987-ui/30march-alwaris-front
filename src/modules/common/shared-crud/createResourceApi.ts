@@ -1,6 +1,16 @@
 import { http } from "@/shared/api/http";
 
-type ListResponse<TItem> = { data: TItem[]; meta: { total: number } };
+type ListResponse<TItem> = {
+  data: TItem[];
+  meta: {
+    total: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+    page: number;
+    limit: number;
+  };
+};
 
 export function createResourceApi<
   TItem,
