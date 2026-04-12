@@ -1,18 +1,72 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { EmployeeListPage } from "@/modules/masters/employee/pages/EmployeeListPage";
-import { CustomerTypePage } from "@/modules/masters/customer/pages/CustomerTypePage";
-import { CustomerListPage } from "@/modules/masters/customer/pages/CustomerListPage";
-import { VesselListPage } from "@/modules/masters/vessel/pages/VesselListPage";
-import { PortListPage } from "@/modules/masters/port/pages/PortListPage";
-import { TermsListPage } from "@/modules/masters/terms/pages/TermsListPage";
-import { ServiceListPage } from "@/modules/masters/service/pages/ServiceListPage";
-import { ShipmentListPage } from "@/modules/masters/shipment/pages/ShipmentListPage";
-import { LineOfBixListPage } from "@/modules/masters/line-of-bix/pages/LineOfBixListPage";
-import { TermsConditionListPage } from "@/modules/masters/terms-condition/pages/TermsConditionListPage";
-import { TariffDescriptionListPage } from "@/modules/masters/tariff-description/pages/TariffDescriptionListPage";
-import { VendorAgentListPage } from "@/modules/masters/vendor-agent/pages/VendorAgentListPage";
-import { VendorTypePage } from "@/modules/masters/vendor-agent/pages/VendorTypePage";
+import { lazy } from "react";
 import { PlaceholderPage } from "@/shared/components/PlaceholderPage";
+
+const EmployeeListPage = lazy(() =>
+  import("@/modules/masters/employee/pages/EmployeeListPage").then((m) => ({
+    default: m.EmployeeListPage,
+  })),
+);
+const CustomerTypePage = lazy(() =>
+  import("@/modules/masters/customer/pages/CustomerTypePage").then((m) => ({
+    default: m.CustomerTypePage,
+  })),
+);
+const CustomerListPage = lazy(() =>
+  import("@/modules/masters/customer/pages/CustomerListPage").then((m) => ({
+    default: m.CustomerListPage,
+  })),
+);
+const VesselListPage = lazy(() =>
+  import("@/modules/masters/vessel/pages/VesselListPage").then((m) => ({
+    default: m.VesselListPage,
+  })),
+);
+const PortListPage = lazy(() =>
+  import("@/modules/masters/port/pages/PortListPage").then((m) => ({
+    default: m.PortListPage,
+  })),
+);
+const TermsListPage = lazy(() =>
+  import("@/modules/masters/terms/pages/TermsListPage").then((m) => ({
+    default: m.TermsListPage,
+  })),
+);
+const ServiceListPage = lazy(() =>
+  import("@/modules/masters/service/pages/ServiceListPage").then((m) => ({
+    default: m.ServiceListPage,
+  })),
+);
+const ShipmentListPage = lazy(() =>
+  import("@/modules/masters/shipment/pages/ShipmentListPage").then((m) => ({
+    default: m.ShipmentListPage,
+  })),
+);
+const LineOfBixListPage = lazy(() =>
+  import("@/modules/masters/line-of-bix/pages/LineOfBixListPage").then((m) => ({
+    default: m.LineOfBixListPage,
+  })),
+);
+const TermsConditionListPage = lazy(() =>
+  import("@/modules/masters/terms-condition/pages/TermsConditionListPage").then(
+    (m) => ({ default: m.TermsConditionListPage }),
+  ),
+);
+const TariffDescriptionListPage = lazy(() =>
+  import("@/modules/masters/tariff-description/pages/TariffDescriptionListPage").then(
+    (m) => ({ default: m.TariffDescriptionListPage }),
+  ),
+);
+const VendorAgentListPage = lazy(() =>
+  import("@/modules/masters/vendor-agent/pages/VendorAgentListPage").then(
+    (m) => ({ default: m.VendorAgentListPage }),
+  ),
+);
+const VendorTypePage = lazy(() =>
+  import("@/modules/masters/vendor-agent/pages/VendorTypePage").then((m) => ({
+    default: m.VendorTypePage,
+  })),
+);
 
 export const MASTERS_DEFAULT_PATH = "/masters/employee";
 

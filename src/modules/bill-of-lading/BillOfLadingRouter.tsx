@@ -1,5 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import { BillOfLadingListPage } from "@/modules/bill-of-lading/pages/BillOfLadingListPage";
+import { lazy } from "react";
+const BillOfLadingListPage = lazy(() =>
+  import("@/modules/bill-of-lading/pages/BillOfLadingListPage").then((m) => ({
+    default: m.BillOfLadingListPage,
+  })),
+);
 
 export function BillOfLadingRouter() {
   return (
