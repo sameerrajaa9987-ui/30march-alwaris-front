@@ -77,9 +77,14 @@ interface ResourceListPageProps<
   hideDefaultSearch?: boolean;
   hideIdColumn?: boolean;
   useList: (query: TQuery) => {
-    data?: { 
-      items: TItem[]; 
-      meta: { total: number; totalPages: number; hasNextPage: boolean; hasPrevPage: boolean };
+    data?: {
+      items: TItem[];
+      meta: {
+        total: number;
+        totalPages: number;
+        hasNextPage: boolean;
+        hasPrevPage: boolean;
+      };
     };
     isLoading: boolean;
     error: unknown;
@@ -431,9 +436,7 @@ export function ResourceListPage<
                     if (hasNextPage) setPage((prev) => prev + 1);
                   }}
                   className={
-                    !hasNextPage
-                      ? "pointer-events-none opacity-50"
-                      : undefined
+                    !hasNextPage ? "pointer-events-none opacity-50" : undefined
                   }
                 />
               </PaginationItem>
@@ -446,9 +449,7 @@ export function ResourceListPage<
                     setPage(totalPages);
                   }}
                   className={
-                    !hasNextPage
-                      ? "pointer-events-none opacity-50"
-                      : undefined
+                    !hasNextPage ? "pointer-events-none opacity-50" : undefined
                   }
                 >
                   <ChevronsRight className="h-4 w-4" />

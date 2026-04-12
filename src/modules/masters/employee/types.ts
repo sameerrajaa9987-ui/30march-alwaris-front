@@ -40,4 +40,3 @@ export type EmployeeListResult = {
     limit: number;
   };
 };
-

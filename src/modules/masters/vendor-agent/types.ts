@@ -70,4 +70,3 @@ export type VendorTypeListResult = {
     limit: number;
   };
 };
-

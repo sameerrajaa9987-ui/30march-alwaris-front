@@ -26,4 +26,3 @@ export type LineOfBixListResult = {
     limit: number;
   };
 };
-

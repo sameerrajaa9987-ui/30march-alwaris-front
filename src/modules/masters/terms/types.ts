@@ -26,4 +26,3 @@ export type TermsListResult = {
     limit: number;
   };
 };
-

@@ -25,4 +25,3 @@ export type ServiceListResult = {
     limit: number;
   };
 };
-

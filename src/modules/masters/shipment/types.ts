@@ -25,4 +25,3 @@ export type ShipmentListResult = {
     limit: number;
   };
 };
-

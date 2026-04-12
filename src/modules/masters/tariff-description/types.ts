@@ -25,4 +25,3 @@ export type TariffDescriptionListResult = {
     limit: number;
   };
 };
-

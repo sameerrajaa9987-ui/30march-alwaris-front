@@ -70,4 +70,3 @@ export type CustomerTypeListResult = {
     limit: number;
   };
 };
-

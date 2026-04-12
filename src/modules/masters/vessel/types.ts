@@ -25,4 +25,3 @@ export type VesselListResult = {
     limit: number;
   };
 };
-
