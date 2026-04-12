@@ -43,17 +43,19 @@ type ApiValidationIssue = {
 };
 
 type ApiErrorResponse = {
-  message?: string;
-  details?: {
-    issues?: ApiValidationIssue[];
+  error?: {
+    message?: string;
+    details?: {
+      issues?: ApiValidationIssue[];
+    };
   };
 };
 
 export function getApiErrorMessage(err: unknown): string {
   if (axios.isAxiosError(err)) {
     const data = err.response?.data as ApiErrorResponse | undefined;
-    if (data?.message) return String(data.message);
-    const issueMsg = data?.details?.issues?.[0]?.message;
+    if (data?.error?.message) return String(data.error.message);
+    const issueMsg = data?.error?.details?.issues?.[0]?.message;
     if (issueMsg) return String(issueMsg);
     if (err.message) return err.message;
   }
