@@ -16,7 +16,7 @@ type AuthState = {
 };
 
 const STORAGE_KEY = "alwaris.auth";
-const storage = window.sessionStorage;
+const storage = window.localStorage;
 
 function loadState(): AuthState {
   try {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ChevronsLeft,
   ChevronsRight,
@@ -144,10 +144,10 @@ export function ResourceListPage<
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  function setSearchAndResetPage(value: string) {
+  const setSearchAndResetPage = useCallback((value: string) => {
     setSearch(value);
     setPage(1);
-  }
+  }, []);
 
   function buildPageItems(
     currentPage: number,
@@ -221,35 +221,45 @@ export function ResourceListPage<
     }
   }, [page, totalPages, isLoading]);
 
-  function onCreate() {
+  const onCreate = useCallback(() => {
     setMode("create");
     setEditing(null);
     setOpen(true);
-  }
+  }, []);
 
-  function onEdit(item: TItem) {
+  const onEdit = useCallback((item: TItem) => {
     setMode("edit");
     setEditing(item);
     setOpen(true);
-  }
+  }, []);
 
-  function attemptDelete(id: string) {
+  const attemptDelete = useCallback((id: string) => {
     setDeletingId(id);
     setDeleteDialogOpen(true);
-  }
+  }, []);
 
-  async function confirmDelete() {
+  const confirmDelete = useCallback(async () => {
     if (!deletingId) return;
     try {
       await deleteMutation.mutateAsync(deletingId);
       toast.success("Deleted successfully");
-    } catch (error) {
-      toast.error(getApiErrorMessage(error));
+    } catch (err) {
+      toast.error(getApiErrorMessage(err));
     } finally {
       setDeleteDialogOpen(false);
       setDeletingId(null);
     }
-  }
+  }, [deletingId, deleteMutation]);
+
+  const onPageSizeChange = useCallback((value: string | null) => {
+    setPageSize(Number(value));
+    setPage(1);
+  }, []);
+
+  const onDialogSuccess = useCallback(() => {
+    setPage(1);
+    void refetch();
+  }, [refetch]);
 
   return (
     <div className="erp-page">
@@ -377,13 +387,7 @@ export function ResourceListPage<
 
         <div className="flex items-center gap-2 text-sm">
           <span className="text-muted-foreground">Rows per page:</span>
-          <Select
-            value={String(pageSize)}
-            onValueChange={(value) => {
-              setPageSize(Number(value));
-              setPage(1);
-            }}
-          >
+          <Select value={String(pageSize)} onValueChange={onPageSizeChange}>
             <SelectTrigger className="h-8 w-[90px]">
               <SelectValue placeholder="50" />
             </SelectTrigger>
@@ -509,10 +513,7 @@ export function ResourceListPage<
         onOpenChange: setOpen,
         mode,
         value: editing,
-        onSuccess: () => {
-          setPage(1);
-          void refetch();
-        },
+        onSuccess: onDialogSuccess,
       })}
     </div>
   );

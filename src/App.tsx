@@ -1,9 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { AppLayout } from "./app/layouts/AppLayout";
-import { useAppDispatch } from "./app/hooks";
 import { RequireAuth } from "./app/router/RequireAuth";
-import { clearAuth } from "./modules/auth/authSlice";
 import { PlaceholderPage } from "./shared/components/PlaceholderPage";
 import { PageLoader } from "./shared/components/PageLoader";
 
@@ -32,16 +30,6 @@ const VendorDocumentsPage = lazy(() =>
     (m) => ({ default: m.VendorDocumentsPage }),
   ),
 );
-
-function LogoutRoute() {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(clearAuth());
-  }, [dispatch]);
-
-  return <Navigate to="/login" replace />;
-}
 
 export default function App() {
   return (
@@ -106,7 +94,6 @@ export default function App() {
             path="settings/system-config"
             element={<PlaceholderPage title="System Config" />}
           />
-          <Route path="logout" element={<LogoutRoute />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

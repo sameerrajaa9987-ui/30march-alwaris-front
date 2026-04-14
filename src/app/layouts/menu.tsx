@@ -7,7 +7,6 @@ import {
   Receipt,
   Landmark,
   Settings,
-  LogOut,
 } from "lucide-react";
 
 export type MenuItem = {
@@ -100,5 +99,4 @@ export const MENU: MenuItem[] = [
       { label: "System Config", to: "/settings/system-config" },
     ],
   },
-  { label: "Logout", to: "/logout", icon: LogOut },
 ];

@@ -60,8 +60,14 @@ export function LoginPage() {
 
         <form className="mt-4 space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-1">
-            <label className="text-sm font-medium text-foreground">Email</label>
+            <label
+              htmlFor="email"
+              className="text-sm font-medium text-foreground"
+            >
+              Email
+            </label>
             <Input
+              id="email"
               placeholder="name@companyname.com"
               autoComplete="email"
               {...form.register("email")}
@@ -74,10 +80,14 @@ export function LoginPage() {
           </div>
 
           <div className="space-y-1">
-            <label className="text-sm font-medium text-foreground">
+            <label
+              htmlFor="password"
+              className="text-sm font-medium text-foreground"
+            >
               Password
             </label>
             <Input
+              id="password"
               type="password"
               autoComplete="current-password"
               {...form.register("password")}

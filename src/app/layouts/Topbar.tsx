@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserCircle2 } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { clearAuth } from "@/modules/auth/authSlice";
@@ -8,7 +8,13 @@ import { Button } from "@/components/ui/button";
 
 export function Topbar() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const user = useAppSelector((s) => s.auth.user);
+
+  function handleLogout() {
+    dispatch(clearAuth());
+    navigate("/login", { replace: true });
+  }
 
   return (
     <header className="sticky top-0 z-10 border-b border-border/70 bg-card/95 backdrop-blur">
@@ -28,12 +34,7 @@ export function Topbar() {
             </div>
           </div>
           <UserCircle2 className="h-8 w-8 text-primary/70" />
-          <Button
-            variant="outline"
-            render={<Link to="/logout" />}
-            nativeButton={false}
-            onClick={() => dispatch(clearAuth())}
-          >
+          <Button variant="outline" onClick={handleLogout}>
             Logout
           </Button>
         </div>

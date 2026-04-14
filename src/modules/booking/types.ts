@@ -4,25 +4,12 @@ export type SeaBookingIncomeDetail = {
   incomeBillingPartyName?: string;
   chargeDescription: string;
   chargeDescriptionName?: string;
-  chargedPer: "DOCS" | "CONT";
+  chargedPer: SeaChargedPer;
   qty: number;
   rate: number;
-  currency: "USD" | "AED";
-  size: "20" | "40" | "45";
-  type:
-    | "DC"
-    | "DV"
-    | "FR"
-    | "GP"
-    | "GV"
-    | "HC"
-    | "HD"
-    | "HQ"
-    | "ISO"
-    | "OT"
-    | "RF"
-    | "SD"
-    | "SR";
+  currency: SeaCurrency;
+  size: SeaContainerSize;
+  type: SeaContainerType;
   amount: number;
   exRate: number;
   remarks: string;
@@ -33,28 +20,15 @@ export type SeaBookingIncomeDetailPayload = Omit<SeaBookingIncomeDetail, "id">;
 export type SeaBookingExpenseDetail = {
   id: string;
   vendorName: string;
-  vendorNameName?: string;
+  vendorLabel?: string;
   chargeDescription: string;
   chargeDescriptionName?: string;
-  chargedPer: "DOCS" | "CONT";
+  chargedPer: SeaChargedPer;
   qty: number;
   rate: number;
-  currency: "USD" | "AED";
-  size: "20" | "40" | "45";
-  type:
-    | "DC"
-    | "DV"
-    | "FR"
-    | "GP"
-    | "GV"
-    | "HC"
-    | "HD"
-    | "HQ"
-    | "ISO"
-    | "OT"
-    | "RF"
-    | "SD"
-    | "SR";
+  currency: SeaCurrency;
+  size: SeaContainerSize;
+  type: SeaContainerType;
   amount: number;
   exRate: number;
   invoiceNo: string;
