@@ -30,6 +30,16 @@ const VendorDocumentsPage = lazy(() =>
     (m) => ({ default: m.VendorDocumentsPage }),
   ),
 );
+const CostSheetCreatePage = lazy(() =>
+  import("./modules/cost-sheet/pages/CostSheetCreatePage").then((m) => ({
+    default: m.CostSheetCreatePage,
+  })),
+);
+const CostSheetApprovalListPage = lazy(() =>
+  import("./modules/cost-sheet/pages/CostSheetApprovalListPage").then((m) => ({
+    default: m.CostSheetApprovalListPage,
+  })),
+);
 
 export default function App() {
   return (
@@ -59,13 +69,10 @@ export default function App() {
             element={<VendorDocumentsPage />}
           />
 
-          <Route
-            path="cost-sheet/create"
-            element={<PlaceholderPage title="Create Cost Sheet" />}
-          />
+          <Route path="cost-sheet/create" element={<CostSheetCreatePage />} />
           <Route
             path="cost-sheet/approval"
-            element={<PlaceholderPage title="Cost Sheet Approval" />}
+            element={<CostSheetApprovalListPage />}
           />
 
           <Route

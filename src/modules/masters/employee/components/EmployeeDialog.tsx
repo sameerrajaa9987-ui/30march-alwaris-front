@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -65,37 +65,36 @@ export function EmployeeDialog({
     [],
   );
 
+  const formValues = useMemo<FormValues>(
+    () =>
+      mode === "edit" && employee
+        ? {
+            isActive: employee.isActive,
+            isApproved: employee.isApproved,
+            employeeName: employee.employeeName,
+            department: employee.department,
+            address: employee.address,
+            city: employee.city,
+            pincode: employee.pincode,
+            state: employee.state,
+            country: employee.country,
+            contactNo: employee.contactNo,
+            emailId: employee.emailId,
+          }
+        : defaultValues,
+    [mode, employee, defaultValues],
+  );
+
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues,
+    values: open ? formValues : defaultValues,
     mode: "onChange",
   });
 
   const isActive = useWatch({ control: form.control, name: "isActive" });
   const isApproved = useWatch({ control: form.control, name: "isApproved" });
   const department = useWatch({ control: form.control, name: "department" });
-
-  useEffect(() => {
-    if (open) {
-      form.reset(
-        mode === "edit" && employee
-          ? {
-              isActive: employee.isActive,
-              isApproved: employee.isApproved,
-              employeeName: employee.employeeName,
-              department: employee.department,
-              address: employee.address,
-              city: employee.city,
-              pincode: employee.pincode,
-              state: employee.state,
-              country: employee.country,
-              contactNo: employee.contactNo,
-              emailId: employee.emailId,
-            }
-          : defaultValues,
-      );
-    }
-  }, [open, mode, employee, defaultValues, form]);
 
   async function onSubmit(values: FormValues) {
     if (mode === "create") {

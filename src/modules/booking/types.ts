@@ -1,8 +1,8 @@
 export type SeaBookingIncomeDetail = {
   id: string;
-  incomeBillingParty: string;
+  incomeBillingPartyId: string;
   incomeBillingPartyName?: string;
-  chargeDescription: string;
+  chargeDescriptionId: string;
   chargeDescriptionName?: string;
   chargedPer: SeaChargedPer;
   qty: number;
@@ -19,9 +19,9 @@ export type SeaBookingIncomeDetailPayload = Omit<SeaBookingIncomeDetail, "id">;
 
 export type SeaBookingExpenseDetail = {
   id: string;
-  vendorName: string;
-  vendorLabel?: string;
-  chargeDescription: string;
+  vendorId: string;
+  vendorName?: string;
+  chargeDescriptionId: string;
   chargeDescriptionName?: string;
   chargedPer: SeaChargedPer;
   qty: number;

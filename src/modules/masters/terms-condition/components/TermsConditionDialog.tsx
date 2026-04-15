@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -60,9 +60,21 @@ export function TermsConditionDialog({
     [],
   );
 
+  const formValues = useMemo<TermsConditionSchema>(
+    () =>
+      mode === "edit" && value
+        ? {
+            lineOfBixId: value.lineOfBixId || "",
+            description: value.description,
+          }
+        : defaults,
+    [mode, value, defaults],
+  );
+
   const form = useForm<TermsConditionSchema>({
     resolver: zodResolver(termsConditionSchema),
     defaultValues: defaults,
+    values: open ? formValues : defaults,
     mode: "onChange",
   });
 
@@ -72,18 +84,6 @@ export function TermsConditionDialog({
     () => lineItems.find((item) => item.id === lineOfBixId),
     [lineItems, lineOfBixId],
   );
-
-  useEffect(() => {
-    if (!open) return;
-    form.reset(
-      mode === "edit" && value
-        ? {
-            lineOfBixId: value.lineOfBixId || "",
-            description: value.description,
-          }
-        : defaults,
-    );
-  }, [open, mode, value, defaults, form]);
 
   async function onSubmit(values: TermsConditionSchema) {
     if (mode === "create") {

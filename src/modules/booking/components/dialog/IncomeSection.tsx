@@ -7,14 +7,6 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
   SEA_CURRENCY_OPTIONS,
   SEA_SIZE_OPTIONS,
   SEA_TYPE_OPTIONS,
@@ -23,6 +15,7 @@ import type { SeaBookingIncomeDetail } from "@/modules/booking/types";
 import type { Customer } from "@/modules/masters/customer/types";
 import type { TariffDescription } from "@/modules/masters/tariff-description/types";
 import { Field } from "@/modules/booking/components/dialog/Field";
+import { IncomeRecordsTable } from "@/modules/booking/components/dialog/IncomeRecordsTable";
 import type { SeaBookingIncomeDetailForm } from "@/modules/booking/components/dialog/sectionTypes";
 
 interface IncomeSectionProps {
@@ -73,14 +66,14 @@ export function IncomeSection({
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
         <Field label="Income Billing Party">
           <Select
-            value={incomeForm.incomeBillingParty}
+            value={incomeForm.incomeBillingPartyId}
             onValueChange={(v) =>
-              updateIncomeField("incomeBillingParty", v ?? "")
+              updateIncomeField("incomeBillingPartyId", v ?? "")
             }
           >
             <SelectTrigger className="w-full">
               <span>
-                {customers.find((x) => x.id === incomeForm.incomeBillingParty)
+                {customers.find((x) => x.id === incomeForm.incomeBillingPartyId)
                   ?.customerName ?? "Select customer"}
               </span>
             </SelectTrigger>
@@ -96,15 +89,15 @@ export function IncomeSection({
 
         <Field label="Charge Description">
           <Select
-            value={incomeForm.chargeDescription}
+            value={incomeForm.chargeDescriptionId}
             onValueChange={(v) =>
-              updateIncomeField("chargeDescription", v ?? "")
+              updateIncomeField("chargeDescriptionId", v ?? "")
             }
           >
             <SelectTrigger className="w-full">
               <span>
                 {tariffDescriptions.find(
-                  (x) => x.id === incomeForm.chargeDescription,
+                  (x) => x.id === incomeForm.chargeDescriptionId,
                 )?.description ?? "Select tariff"}
               </span>
             </SelectTrigger>
@@ -259,357 +252,19 @@ export function IncomeSection({
         </Button>
       </div>
 
-      <div className="space-y-2 pt-1">
-        <div className="text-xs font-medium text-muted-foreground">
-          Income Records
-        </div>
-        <div className="overflow-x-auto rounded-md border border-border/70 bg-muted/10">
-          <Table>
-            <TableHeader className="bg-muted/50">
-              <TableRow>
-                <TableHead className="text-center">Edit</TableHead>
-                <TableHead className="text-center">Delete</TableHead>
-                <TableHead>Billing Party</TableHead>
-                <TableHead>Charge Description</TableHead>
-                <TableHead>Charged Per</TableHead>
-                <TableHead>Qty</TableHead>
-                <TableHead>Rate</TableHead>
-                <TableHead>Currency</TableHead>
-                <TableHead>Size</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Amount</TableHead>
-                <TableHead>ExRate</TableHead>
-                <TableHead>Remarks</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {incomeRows.length === 0 ? (
-                <TableRow>
-                  <TableCell
-                    colSpan={13}
-                    className="text-center text-muted-foreground"
-                  >
-                    No income records added yet.
-                  </TableCell>
-                </TableRow>
-              ) : (
-                <>
-                  {incomeRows.map((row) => (
-                    <TableRow key={row.id}>
-                      <TableCell className="text-center">
-                        {incomeInlineEditingId === row.id ? (
-                          <Button
-                            size="sm"
-                            variant="default"
-                            onClick={onSaveIncomeInlineEdit}
-                          >
-                            Save
-                          </Button>
-                        ) : (
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => onEditIncome(row)}
-                          >
-                            Edit
-                          </Button>
-                        )}
-                      </TableCell>
-
-                      <TableCell className="text-center">
-                        {incomeInlineEditingId === row.id ? (
-                          <Button
-                            size="sm"
-                            variant="secondary"
-                            onClick={onCancelIncomeInlineEdit}
-                          >
-                            Cancel
-                          </Button>
-                        ) : (
-                          <Button
-                            size="sm"
-                            variant="destructive"
-                            onClick={() => onDeleteIncome(row.id)}
-                          >
-                            Delete
-                          </Button>
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Select
-                            value={incomeInlineEditDraft.incomeBillingParty}
-                            onValueChange={(v) =>
-                              onIncomeInlineEditField(
-                                "incomeBillingParty",
-                                v ?? "",
-                              )
-                            }
-                          >
-                            <SelectTrigger className="h-8 min-w-[150px]">
-                              <span>
-                                {customers.find(
-                                  (x) =>
-                                    x.id ===
-                                    incomeInlineEditDraft.incomeBillingParty,
-                                )?.customerName ?? "Select customer"}
-                              </span>
-                            </SelectTrigger>
-                            <SelectContent>
-                              {customers.map((item) => (
-                                <SelectItem key={item.id} value={item.id}>
-                                  {item.customerName}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        ) : (
-                          (customers.find(
-                            (x) => x.id === row.incomeBillingParty,
-                          )?.customerName ?? "-")
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Select
-                            value={incomeInlineEditDraft.chargeDescription}
-                            onValueChange={(v) =>
-                              onIncomeInlineEditField(
-                                "chargeDescription",
-                                v ?? "",
-                              )
-                            }
-                          >
-                            <SelectTrigger className="h-8 min-w-[180px]">
-                              <span>
-                                {tariffDescriptions.find(
-                                  (x) =>
-                                    x.id ===
-                                    incomeInlineEditDraft.chargeDescription,
-                                )?.description ?? "Select tariff"}
-                              </span>
-                            </SelectTrigger>
-                            <SelectContent>
-                              {tariffDescriptions.map((item) => (
-                                <SelectItem key={item.id} value={item.id}>
-                                  {item.description}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        ) : (
-                          (tariffDescriptions.find(
-                            (x) => x.id === row.chargeDescription,
-                          )?.description ?? "-")
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Select
-                            value={incomeInlineEditDraft.chargedPer}
-                            onValueChange={(v) =>
-                              onIncomeInlineEditField(
-                                "chargedPer",
-                                v as SeaBookingIncomeDetail["chargedPer"],
-                              )
-                            }
-                          >
-                            <SelectTrigger className="h-8 w-[95px]">
-                              <span>{incomeInlineEditDraft.chargedPer}</span>
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="DOCS">DOCS</SelectItem>
-                              <SelectItem value="CONT">CONT</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        ) : (
-                          row.chargedPer
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Input
-                            type="number"
-                            min={1}
-                            value={incomeInlineEditDraft.qty}
-                            onChange={(e) =>
-                              onIncomeInlineEditField(
-                                "qty",
-                                Number(e.target.value || 0),
-                              )
-                            }
-                            className="h-8 w-20"
-                          />
-                        ) : (
-                          row.qty
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Input
-                            type="number"
-                            min={0}
-                            step={0.01}
-                            value={incomeInlineEditDraft.rate}
-                            onChange={(e) =>
-                              onIncomeInlineEditField(
-                                "rate",
-                                Number(e.target.value || 0),
-                              )
-                            }
-                            className="h-8 w-24"
-                          />
-                        ) : (
-                          row.rate
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Select
-                            value={incomeInlineEditDraft.currency}
-                            onValueChange={(v) =>
-                              onIncomeInlineEditField(
-                                "currency",
-                                v as SeaBookingIncomeDetail["currency"],
-                              )
-                            }
-                          >
-                            <SelectTrigger className="h-8 w-[95px]">
-                              <span>{incomeInlineEditDraft.currency}</span>
-                            </SelectTrigger>
-                            <SelectContent>
-                              {SEA_CURRENCY_OPTIONS.map((item) => (
-                                <SelectItem key={item} value={item}>
-                                  {item}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        ) : (
-                          row.currency
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Select
-                            value={incomeInlineEditDraft.size}
-                            onValueChange={(v) =>
-                              onIncomeInlineEditField(
-                                "size",
-                                v as SeaBookingIncomeDetail["size"],
-                              )
-                            }
-                          >
-                            <SelectTrigger className="h-8 w-[90px]">
-                              <span>{incomeInlineEditDraft.size}</span>
-                            </SelectTrigger>
-                            <SelectContent>
-                              {SEA_SIZE_OPTIONS.map((item) => (
-                                <SelectItem key={item} value={item}>
-                                  {item}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        ) : (
-                          row.size
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Select
-                            value={incomeInlineEditDraft.type}
-                            onValueChange={(v) =>
-                              onIncomeInlineEditField(
-                                "type",
-                                v as SeaBookingIncomeDetail["type"],
-                              )
-                            }
-                          >
-                            <SelectTrigger className="h-8 w-[100px]">
-                              <span>{incomeInlineEditDraft.type}</span>
-                            </SelectTrigger>
-                            <SelectContent>
-                              {SEA_TYPE_OPTIONS.map((item) => (
-                                <SelectItem key={item} value={item}>
-                                  {item}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        ) : (
-                          row.type
-                        )}
-                      </TableCell>
-
-                      <TableCell>{row.amount}</TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Input
-                            type="number"
-                            min={0}
-                            step={0.01}
-                            value={incomeInlineEditDraft.exRate}
-                            onChange={(e) =>
-                              onIncomeInlineEditField(
-                                "exRate",
-                                Number(e.target.value || 0),
-                              )
-                            }
-                            className="h-8 w-24"
-                          />
-                        ) : (
-                          row.exRate
-                        )}
-                      </TableCell>
-
-                      <TableCell>
-                        {incomeInlineEditingId === row.id &&
-                        incomeInlineEditDraft ? (
-                          <Input
-                            value={incomeInlineEditDraft.remarks}
-                            onChange={(e) =>
-                              onIncomeInlineEditField("remarks", e.target.value)
-                            }
-                            className="h-8 min-w-[160px]"
-                          />
-                        ) : (
-                          row.remarks || "-"
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                  <TableRow className="bg-muted/40 font-semibold">
-                    <TableCell colSpan={10} className="text-right">
-                      Total in AED
-                    </TableCell>
-                    <TableCell>{incomeTotalInAed.toFixed(2)}</TableCell>
-                    <TableCell colSpan={2} />
-                  </TableRow>
-                </>
-              )}
-            </TableBody>
-          </Table>
-        </div>
-      </div>
+      <IncomeRecordsTable
+        incomeRows={incomeRows}
+        incomeInlineEditingId={incomeInlineEditingId}
+        incomeInlineEditDraft={incomeInlineEditDraft}
+        incomeTotalInAed={incomeTotalInAed}
+        customers={customers}
+        tariffDescriptions={tariffDescriptions}
+        onSaveIncomeInlineEdit={onSaveIncomeInlineEdit}
+        onEditIncome={onEditIncome}
+        onCancelIncomeInlineEdit={onCancelIncomeInlineEdit}
+        onDeleteIncome={onDeleteIncome}
+        onIncomeInlineEditField={onIncomeInlineEditField}
+      />
     </div>
   );
 }

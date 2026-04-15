@@ -32,8 +32,8 @@ import type {
 
 function buildIncomePayload(items: SeaBookingIncomeDetail[]) {
   return items.map((item) => ({
-    incomeBillingParty: item.incomeBillingParty,
-    chargeDescription: item.chargeDescription,
+    incomeBillingPartyId: item.incomeBillingPartyId,
+    chargeDescriptionId: item.chargeDescriptionId,
     chargedPer: item.chargedPer,
     qty: item.qty,
     rate: item.rate,
@@ -48,8 +48,8 @@ function buildIncomePayload(items: SeaBookingIncomeDetail[]) {
 
 function buildExpensePayload(items: SeaBookingExpenseDetail[]) {
   return items.map((item) => ({
-    vendorName: item.vendorName,
-    chargeDescription: item.chargeDescription,
+    vendorId: item.vendorId,
+    chargeDescriptionId: item.chargeDescriptionId,
     chargedPer: item.chargedPer,
     qty: item.qty,
     rate: item.rate,
@@ -70,8 +70,8 @@ function calculateAmount(qty: number, rate: number, exRate: number) {
 
 export function getDefaultIncomeDetailForm(): SeaBookingIncomeDetailForm {
   return {
-    incomeBillingParty: "",
-    chargeDescription: "",
+    incomeBillingPartyId: "",
+    chargeDescriptionId: "",
     chargedPer: "DOCS",
     qty: 1,
     rate: 0,
@@ -87,8 +87,8 @@ export function getDefaultIncomeDetailForm(): SeaBookingIncomeDetailForm {
 export function getDefaultExpenseDetailForm(): SeaBookingExpenseDetailForm {
   const today = new Date().toISOString().split("T")[0] ?? "";
   return {
-    vendorName: "",
-    chargeDescription: "",
+    vendorId: "",
+    chargeDescriptionId: "",
     chargedPer: "DOCS",
     qty: 1,
     rate: 0,

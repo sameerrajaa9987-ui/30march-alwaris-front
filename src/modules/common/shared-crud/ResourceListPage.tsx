@@ -66,13 +66,15 @@ interface ResourceListPageProps<
 > {
   title: string;
   subtitle: string;
-  newButtonText: string;
+  newButtonText?: string;
   searchPlaceholder?: string;
   minTableWidth: string;
   emptyText: string;
-  deleteConfirmText: string;
+  deleteConfirmText?: string;
   defaultSortBy?: TQuery["sortBy"];
   disableCreate?: boolean;
+  hideCreateButton?: boolean;
+  hideActionsColumn?: boolean;
   columns: Array<ResourceListColumn<TItem>>;
   getIdValue: (item: TItem) => string | number | null | undefined;
   buildQuery?: (args: {
@@ -100,10 +102,10 @@ interface ResourceListPageProps<
     error: unknown;
     refetch: () => Promise<unknown>;
   };
-  useDelete: () => {
+  useDelete?: () => {
     mutateAsync: (id: string) => Promise<unknown>;
   };
-  renderDialog: (args: {
+  renderDialog?: (args: {
     open: boolean;
     onOpenChange: (open: boolean) => void;
     mode: "create" | "edit";
@@ -118,13 +120,15 @@ export function ResourceListPage<
 >({
   title,
   subtitle,
-  newButtonText,
+  newButtonText = "Create",
   searchPlaceholder,
   minTableWidth,
   emptyText,
-  deleteConfirmText,
+  deleteConfirmText = "Delete this record?",
   defaultSortBy,
   disableCreate,
+  hideCreateButton,
+  hideActionsColumn,
   columns,
   getIdValue,
   buildQuery,
@@ -200,7 +204,7 @@ export function ResourceListPage<
   } as TQuery;
 
   const { data, isLoading, error, refetch } = useList(query);
-  const deleteMutation = useDelete();
+  const deleteMutation = useDelete?.();
   const items = data?.items ?? [];
   const total = data?.meta?.total ?? 0;
   const totalPages = Math.max(1, data?.meta?.totalPages ?? 1);
@@ -222,24 +226,33 @@ export function ResourceListPage<
   }, [page, totalPages, isLoading]);
 
   const onCreate = useCallback(() => {
+    if (!renderDialog) return;
     setMode("create");
     setEditing(null);
     setOpen(true);
-  }, []);
+  }, [renderDialog]);
 
-  const onEdit = useCallback((item: TItem) => {
-    setMode("edit");
-    setEditing(item);
-    setOpen(true);
-  }, []);
+  const onEdit = useCallback(
+    (item: TItem) => {
+      if (!renderDialog) return;
+      setMode("edit");
+      setEditing(item);
+      setOpen(true);
+    },
+    [renderDialog],
+  );
 
-  const attemptDelete = useCallback((id: string) => {
-    setDeletingId(id);
-    setDeleteDialogOpen(true);
-  }, []);
+  const attemptDelete = useCallback(
+    (id: string) => {
+      if (!deleteMutation) return;
+      setDeletingId(id);
+      setDeleteDialogOpen(true);
+    },
+    [deleteMutation],
+  );
 
   const confirmDelete = useCallback(async () => {
-    if (!deletingId) return;
+    if (!deletingId || !deleteMutation) return;
     try {
       await deleteMutation.mutateAsync(deletingId);
       toast.success("Deleted successfully");
@@ -261,6 +274,10 @@ export function ResourceListPage<
     void refetch();
   }, [refetch]);
 
+  const extraColumnsCount =
+    (hideActionsColumn ? 0 : 1) + (hideIdColumn ? 0 : 1);
+  const tableColSpan = columns.length + extraColumnsCount;
+
   return (
     <div className="erp-page">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -280,10 +297,12 @@ export function ResourceListPage<
             <RefreshCw className="mr-2 h-4 w-4" />
             Refresh
           </Button>
-          <Button onClick={onCreate} disabled={disableCreate}>
-            <Plus className="mr-2 h-4 w-4" />
-            {newButtonText}
-          </Button>
+          {hideCreateButton ? null : (
+            <Button onClick={onCreate} disabled={disableCreate}>
+              <Plus className="mr-2 h-4 w-4" />
+              {newButtonText}
+            </Button>
+          )}
         </div>
       </div>
 
@@ -309,11 +328,13 @@ export function ResourceListPage<
         </div>
       ) : null}
 
-      <div className="overflow-auto rounded-xl border border-border bg-card shadow-sm">
+      <div className="overflow-auto rounded-xl border border-border bg-card shadow-sm min-h-[420px]">
         <Table className={minTableWidth}>
           <TableHeader className="bg-muted/35">
             <TableRow>
-              <TableHead className="w-[180px]">Actions</TableHead>
+              {hideActionsColumn ? null : (
+                <TableHead className="w-[180px]">Actions</TableHead>
+              )}
               {hideIdColumn ? null : (
                 <TableHead className="w-[90px]">ID</TableHead>
               )}
@@ -325,39 +346,42 @@ export function ResourceListPage<
           <TableBody>
             {isLoading ? (
               <TableRow>
-                <TableCell colSpan={columns.length + (hideIdColumn ? 1 : 2)}>
+                <TableCell
+                  colSpan={tableColSpan}
+                  className="h-[288px] align-top text-muted-foreground"
+                >
                   Loading...
                 </TableCell>
               </TableRow>
             ) : items.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={columns.length + (hideIdColumn ? 1 : 2)}>
-                  {emptyText}
-                </TableCell>
+                <TableCell colSpan={tableColSpan}>{emptyText}</TableCell>
               </TableRow>
             ) : (
               items.map((item) => (
                 <TableRow key={item.id}>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        onClick={() => onEdit(item)}
-                      >
-                        <Pencil className="mr-2 h-4 w-4" />
-                        Edit
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="destructive"
-                        onClick={() => attemptDelete(item.id)}
-                      >
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        Delete
-                      </Button>
-                    </div>
-                  </TableCell>
+                  {hideActionsColumn ? null : (
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          onClick={() => onEdit(item)}
+                        >
+                          <Pencil className="mr-2 h-4 w-4" />
+                          Edit
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => attemptDelete(item.id)}
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Delete
+                        </Button>
+                      </div>
+                    </TableCell>
+                  )}
                   {hideIdColumn ? null : (
                     <TableCell>{getIdValue(item) ?? "-"}</TableCell>
                   )}
@@ -488,33 +512,39 @@ export function ResourceListPage<
         </div>
       </div>
 
-      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>{deleteConfirmText}</AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setDeletingId(null)}>
-              Cancel
-            </AlertDialogCancel>
-            <AlertDialogAction
-              onClick={confirmDelete}
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            >
-              Continue
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      {hideActionsColumn ? null : (
+        <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                {deleteConfirmText}
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={() => setDeletingId(null)}>
+                Cancel
+              </AlertDialogCancel>
+              <AlertDialogAction
+                onClick={confirmDelete}
+                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              >
+                Continue
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
 
-      {renderDialog({
-        open,
-        onOpenChange: setOpen,
-        mode,
-        value: editing,
-        onSuccess: onDialogSuccess,
-      })}
+      {renderDialog
+        ? renderDialog({
+            open,
+            onOpenChange: setOpen,
+            mode,
+            value: editing,
+            onSuccess: onDialogSuccess,
+          })
+        : null}
     </div>
   );
 }

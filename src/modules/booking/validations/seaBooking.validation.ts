@@ -54,11 +54,14 @@ export const seaBookingRowSchema = z.object({
 });
 
 export const seaBookingIncomeDetailSchema = z.object({
-  incomeBillingParty: z
+  incomeBillingPartyId: z
     .string()
     .trim()
     .min(1, "Income Billing Party is required"),
-  chargeDescription: z.string().trim().min(1, "Charge Description is required"),
+  chargeDescriptionId: z
+    .string()
+    .trim()
+    .min(1, "Charge Description is required"),
   chargedPer: z.enum(["DOCS", "CONT"]),
   qty: z.number().min(1, "Qty must be at least 1"),
   rate: z.number().min(0, "Rate cannot be negative"),
@@ -85,8 +88,11 @@ export const seaBookingIncomeDetailSchema = z.object({
 });
 
 export const seaBookingExpenseDetailSchema = z.object({
-  vendorName: z.string().trim().min(1, "Vendor Name is required"),
-  chargeDescription: z.string().trim().min(1, "Charge Description is required"),
+  vendorId: z.string().trim().min(1, "Vendor Name is required"),
+  chargeDescriptionId: z
+    .string()
+    .trim()
+    .min(1, "Charge Description is required"),
   chargedPer: z.enum(["DOCS", "CONT"]),
   qty: z.number().min(1, "Qty must be at least 1"),
   rate: z.number().min(0, "Rate cannot be negative"),

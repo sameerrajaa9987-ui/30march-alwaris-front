@@ -6,8 +6,8 @@ import type {
 } from "@/modules/booking/types";
 
 export type SeaBookingIncomeDetailForm = {
-  incomeBillingParty: string;
-  chargeDescription: string;
+  incomeBillingPartyId: string;
+  chargeDescriptionId: string;
   chargedPer: SeaChargedPer | "";
   qty: number;
   rate: number;
@@ -20,8 +20,8 @@ export type SeaBookingIncomeDetailForm = {
 };
 
 export type SeaBookingExpenseDetailForm = {
-  vendorName: string;
-  chargeDescription: string;
+  vendorId: string;
+  chargeDescriptionId: string;
   chargedPer: SeaChargedPer | "";
   qty: number;
   rate: number;

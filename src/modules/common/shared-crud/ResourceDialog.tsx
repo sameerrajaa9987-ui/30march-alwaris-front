@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -106,17 +106,20 @@ export function ResourceDialog<
     return nextValues;
   }, [fields, mode, value]);
 
-  useEffect(() => {
-    if (!open) return;
-    setError(null);
-    setValidation({});
-    setValues(initialValues);
-  }, [open, initialValues]);
+  const currentValues = useMemo(
+    () => ({ ...initialValues, ...values }),
+    [initialValues, values],
+  );
 
   function handleOpenChange(nextOpen: boolean) {
     if (nextOpen) {
       setError(null);
       setValidation({});
+    }
+    if (!nextOpen) {
+      setValues({} as Record<TKey, string>);
+      setValidation({});
+      setError(null);
     }
     onOpenChange(nextOpen);
   }
@@ -148,7 +151,7 @@ export function ResourceDialog<
     const nextValidation: Partial<Record<TKey, string>> = {};
 
     fields.forEach((field) => {
-      const cleanedValue = (values[field.key] ?? "").trim();
+      const cleanedValue = (currentValues[field.key] ?? "").trim();
       cleaned[field.key] = cleanedValue;
 
       if (!cleanedValue) {
@@ -183,7 +186,7 @@ export function ResourceDialog<
   const hasEmptyRequiredField =
     customDisableSubmit ??
     (fields
-      ? fields.some((field) => !(values[field.key] ?? "").trim())
+      ? fields.some((field) => !(currentValues[field.key] ?? "").trim())
       : false);
 
   return (
@@ -211,7 +214,7 @@ export function ResourceDialog<
                   {field.label}
                 </label>
                 <Input
-                  value={values[field.key] ?? ""}
+                  value={currentValues[field.key] ?? ""}
                   onChange={(e) =>
                     setValues((prev) => ({
                       ...prev,

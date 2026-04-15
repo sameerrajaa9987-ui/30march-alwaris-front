@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -74,26 +74,8 @@ export function VendorAgentDialog({
     [],
   );
 
-  const form = useForm<VendorAgentSchema>({
-    resolver: zodResolver(vendorAgentSchema),
-    defaultValues: defaults,
-    mode: "onChange",
-  });
-
-  const vendorTypeId = useWatch({
-    control: form.control,
-    name: "vendorTypeId",
-  });
-  const mail = useWatch({ control: form.control, name: "mail" });
-
-  const selectedVendorType = useMemo(
-    () => vendorTypes.find((t) => t.id === vendorTypeId),
-    [vendorTypes, vendorTypeId],
-  );
-
-  useEffect(() => {
-    if (!open) return;
-    form.reset(
+  const formValues = useMemo<VendorAgentSchema>(
+    () =>
       mode === "edit" && value
         ? {
             vendorTypeId: value.vendorTypeId,
@@ -114,8 +96,26 @@ export function VendorAgentDialog({
             panNo: value.panNo,
           }
         : defaults,
-    );
-  }, [open, mode, value, defaults, form]);
+    [mode, value, defaults],
+  );
+
+  const form = useForm<VendorAgentSchema>({
+    resolver: zodResolver(vendorAgentSchema),
+    defaultValues: defaults,
+    values: open ? formValues : defaults,
+    mode: "onChange",
+  });
+
+  const vendorTypeId = useWatch({
+    control: form.control,
+    name: "vendorTypeId",
+  });
+  const mail = useWatch({ control: form.control, name: "mail" });
+
+  const selectedVendorType = useMemo(
+    () => vendorTypes.find((t) => t.id === vendorTypeId),
+    [vendorTypes, vendorTypeId],
+  );
 
   async function onSubmit(values: VendorAgentSchema) {
     const payload = {

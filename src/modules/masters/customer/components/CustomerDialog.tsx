@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -71,26 +71,8 @@ export function CustomerDialog({
     [],
   );
 
-  const form = useForm<CustomerSchema>({
-    resolver: zodResolver(customerSchema),
-    defaultValues: defaults,
-    mode: "onChange",
-  });
-
-  const customerTypeId = useWatch({
-    control: form.control,
-    name: "customerTypeId",
-  });
-  const mail = useWatch({ control: form.control, name: "mail" });
-
-  const selectedCustomerType = useMemo(
-    () => customerTypes.find((t) => t.id === customerTypeId),
-    [customerTypes, customerTypeId],
-  );
-
-  useEffect(() => {
-    if (!open) return;
-    form.reset(
+  const formValues = useMemo<CustomerSchema>(
+    () =>
       mode === "edit" && value
         ? {
             customerTypeId: value.customerTypeId,
@@ -111,8 +93,26 @@ export function CustomerDialog({
             panNo: value.panNo,
           }
         : defaults,
-    );
-  }, [open, mode, value, defaults, form]);
+    [mode, value, defaults],
+  );
+
+  const form = useForm<CustomerSchema>({
+    resolver: zodResolver(customerSchema),
+    defaultValues: defaults,
+    values: open ? formValues : defaults,
+    mode: "onChange",
+  });
+
+  const customerTypeId = useWatch({
+    control: form.control,
+    name: "customerTypeId",
+  });
+  const mail = useWatch({ control: form.control, name: "mail" });
+
+  const selectedCustomerType = useMemo(
+    () => customerTypes.find((t) => t.id === customerTypeId),
+    [customerTypes, customerTypeId],
+  );
 
   async function onSubmit(values: CustomerSchema) {
     const payload = {
