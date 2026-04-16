@@ -59,7 +59,7 @@ export function getDefaultSeaBookingForm(): SeaBookingFormState {
     voyage: "",
     etd: today,
     eta: today,
-    currency: "USD",
+    currency: "AED",
     billingParty: "",
     hbl: "",
     remarks: "",
