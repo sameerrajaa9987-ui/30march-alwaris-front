@@ -40,6 +40,11 @@ const CostSheetApprovalListPage = lazy(() =>
     default: m.CostSheetApprovalListPage,
   })),
 );
+const InvoiceRouter = lazy(() =>
+  import("./modules/invoice/InvoiceRouter").then((m) => ({
+    default: m.InvoiceRouter,
+  })),
+);
 
 export default function App() {
   return (
@@ -75,14 +80,7 @@ export default function App() {
             element={<CostSheetApprovalListPage />}
           />
 
-          <Route
-            path="create-invoice/income"
-            element={<PlaceholderPage title="Income Invoice" />}
-          />
-          <Route
-            path="create-invoice/tax-proforma"
-            element={<PlaceholderPage title="Tax / Proforma Invoice" />}
-          />
+          <Route path="create-invoice/*" element={<InvoiceRouter />} />
 
           <Route
             path="advance/payment"

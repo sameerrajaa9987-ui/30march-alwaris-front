@@ -1,0 +1,42 @@
+import { z } from "zod";
+
+export const invoiceLineItemEditSchema = z.object({
+  jobNo: z.number().int().min(1, "Job No is required"),
+  invoiceNo: z.string().trim(),
+  currency: z.enum(["AED", "USD"]),
+  code: z.string().trim(),
+  description: z.string().trim(),
+  remark: z.string().trim(),
+  chargedPer: z.string().trim(),
+  size: z.string().trim(),
+  type: z.string().trim(),
+  exRate: z.number().min(0),
+  qty: z.number().min(0),
+  rate: z.number().min(0),
+  amount: z.number().min(0),
+  gstVat: z.number().min(0),
+  gstVatAmount: z.number().min(0),
+  cgst: z.number().min(0),
+  cgstAmount: z.number().min(0),
+  sgst: z.number().min(0),
+  sgstAmount: z.number().min(0),
+  igst: z.number().min(0),
+  igstAmount: z.number().min(0),
+  wht: z.number().min(0),
+  whtAmount: z.number().min(0),
+  totalAmount: z.number(),
+});
+
+export const invoiceMainEditSchema = z.object({
+  jobNo: z.number().int().min(1, "Job No is required"),
+  invoiceNo: z.string().trim(),
+  invoiceDate: z.string().trim().optional(),
+  partyName: z.string().trim(),
+  exRate: z.number().min(0),
+  totalAmount: z.number(),
+  tdsAmount: z.number(),
+  payAmount: z.number(),
+  balanceAmount: z.number(),
+  remarks: z.string().trim(),
+  creditDays: z.number().min(0),
+});
