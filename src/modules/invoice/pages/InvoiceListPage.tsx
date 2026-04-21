@@ -61,7 +61,7 @@ function toMainRow(invoice: InvoiceRecord): InvoiceTableRow {
   return {
     id: invoice.id,
     jobNo: invoice.jobNo,
-    code: "",
+    code: invoice.code,
     customerName: invoice.customerName,
     jobDate: invoice.jobDate,
     invoiceNo: invoice.invoiceNo,

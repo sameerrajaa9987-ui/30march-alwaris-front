@@ -57,6 +57,7 @@ export type InvoicePayment = {
 export type InvoiceRecord = {
   id: string;
   jobNo: number;
+  code: string;
   invoiceType: InvoiceType;
   bookingId?: string;
   costSheetId?: string;
