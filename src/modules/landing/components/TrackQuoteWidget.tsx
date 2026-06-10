@@ -53,7 +53,7 @@ export function TrackQuoteWidget() {
           className={cn(
             "flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors",
             tab === "quote"
-              ? "bg-[#0b1f3a] text-white shadow"
+              ? "bg-brand text-white shadow"
               : "text-slate-600 hover:text-slate-900",
           )}
         >
@@ -66,7 +66,7 @@ export function TrackQuoteWidget() {
           className={cn(
             "flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors",
             tab === "track"
-              ? "bg-[#0b1f3a] text-white shadow"
+              ? "bg-brand text-white shadow"
               : "text-slate-600 hover:text-slate-900",
           )}
         >
@@ -85,7 +85,7 @@ export function TrackQuoteWidget() {
               <select
                 name="cargo"
                 defaultValue={CARGO_TYPES[0]}
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
               >
                 {CARGO_TYPES.map((c) => (
                   <option key={c}>{c}</option>
@@ -101,7 +101,7 @@ export function TrackQuoteWidget() {
                   name="origin"
                   required
                   placeholder="e.g. Jebel Ali"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                 />
               </label>
               <label className="block">
@@ -112,13 +112,13 @@ export function TrackQuoteWidget() {
                   name="destination"
                   required
                   placeholder="e.g. Nhava Sheva"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                 />
               </label>
             </div>
             <button
               type="submit"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-500 px-5 py-3 text-sm font-semibold text-[#0b1f3a] shadow-lg transition-transform hover:scale-[1.01]"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ocean px-5 py-3 text-sm font-semibold text-brand shadow-lg transition-transform hover:scale-[1.01]"
             >
               Get My Quote
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -136,13 +136,13 @@ export function TrackQuoteWidget() {
                   name="ref"
                   required
                   placeholder="e.g. AWS-2026-00123"
-                  className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                  className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                 />
               </div>
             </label>
             <button
               type="submit"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#0b1f3a] px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01]"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01]"
             >
               Track &amp; Trace
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

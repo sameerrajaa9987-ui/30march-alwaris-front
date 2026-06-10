@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FAQS } from "../content";
+import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 
 export function FaqSection() {
@@ -10,14 +11,12 @@ export function FaqSection() {
   return (
     <section id="faq" className="bg-secondary/40 py-24 lg:py-32">
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
-        <Reveal className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-600">
-            FAQ
-          </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-foreground sm:text-4xl">
-            Questions, Answered
-          </h2>
-        </Reveal>
+        <SectionHeader
+          index="06"
+          kicker="FAQ"
+          title="Questions, answered"
+          align="center"
+        />
 
         <div className="mt-12 space-y-3">
           {FAQS.map((faq, i) => {
@@ -36,7 +35,7 @@ export function FaqSection() {
                     </span>
                     <ChevronDown
                       className={cn(
-                        "size-5 shrink-0 text-cyan-600 transition-transform duration-300",
+                        "size-5 shrink-0 text-ocean-dark transition-transform duration-300",
                         isOpen && "rotate-180",
                       )}
                     />

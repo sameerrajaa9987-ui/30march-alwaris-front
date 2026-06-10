@@ -21,7 +21,13 @@ body {
 }
 
 /* Landing / public website typography */
+/* Headings: large, tight modern grotesk (Geist) — the 2026 logistics look. */
 .font-display {
+  font-family: "Geist Variable", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+/* Reserved for the spiritual quotes only — an intentional editorial accent. */
+.font-quote {
   font-family: "Playfair Display", Georgia, serif;
 }
 .font-urdu {
@@ -32,6 +38,36 @@ body {
 .landing-scroll {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+}
+
+/* Editorial monospace kicker (e.g. "01 — WHO WE ARE") */
+.kicker {
+  font-family: ui-monospace, "Geist Variable", "SF Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.18em;
+}
+
+/* Kinetic marquee strip */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 38s linear infinite;
+}
+.marquee-track:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
 }
 
 /* Scroll-reveal micro-animation */

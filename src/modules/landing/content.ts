@@ -58,6 +58,22 @@ export const STATS = [
   { value: "Global", label: "Reach & Network" },
 ];
 
+// Kinetic ticker — capabilities & trade lanes that scroll across the page.
+export const MARQUEE_ITEMS = [
+  "NVOCC",
+  "Freight Forwarding",
+  "Project Cargo",
+  "Sea Freight",
+  "3PL Warehousing",
+  "Inland Transport",
+  "Dubai → Nhava Sheva",
+  "Jebel Ali → Karachi",
+  "Bur Dubai → Mundra",
+  "Own Containers",
+  "Customs & Documentation",
+  "Over-Dimension Cargo",
+];
+
 export type Service = {
   icon: LucideIcon;
   title: string;

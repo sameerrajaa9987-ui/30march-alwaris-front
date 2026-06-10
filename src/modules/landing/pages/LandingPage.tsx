@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { LandingNav } from "../components/LandingNav";
 import { HeroSection } from "../components/HeroSection";
+import { Marquee } from "../components/Marquee";
 import { AboutSection } from "../components/AboutSection";
 import { WhyChooseUs } from "../components/WhyChooseUs";
 import { ServicesSection } from "../components/ServicesSection";
@@ -28,6 +29,7 @@ export function LandingPage() {
       <LandingNav />
       <main>
         <HeroSection />
+        <Marquee />
         <AboutSection />
         <WhyChooseUs />
         <ServicesSection />

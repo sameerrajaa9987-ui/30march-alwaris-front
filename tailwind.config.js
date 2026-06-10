@@ -5,6 +5,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Landing / brand palette — deep maritime navy + a single confident
+        // cerulean "ocean" accent (2026 logistics direction: Maersk/Flexport).
+        brand: {
+          DEFAULT: "#0a2a43",
+          deep: "#06121f",
+          light: "#0e3a5c",
+        },
+        ocean: {
+          DEFAULT: "#0ba5c4",
+          light: "#5fd0e0",
+          dark: "#0a6a7d",
+        },
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",

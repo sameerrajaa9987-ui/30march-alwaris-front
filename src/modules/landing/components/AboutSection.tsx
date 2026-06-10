@@ -30,11 +30,13 @@ export function AboutSection() {
 
           {/* Copy */}
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-600">
-              Who We Are
+            <span className="kicker flex items-center gap-3 text-[11px] font-semibold uppercase text-ocean-dark">
+              <span>01</span>
+              <span className="h-px w-8 bg-ocean-dark/40" />
+              <span>Who We Are</span>
             </span>
-            <h2 className="mt-4 font-display text-3xl font-semibold text-foreground sm:text-4xl">
-              A Partner You Can Rely On
+            <h2 className="font-display mt-5 text-3xl font-semibold leading-[1.05] text-foreground sm:text-4xl lg:text-[2.75rem]">
+              A partner you can rely on
             </h2>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-muted-foreground">
               {ABOUT_PARAGRAPHS.map((p, i) => (
@@ -51,16 +53,16 @@ export function AboutSection() {
             return (
               <div
                 key={pillar.title}
-                className="group rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-900/5"
+                className="group rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-ocean/40 hover:shadow-xl hover:shadow-brand/5"
               >
-                <div className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-[#0b1f3a] to-cyan-700 text-white shadow-lg">
+                <div className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-brand to-ocean-dark text-white shadow-lg">
                   <Icon className="size-6" />
                 </div>
                 <div className="mt-5 flex items-baseline gap-3">
                   <h3 className="text-lg font-semibold text-foreground">
                     {pillar.title}
                   </h3>
-                  <span className="font-urdu text-lg text-cyan-700">
+                  <span className="font-urdu text-lg text-ocean-dark">
                     {pillar.titleUr}
                   </span>
                 </div>

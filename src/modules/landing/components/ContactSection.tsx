@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Send, User2 } from "lucide-react";
 import { LEADERSHIP, OFFICE } from "../content";
+import { SectionHeader } from "./SectionHeader";
 
 export function ContactSection() {
   const [submitting, setSubmitting] = useState(false);
@@ -31,18 +32,12 @@ export function ContactSection() {
   return (
     <section id="contact" className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-600">
-            Get In Touch
-          </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-foreground sm:text-4xl">
-            Let&rsquo;s Move Forward Together
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Reach out to our team for quotes, partnerships or any logistics
-            requirement. We respond with clarity and care.
-          </p>
-        </div>
+        <SectionHeader
+          index="07"
+          kicker="Get In Touch"
+          title="Let's move forward together"
+          description="Reach out for quotes, partnerships or any logistics requirement. We respond with clarity and care."
+        />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: office + form */}
@@ -51,17 +46,17 @@ export function ContactSection() {
               <h3 className="text-lg font-semibold text-foreground">
                 Head Office
               </h3>
-              <p className="mt-1 text-sm font-medium text-cyan-700">
+              <p className="mt-1 text-sm font-medium text-ocean-dark">
                 {OFFICE.agentName}
               </p>
 
               <ul className="mt-5 space-y-4 text-sm">
                 <li className="flex gap-3 text-muted-foreground">
-                  <MapPin className="mt-0.5 size-5 shrink-0 text-cyan-600" />
+                  <MapPin className="mt-0.5 size-5 shrink-0 text-ocean-dark" />
                   <span>{OFFICE.addressLines.join(", ")}</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Phone className="size-5 shrink-0 text-cyan-600" />
+                  <Phone className="size-5 shrink-0 text-ocean-dark" />
                   <a
                     href={`tel:${OFFICE.phone.replace(/\s/g, "")}`}
                     className="text-muted-foreground hover:text-foreground"
@@ -70,7 +65,7 @@ export function ContactSection() {
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Mail className="size-5 shrink-0 text-cyan-600" />
+                  <Mail className="size-5 shrink-0 text-ocean-dark" />
                   <a
                     href={`mailto:${OFFICE.email}`}
                     className="text-muted-foreground hover:text-foreground"
@@ -106,14 +101,14 @@ export function ContactSection() {
                     name="name"
                     required
                     placeholder="Your name"
-                    className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                    className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                   />
                   <input
                     name="email"
                     type="email"
                     required
                     placeholder="Email address"
-                    className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                    className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                   />
                 </div>
                 <textarea
@@ -121,12 +116,12 @@ export function ContactSection() {
                   required
                   rows={4}
                   placeholder="Tell us about your shipment or requirement..."
-                  className="w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
+                  className="w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                 />
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#0b1f3a] to-cyan-700 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:opacity-60"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-ocean-dark px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:opacity-60"
                 >
                   <Send className="size-4" />
                   Send Enquiry
@@ -146,14 +141,14 @@ export function ContactSection() {
               {LEADERSHIP.map((person) => (
                 <div
                   key={person.name}
-                  className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-cyan-500/40"
+                  className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-ocean/40"
                 >
                   <div className="flex items-start gap-3">
-                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-cyan-700">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-ocean-dark">
                       <User2 className="size-5" />
                     </span>
                     <div className="min-w-0">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-cyan-700">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-ocean-dark">
                         {person.role}
                       </div>
                       <div className="mt-0.5 font-medium leading-tight text-foreground">
@@ -168,7 +163,7 @@ export function ContactSection() {
                         href={`tel:${person.mobile.replace(/\s/g, "")}`}
                         className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
                       >
-                        <Phone className="size-4 text-cyan-600" />
+                        <Phone className="size-4 text-ocean-dark" />
                         {person.mobile}
                       </a>
                     ) : (
@@ -182,7 +177,7 @@ export function ContactSection() {
                         href={`mailto:${person.email}`}
                         className="flex items-center gap-2 break-all text-muted-foreground hover:text-foreground"
                       >
-                        <Mail className="size-4 text-cyan-600" />
+                        <Mail className="size-4 text-ocean-dark" />
                         {person.email}
                       </a>
                     ) : (
