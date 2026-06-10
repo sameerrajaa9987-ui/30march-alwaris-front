@@ -5,6 +5,11 @@ import { RequireAuth } from "./app/router/RequireAuth";
 import { PlaceholderPage } from "./shared/components/PlaceholderPage";
 import { PageLoader } from "./shared/components/PageLoader";
 
+const LandingPage = lazy(() =>
+  import("./modules/landing/pages/LandingPage").then((m) => ({
+    default: m.LandingPage,
+  })),
+);
 const LoginPage = lazy(() =>
   import("./modules/auth/pages/LoginPage").then((m) => ({
     default: m.LoginPage,
@@ -50,17 +55,18 @@ export default function App() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
+        {/* Public marketing website */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
 
+        {/* Authenticated portal (pathless layout route) */}
         <Route
-          path="/"
           element={
             <RequireAuth>
               <AppLayout />
             </RequireAuth>
           }
         >
-          <Route index element={<Navigate to="/masters/employee" replace />} />
           <Route path="masters/*" element={<MastersRouter />} />
           <Route path="booking/*" element={<BookingRouter />} />
 

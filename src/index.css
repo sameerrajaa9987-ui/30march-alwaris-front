@@ -20,6 +20,41 @@ body {
   @apply space-y-4;
 }
 
+/* Landing / public website typography */
+.font-display {
+  font-family: "Playfair Display", Georgia, serif;
+}
+.font-urdu {
+  font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+  direction: rtl;
+  line-height: 2.4;
+}
+.landing-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Scroll-reveal micro-animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @layer base {
   .theme {
     --font-heading: var(--font-sans);

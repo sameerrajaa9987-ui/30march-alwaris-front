@@ -38,7 +38,7 @@ export function LoginPage() {
     try {
       const result = await loginMutation.mutateAsync(values);
       dispatch(setAuth(result));
-      navigate("/", { replace: true });
+      navigate("/masters/employee", { replace: true });
     } catch (e) {
       setError(e instanceof Error ? e.message : "Login failed");
     }
