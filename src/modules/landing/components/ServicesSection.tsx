@@ -19,11 +19,7 @@ export function ServicesSection() {
           {SERVICES.map((service, i) => {
             const Icon = service.icon;
             return (
-              <Reveal
-                key={service.title}
-                as="article"
-                delay={(i % 3) * 60}
-              >
+              <Reveal key={service.title} as="article" delay={(i % 3) * 60}>
                 <a
                   href="#contact"
                   className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-border py-7 transition-colors hover:bg-secondary/40 sm:grid-cols-[5rem_1.2fr_2fr_auto] sm:gap-8 sm:px-4"

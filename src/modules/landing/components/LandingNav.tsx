@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Anchor, ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BRAND, NAV_LINKS } from "../content";
+import { LogoMark } from "./Logo";
 
 export function LandingNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,9 +27,7 @@ export function LandingNav() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <a href="#home" className="flex items-center gap-2.5 text-white">
-          <span className="grid size-10 place-items-center rounded-xl bg-gradient-to-br from-ocean-light to-ocean-dark shadow-lg shadow-brand/40">
-            <Anchor className="size-5 text-brand" />
-          </span>
+          <LogoMark className="size-10 shadow-lg shadow-brand/40" />
           <span className="flex flex-col leading-none">
             <span className="font-display text-lg font-semibold tracking-tight">
               {BRAND.name}

@@ -8,9 +8,10 @@ export function CtaBanner() {
         <img
           src={IMAGES.cta}
           alt="Cargo trucks and container ship at sunset"
-          className="size-full object-cover"
+          className="size-full object-cover grayscale-[0.55] contrast-[1.03]"
           loading="lazy"
         />
+        <div className="absolute inset-0 bg-brand opacity-40 mix-blend-color" />
         <div className="absolute inset-0 bg-brand/85" />
       </div>
 

@@ -1,5 +1,6 @@
 import { ShieldCheck, Eye, Handshake } from "lucide-react";
 import { ABOUT_PARAGRAPHS, IMAGES, VALUE_PILLARS } from "../content";
+import { DuotoneImage } from "./DuotoneImage";
 
 const PILLAR_ICONS = [ShieldCheck, Eye, Handshake];
 
@@ -10,14 +11,11 @@ export function AboutSection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Image */}
           <div className="relative">
-            <div className="overflow-hidden rounded-3xl shadow-2xl shadow-slate-900/20">
-              <img
-                src={IMAGES.about}
-                alt="Logistics warehouse operations"
-                className="aspect-[4/5] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
+            <DuotoneImage
+              src={IMAGES.about}
+              alt="Logistics warehouse operations"
+              className="aspect-[4/5] w-full rounded-3xl shadow-2xl shadow-slate-900/20"
+            />
             <div className="absolute -bottom-6 -right-2 hidden rounded-2xl border border-border bg-card p-5 shadow-xl sm:block lg:-right-6">
               <div className="font-display text-3xl font-semibold text-primary">
                 Trust

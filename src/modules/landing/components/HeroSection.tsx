@@ -13,9 +13,11 @@ export function HeroSection() {
         <img
           src={IMAGES.hero}
           alt="Container ship at sea"
-          className="size-full object-cover"
+          className="size-full object-cover grayscale-[0.55] contrast-[1.03]"
           loading="eager"
         />
+        {/* Navy colour grade — ties the hero to the duotone imagery elsewhere */}
+        <div className="absolute inset-0 bg-brand opacity-40 mix-blend-color" />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/92 to-brand-deep/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/20 to-brand-deep/70" />
       </div>

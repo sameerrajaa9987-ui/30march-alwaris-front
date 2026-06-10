@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Anchor, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { BRAND, NAV_LINKS, OFFICE, SERVICES } from "../content";
+import { LogoMark } from "./Logo";
 
 export function LandingFooter() {
   return (
@@ -10,9 +11,7 @@ export function LandingFooter() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 text-white">
-              <span className="grid size-10 place-items-center rounded-xl bg-gradient-to-br from-ocean-light to-ocean-dark">
-                <Anchor className="size-5 text-brand" />
-              </span>
+              <LogoMark className="size-10" />
               <span className="font-display text-lg font-semibold">
                 {BRAND.name}
               </span>
