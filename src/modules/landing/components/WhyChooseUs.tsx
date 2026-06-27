@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { FEATURES } from "../content";
+import { FEATURE_ICONS } from "../content";
+import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 
@@ -15,17 +16,18 @@ const SPANS = [
 ];
 
 export function WhyChooseUs() {
-  const [featured, ...rest] = FEATURES;
-  const FeaturedIcon = featured.icon;
+  const t = useT();
+  const [featured, ...rest] = t.why.features;
+  const FeaturedIcon = FEATURE_ICONS[0];
 
   return (
     <section className="bg-secondary/40 py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeader
           index="02"
-          kicker="Why Choose Us"
-          title="Built on trust, engineered for reliability"
-          description="The strengths that make every shipment dependable — from first quote to final delivery."
+          kicker={t.why.kicker}
+          title={t.why.title}
+          description={t.why.description}
         />
 
         <div className="mt-14 grid auto-rows-[minmax(170px,auto)] grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -36,7 +38,7 @@ export function WhyChooseUs() {
               SPANS[0],
             )}
           >
-            <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-ocean/20 blur-3xl transition-transform duration-700 group-hover:scale-125" />
+            <div className="pointer-events-none absolute -end-16 -top-16 size-56 rounded-full bg-ocean/20 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <div className="relative grid size-14 place-items-center rounded-2xl bg-white/10 text-ocean-light ring-1 ring-white/15">
               <FeaturedIcon className="size-7" />
             </div>
@@ -52,7 +54,7 @@ export function WhyChooseUs() {
 
           {/* Remaining tiles */}
           {rest.map((f, i) => {
-            const Icon = f.icon;
+            const Icon = FEATURE_ICONS[i + 1];
             return (
               <Reveal
                 key={f.title}
@@ -66,7 +68,10 @@ export function WhyChooseUs() {
                   <span className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand to-ocean-dark text-white shadow-lg">
                     <Icon className="size-6" />
                   </span>
-                  <ArrowUpRight className="size-5 text-muted-foreground/40 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ocean" />
+                  <ArrowUpRight
+                    data-flip-rtl
+                    className="size-5 text-muted-foreground/40 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ocean"
+                  />
                 </div>
                 <div className="mt-6">
                   <h3 className="text-base font-semibold text-foreground">

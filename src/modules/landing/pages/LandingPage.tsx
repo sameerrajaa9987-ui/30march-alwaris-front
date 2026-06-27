@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { LanguageProvider } from "../i18n/LanguageContext";
+import { useLanguage } from "../i18n/language";
 import { LandingNav } from "../components/LandingNav";
 import { HeroSection } from "../components/HeroSection";
 import { Marquee } from "../components/Marquee";
@@ -12,7 +15,9 @@ import { FaqSection } from "../components/FaqSection";
 import { ContactSection } from "../components/ContactSection";
 import { LandingFooter } from "../components/LandingFooter";
 
-export function LandingPage() {
+function LandingShell() {
+  const { dir } = useLanguage();
+
   // The public site is always presented in light mode regardless of the
   // portal's theme preference, so brand colours render consistently.
   useEffect(() => {
@@ -25,7 +30,13 @@ export function LandingPage() {
   }, []);
 
   return (
-    <div className="landing-scroll min-h-screen bg-background">
+    <div
+      dir={dir}
+      className={cn(
+        "landing-scroll min-h-screen bg-background",
+        dir === "rtl" && "lang-rtl",
+      )}
+    >
       <LandingNav />
       <main>
         <HeroSection />
@@ -41,6 +52,14 @@ export function LandingPage() {
       </main>
       <LandingFooter />
     </div>
+  );
+}
+
+export function LandingPage() {
+  return (
+    <LanguageProvider>
+      <LandingShell />
+    </LanguageProvider>
   );
 }
 

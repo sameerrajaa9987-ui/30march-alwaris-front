@@ -1,23 +1,26 @@
 import { ArrowUpRight } from "lucide-react";
-import { SERVICES } from "../content";
+import { SERVICE_ICONS } from "../content";
+import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 
 export function ServicesSection() {
+  const t = useT();
+
   return (
     <section id="services" className="relative bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeader
           index="03"
-          kicker="What We Offer"
-          title="End-to-end logistics, under one roof"
-          description="From containers to project cargo and warehousing — every solution delivered with care, responsibility and professionalism."
+          kicker={t.services.kicker}
+          title={t.services.title}
+          description={t.services.description}
         />
 
         {/* Editorial numbered list — magazine index, not a card grid */}
         <div className="mt-14 border-t border-border">
-          {SERVICES.map((service, i) => {
-            const Icon = service.icon;
+          {t.services.items.map((service, i) => {
+            const Icon = SERVICE_ICONS[i];
             return (
               <Reveal key={service.title} as="article" delay={(i % 3) * 60}>
                 <a
@@ -42,7 +45,10 @@ export function ServicesSection() {
                   </p>
 
                   <span className="grid size-10 place-items-center justify-self-end rounded-full border border-border text-muted-foreground transition-all group-hover:border-ocean group-hover:bg-ocean group-hover:text-brand">
-                    <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    <ArrowUpRight
+                      data-flip-rtl
+                      className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
                   </span>
                 </a>
               </Reveal>

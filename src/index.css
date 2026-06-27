@@ -40,6 +40,25 @@ body {
   scroll-padding-top: 5rem;
 }
 
+/* Arabic / Persian (RTL) — modern Vazirmatn covers both scripts.
+   Reset Latin-only treatments (letter-spacing, uppercase) that break Arabic. */
+.lang-rtl,
+.lang-rtl .font-display {
+  font-family: "Vazirmatn", "Noto Sans Arabic", system-ui, sans-serif;
+}
+.lang-rtl .font-display {
+  letter-spacing: 0;
+}
+.lang-rtl .kicker {
+  font-family: "Vazirmatn", system-ui, sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
+}
+/* Inline directional arrows point the other way in RTL */
+.lang-rtl [data-flip-rtl] {
+  transform: scaleX(-1);
+}
+
 /* Editorial monospace kicker (e.g. "01 — WHO WE ARE") */
 .kicker {
   font-family: ui-monospace, "Geist Variable", "SF Mono", Menlo, monospace;

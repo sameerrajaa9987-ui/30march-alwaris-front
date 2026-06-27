@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { BRAND, NAV_LINKS } from "../content";
+import { BRAND, NAV_ITEMS } from "../content";
+import { useT } from "../i18n/language";
 import { LogoMark } from "./Logo";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function LandingNav() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -32,37 +35,41 @@ export function LandingNav() {
             <span className="font-display text-lg font-semibold tracking-tight">
               {BRAND.name}
             </span>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-ocean-light/80">
-              Shipping &amp; Logistics
+            <span className="kicker text-[10px] uppercase text-ocean-light/80">
+              {t.nav.subBrand}
             </span>
           </span>
         </a>
 
-        <div className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((l) => (
+        <div className="hidden items-center gap-7 lg:flex">
+          {NAV_ITEMS.map((l) => (
             <a
               key={l.href}
               href={l.href}
               className="text-sm font-medium text-slate-200 transition-colors hover:text-ocean-light"
             >
-              {l.label}
+              {t.nav[l.key]}
             </a>
           ))}
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <LanguageSwitcher />
           <Link
             to={BRAND.portalPath}
             className="text-sm font-medium text-slate-200 transition-colors hover:text-white"
           >
-            Portal Login
+            {t.nav.portalLogin}
           </Link>
           <a
             href="#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-ocean px-5 py-2.5 text-sm font-semibold text-brand shadow-lg shadow-brand/30 transition-transform hover:scale-[1.03]"
           >
-            Get a Quote
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+            {t.nav.getQuote}
+            <ArrowRight
+              data-flip-rtl
+              className="size-4 transition-transform group-hover:translate-x-0.5"
+            />
           </a>
         </div>
 
@@ -80,33 +87,34 @@ export function LandingNav() {
       <div
         className={cn(
           "overflow-hidden border-t border-white/10 bg-brand/95 backdrop-blur-md transition-[max-height] duration-300 lg:hidden",
-          open ? "max-h-96" : "max-h-0",
+          open ? "max-h-[28rem]" : "max-h-0",
         )}
       >
         <div className="flex flex-col gap-1 px-5 py-4">
-          {NAV_LINKS.map((l) => (
+          {NAV_ITEMS.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/5 hover:text-ocean-light"
             >
-              {l.label}
+              {t.nav[l.key]}
             </a>
           ))}
           <div className="mt-2 flex items-center gap-3 border-t border-white/10 pt-3">
+            <LanguageSwitcher />
             <Link
               to={BRAND.portalPath}
               className="flex-1 rounded-full border border-white/20 px-4 py-2.5 text-center text-sm font-medium text-white"
             >
-              Portal Login
+              {t.nav.portalLogin}
             </Link>
             <a
               href="#contact"
               onClick={() => setOpen(false)}
               className="flex-1 rounded-full bg-ocean px-4 py-2.5 text-center text-sm font-semibold text-brand"
             >
-              Get a Quote
+              {t.nav.getQuote}
             </a>
           </div>
         </div>

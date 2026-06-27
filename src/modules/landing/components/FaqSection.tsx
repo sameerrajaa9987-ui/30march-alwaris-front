@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { FAQS } from "../content";
+import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 
 export function FaqSection() {
+  const t = useT();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -13,13 +14,13 @@ export function FaqSection() {
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
         <SectionHeader
           index="06"
-          kicker="FAQ"
-          title="Questions, answered"
+          kicker={t.faq.kicker}
+          title={t.faq.title}
           align="center"
         />
 
         <div className="mt-12 space-y-3">
-          {FAQS.map((faq, i) => {
+          {t.faq.items.map((faq, i) => {
             const isOpen = open === i;
             return (
               <Reveal key={faq.q} delay={i * 60}>
@@ -28,7 +29,7 @@ export function FaqSection() {
                     type="button"
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start"
                   >
                     <span className="text-sm font-semibold text-foreground sm:text-base">
                       {faq.q}

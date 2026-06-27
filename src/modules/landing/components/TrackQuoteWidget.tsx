@@ -3,18 +3,12 @@ import { toast } from "sonner";
 import { ArrowRight, PackageSearch, Search, Ship } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { OFFICE } from "../content";
+import { useT } from "../i18n/language";
 
 type Tab = "quote" | "track";
 
-const CARGO_TYPES = [
-  "FCL — Full Container Load",
-  "LCL — Less than Container Load",
-  "Project / Over-Dimension Cargo",
-  "Warehousing / 3PL",
-  "Inland Transportation",
-];
-
 export function TrackQuoteWidget() {
+  const t = useT();
   const [tab, setTab] = useState<Tab>("quote");
 
   const handleQuote = (e: FormEvent<HTMLFormElement>) => {
@@ -29,7 +23,7 @@ export function TrackQuoteWidget() {
       `Cargo type: ${cargo}\nOrigin: ${origin}\nDestination: ${destination}\n\nPlease send me a competitive quote.`,
     );
     window.location.href = `mailto:${OFFICE.email}?subject=${subject}&body=${body}`;
-    toast.success("Great! Opening your email so our pricing desk can respond.");
+    toast.success(t.widget.quoteToast);
   };
 
   const handleTrack = (e: FormEvent<HTMLFormElement>) => {
@@ -38,10 +32,11 @@ export function TrackQuoteWidget() {
     const ref = String(data.get("ref") ?? "").trim();
     if (!ref) return;
     // TODO: connect to the shipment-tracking API when available.
-    toast.info(
-      `Tracking ${ref}: our operations team will share the latest status with you shortly.`,
-    );
+    toast.info(t.widget.trackToast(ref));
   };
+
+  const inputClass =
+    "w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20";
 
   return (
     <div className="w-full max-w-md rounded-3xl border border-white/15 bg-white/95 p-2 shadow-2xl shadow-black/30 backdrop-blur-md">
@@ -58,7 +53,7 @@ export function TrackQuoteWidget() {
           )}
         >
           <PackageSearch className="size-4" />
-          Instant Quote
+          {t.widget.instantQuote}
         </button>
         <button
           type="button"
@@ -71,7 +66,7 @@ export function TrackQuoteWidget() {
           )}
         >
           <Search className="size-4" />
-          Track Shipment
+          {t.widget.trackShipment}
         </button>
       </div>
 
@@ -80,14 +75,14 @@ export function TrackQuoteWidget() {
           <form onSubmit={handleQuote} className="space-y-3">
             <label className="block">
               <span className="mb-1 block text-xs font-medium text-slate-500">
-                Cargo type
+                {t.widget.cargoType}
               </span>
               <select
                 name="cargo"
-                defaultValue={CARGO_TYPES[0]}
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
+                defaultValue={t.widget.cargoTypes[0]}
+                className={inputClass}
               >
-                {CARGO_TYPES.map((c) => (
+                {t.widget.cargoTypes.map((c) => (
                   <option key={c}>{c}</option>
                 ))}
               </select>
@@ -95,24 +90,24 @@ export function TrackQuoteWidget() {
             <div className="grid grid-cols-2 gap-3">
               <label className="block">
                 <span className="mb-1 block text-xs font-medium text-slate-500">
-                  Origin
+                  {t.widget.origin}
                 </span>
                 <input
                   name="origin"
                   required
-                  placeholder="e.g. Jebel Ali"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
+                  placeholder={t.widget.originPh}
+                  className={inputClass}
                 />
               </label>
               <label className="block">
                 <span className="mb-1 block text-xs font-medium text-slate-500">
-                  Destination
+                  {t.widget.destination}
                 </span>
                 <input
                   name="destination"
                   required
-                  placeholder="e.g. Nhava Sheva"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
+                  placeholder={t.widget.destinationPh}
+                  className={inputClass}
                 />
               </label>
             </div>
@@ -120,23 +115,26 @@ export function TrackQuoteWidget() {
               type="submit"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ocean px-5 py-3 text-sm font-semibold text-brand shadow-lg transition-transform hover:scale-[1.01]"
             >
-              Get My Quote
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              {t.widget.getMyQuote}
+              <ArrowRight
+                data-flip-rtl
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+              />
             </button>
           </form>
         ) : (
           <form onSubmit={handleTrack} className="space-y-3">
             <label className="block">
               <span className="mb-1 block text-xs font-medium text-slate-500">
-                Booking / B-L number
+                {t.widget.bookingNumber}
               </span>
               <div className="relative">
-                <Ship className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+                <Ship className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
                 <input
                   name="ref"
                   required
                   placeholder="e.g. AWS-2026-00123"
-                  className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
+                  className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pe-3 ps-9 text-sm text-slate-800 outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                 />
               </div>
             </label>
@@ -144,11 +142,14 @@ export function TrackQuoteWidget() {
               type="submit"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01]"
             >
-              Track &amp; Trace
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              {t.widget.trackTrace}
+              <ArrowRight
+                data-flip-rtl
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+              />
             </button>
             <p className="text-center text-xs text-slate-400">
-              Enter your reference and our team will confirm the latest status.
+              {t.widget.trackHint}
             </p>
           </form>
         )}

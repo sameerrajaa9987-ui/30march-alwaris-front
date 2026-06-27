@@ -1,8 +1,10 @@
 import { Quote as QuoteIcon } from "lucide-react";
 import { QUOTES } from "../content";
+import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 
 export function ValuesQuotes() {
+  const t = useT();
   return (
     <section
       id="values"
@@ -22,9 +24,9 @@ export function ValuesQuotes() {
       <div className="relative mx-auto max-w-5xl px-5 lg:px-8">
         <SectionHeader
           index="05"
-          kicker="Our Guiding Values"
-          title="Inspired by timeless teachings"
-          description="The principles of Haji Waris Ali Shah — humility, sincerity and unwavering faith — shape the way we serve every client."
+          kicker={t.values.kicker}
+          title={t.values.title}
+          description={t.values.description}
           align="center"
           tone="light"
         />
@@ -33,9 +35,10 @@ export function ValuesQuotes() {
           {QUOTES.map((q, i) => (
             <figure
               key={i}
-              className="relative rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm sm:p-12"
+              dir="ltr"
+              className="relative rounded-3xl border border-white/10 bg-white/[0.04] p-8 text-start backdrop-blur-sm sm:p-12"
             >
-              <QuoteIcon className="absolute -top-5 left-8 size-12 text-ocean-light/30" />
+              <QuoteIcon className="absolute -top-5 start-8 size-12 text-ocean-light/30" />
 
               <blockquote className="font-quote text-xl italic leading-relaxed text-slate-100 sm:text-2xl">
                 &ldquo;{q.en}&rdquo;

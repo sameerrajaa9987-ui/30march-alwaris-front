@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { BRAND, NAV_LINKS, OFFICE, SERVICES } from "../content";
+import { BRAND, NAV_ITEMS, OFFICE } from "../content";
+import { useT } from "../i18n/language";
 import { LogoMark } from "./Logo";
 
+// Static build year — avoids per-render Date and keeps output deterministic.
+const YEAR = 2026;
+
 export function LandingFooter() {
+  const t = useT();
+
   return (
     <footer className="bg-brand-deep text-slate-300">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
@@ -17,24 +23,23 @@ export function LandingFooter() {
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              {BRAND.shortDescription} Every shipment entrusted to us is
-              honoured with dedication and accountability.
+              {t.footer.blurb}
             </p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Company
+            <h4 className="kicker text-sm font-semibold uppercase text-white">
+              {t.footer.company}
             </h4>
             <ul className="mt-4 space-y-3 text-sm">
-              {NAV_LINKS.map((l) => (
+              {NAV_ITEMS.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     className="text-slate-400 transition-colors hover:text-ocean-light"
                   >
-                    {l.label}
+                    {t.nav[l.key]}
                   </a>
                 </li>
               ))}
@@ -43,7 +48,7 @@ export function LandingFooter() {
                   to={BRAND.portalPath}
                   className="text-slate-400 transition-colors hover:text-ocean-light"
                 >
-                  Portal Login
+                  {t.nav.portalLogin}
                 </Link>
               </li>
             </ul>
@@ -51,17 +56,17 @@ export function LandingFooter() {
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Services
+            <h4 className="kicker text-sm font-semibold uppercase text-white">
+              {t.footer.services}
             </h4>
             <ul className="mt-4 space-y-3 text-sm">
-              {SERVICES.map((s) => (
+              {t.services.items.map((s) => (
                 <li key={s.title}>
                   <a
                     href="#services"
                     className="text-slate-400 transition-colors hover:text-ocean-light"
                   >
-                    {s.shortTitle}
+                    {s.title}
                   </a>
                 </li>
               ))}
@@ -70,15 +75,15 @@ export function LandingFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Contact
+            <h4 className="kicker text-sm font-semibold uppercase text-white">
+              {t.footer.contact}
             </h4>
             <ul className="mt-4 space-y-3 text-sm">
               <li className="flex gap-2.5 text-slate-400">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-ocean-light" />
                 <span>{OFFICE.addressLines.join(", ")}</span>
               </li>
-              <li className="flex items-center gap-2.5">
+              <li className="flex items-center gap-2.5" dir="ltr">
                 <Phone className="size-4 shrink-0 text-ocean-light" />
                 <a
                   href={`tel:${OFFICE.phone.replace(/\s/g, "")}`}
@@ -87,7 +92,7 @@ export function LandingFooter() {
                   {OFFICE.phone}
                 </a>
               </li>
-              <li className="flex items-center gap-2.5">
+              <li className="flex items-center gap-2.5" dir="ltr">
                 <Mail className="size-4 shrink-0 text-ocean-light" />
                 <a
                   href={`mailto:${OFFICE.email}`}
@@ -102,7 +107,7 @@ export function LandingFooter() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-slate-500 sm:flex-row">
           <p>
-            &copy; {YEAR} {BRAND.legalName}. All rights reserved.
+            &copy; {YEAR} {BRAND.legalName}. {t.footer.rights}
           </p>
           <p className="font-urdu text-base text-slate-400">
             اخلاص &middot; دیانت &middot; خدمت
@@ -112,6 +117,3 @@ export function LandingFooter() {
     </footer>
   );
 }
-
-// Static build year — avoids per-render Date and keeps output deterministic.
-const YEAR = 2026;

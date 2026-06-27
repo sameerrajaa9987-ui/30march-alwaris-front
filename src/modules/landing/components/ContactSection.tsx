@@ -2,9 +2,11 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Send, User2 } from "lucide-react";
 import { LEADERSHIP, OFFICE } from "../content";
+import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 
 export function ContactSection() {
+  const t = useT();
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -24,7 +26,7 @@ export function ContactSection() {
     );
     window.location.href = `mailto:${OFFICE.email}?subject=${subject}&body=${body}`;
 
-    toast.success("Thank you! Opening your email to send the enquiry.");
+    toast.success(t.contact.contactToast);
     form.reset();
     setSubmitting(false);
   };
@@ -34,9 +36,9 @@ export function ContactSection() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeader
           index="07"
-          kicker="Get In Touch"
-          title="Let's move forward together"
-          description="Reach out for quotes, partnerships or any logistics requirement. We respond with clarity and care."
+          kicker={t.contact.kicker}
+          title={t.contact.title}
+          description={t.contact.description}
         />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-14">
@@ -44,7 +46,7 @@ export function ContactSection() {
           <div>
             <div className="rounded-3xl border border-border bg-card p-7">
               <h3 className="text-lg font-semibold text-foreground">
-                Head Office
+                {t.contact.headOffice}
               </h3>
               <p className="mt-1 text-sm font-medium text-ocean-dark">
                 {OFFICE.agentName}
@@ -93,21 +95,21 @@ export function ContactSection() {
               className="mt-6 rounded-3xl border border-border bg-card p-7"
             >
               <h3 className="text-lg font-semibold text-foreground">
-                Send an Enquiry
+                {t.contact.sendEnquiry}
               </h3>
               <div className="mt-5 space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <input
                     name="name"
                     required
-                    placeholder="Your name"
+                    placeholder={t.contact.namePh}
                     className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                   />
                   <input
                     name="email"
                     type="email"
                     required
-                    placeholder="Email address"
+                    placeholder={t.contact.emailPh}
                     className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                   />
                 </div>
@@ -115,7 +117,7 @@ export function ContactSection() {
                   name="message"
                   required
                   rows={4}
-                  placeholder="Tell us about your shipment or requirement..."
+                  placeholder={t.contact.messagePh}
                   className="w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
                 />
                 <button
@@ -124,7 +126,7 @@ export function ContactSection() {
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-ocean-dark px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:opacity-60"
                 >
                   <Send className="size-4" />
-                  Send Enquiry
+                  {t.contact.sendBtn}
                 </button>
               </div>
             </form>
@@ -132,9 +134,11 @@ export function ContactSection() {
 
           {/* Right: leadership */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground">Our Team</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              {t.contact.ourTeam}
+            </h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Speak directly with the people who handle your shipments.
+              {t.contact.ourTeamSub}
             </p>
 
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -149,7 +153,7 @@ export function ContactSection() {
                     </span>
                     <div className="min-w-0">
                       <div className="text-xs font-semibold uppercase tracking-wide text-ocean-dark">
-                        {person.role}
+                        {t.contact.roles[person.roleKey]}
                       </div>
                       <div className="mt-0.5 font-medium leading-tight text-foreground">
                         {person.name}
@@ -157,7 +161,7 @@ export function ContactSection() {
                     </div>
                   </div>
 
-                  <div className="mt-4 space-y-2 text-sm">
+                  <div className="mt-4 space-y-2 text-sm" dir="ltr">
                     {person.mobile ? (
                       <a
                         href={`tel:${person.mobile.replace(/\s/g, "")}`}
@@ -169,7 +173,7 @@ export function ContactSection() {
                     ) : (
                       <span className="flex items-center gap-2 text-muted-foreground/60">
                         <Phone className="size-4" />
-                        On request
+                        {t.contact.onRequest}
                       </span>
                     )}
                     {person.email ? (
@@ -183,7 +187,7 @@ export function ContactSection() {
                     ) : (
                       <span className="flex items-center gap-2 text-muted-foreground/60">
                         <Mail className="size-4" />
-                        On request
+                        {t.contact.onRequest}
                       </span>
                     )}
                   </div>
