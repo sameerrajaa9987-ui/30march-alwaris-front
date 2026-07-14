@@ -35,6 +35,14 @@ export function LandingNav() {
           aria-label={BRAND.name}
         >
           <LogoMark className="size-14 shadow-lg shadow-black/20" />
+          <span className="hidden flex-col leading-tight sm:flex">
+            <span className="font-display text-base font-semibold tracking-tight lg:text-lg">
+              {BRAND.name}
+            </span>
+            <span className="kicker text-[10px] uppercase text-ocean-light/80">
+              {t.nav.subBrand}
+            </span>
+          </span>
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">
