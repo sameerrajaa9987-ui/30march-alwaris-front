@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { BRAND, NAV_ITEMS, OFFICE } from "../content";
 import { useT } from "../i18n/language";
 import { LogoMark } from "./Logo";
@@ -82,24 +82,6 @@ export function LandingFooter() {
               <li className="flex gap-2.5 text-slate-400">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-ocean-light" />
                 <span>{OFFICE.addressLines.join(", ")}</span>
-              </li>
-              <li className="flex items-center gap-2.5" dir="ltr">
-                <Phone className="size-4 shrink-0 text-ocean-light" />
-                <a
-                  href={`tel:${OFFICE.phone.replace(/\s/g, "")}`}
-                  className="text-slate-400 hover:text-ocean-light"
-                >
-                  {OFFICE.phone}
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5" dir="ltr">
-                <Mail className="size-4 shrink-0 text-ocean-light" />
-                <a
-                  href={`mailto:${OFFICE.email}`}
-                  className="text-slate-400 hover:text-ocean-light"
-                >
-                  {OFFICE.email}
-                </a>
               </li>
             </ul>
           </div>

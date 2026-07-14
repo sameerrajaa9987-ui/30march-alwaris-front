@@ -53,7 +53,7 @@ export function AboutSection() {
                 key={pillar.title}
                 className="group rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-ocean/40 hover:shadow-xl hover:shadow-brand/5"
               >
-                <div className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-brand to-ocean-dark text-white shadow-lg">
+                <div className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-brand to-ocean text-white shadow-lg">
                   <Icon className="size-6" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-foreground">

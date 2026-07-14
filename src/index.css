@@ -21,10 +21,10 @@ body {
 }
 
 /* Landing / public website typography */
-/* Headings: large, tight modern grotesk (Geist) — the 2026 logistics look. */
+/* Headings: elegant serif that echoes the Al Waris logo wordmark. */
 .font-display {
-  font-family: "Geist Variable", system-ui, sans-serif;
-  letter-spacing: -0.02em;
+  font-family: "Playfair Display", Georgia, serif;
+  letter-spacing: 0;
 }
 /* Reserved for the spiritual quotes only — an intentional editorial accent. */
 .font-quote {
@@ -35,9 +35,30 @@ body {
   direction: rtl;
   line-height: 2.4;
 }
+
+/* Premium navy + gold palette on a warm cream base — scoped to the public
+   site so the ERP portal keeps its cool neutral theme. */
 .landing-scroll {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+
+  --background: #f6f1e7;
+  --foreground: #14233f;
+  --card: #fdfbf6;
+  --card-foreground: #14233f;
+  --popover: #fdfbf6;
+  --popover-foreground: #14233f;
+  --primary: #10315f;
+  --primary-foreground: #fdfbf6;
+  --secondary: #efe7d6;
+  --secondary-foreground: #14233f;
+  --muted: #f0eadc;
+  --muted-foreground: #6d6650;
+  --accent: #ece3d0;
+  --accent-foreground: #14233f;
+  --border: #e3d8c3;
+  --input: #e3d8c3;
+  --ring: #c8972f;
 }
 
 /* Arabic / Persian (RTL) — modern Vazirmatn covers both scripts.

@@ -244,6 +244,7 @@ const en = {
     description:
       "Reach out for quotes, partnerships or any logistics requirement. We respond with clarity and care.",
     headOffice: "Head Office",
+    offices: "Our Offices",
     sendEnquiry: "Send an Enquiry",
     namePh: "Your name",
     emailPh: "Email address",
@@ -254,10 +255,10 @@ const en = {
     onRequest: "On request",
     contactToast: "Thank you! Opening your email to send the enquiry.",
     roles: {
-      md: "Managing Director",
+      md: "Manager",
       pricingHead: "Pricing Head",
       opHead: "Operation Head",
-      branchManager: "Branch Manager",
+      pricingManager: "Pricing Manager",
       salesManager: "Sales Manager",
     },
   },
@@ -501,6 +502,7 @@ const ar: Dict = {
     description:
       "تواصل معنا للحصول على عروض الأسعار أو الشراكات أو أي متطلّب لوجستي. نردّ بوضوح وعناية.",
     headOffice: "المكتب الرئيسي",
+    offices: "مكاتبنا",
     sendEnquiry: "أرسل استفسارًا",
     namePh: "اسمك",
     emailPh: "البريد الإلكتروني",
@@ -511,10 +513,10 @@ const ar: Dict = {
     onRequest: "عند الطلب",
     contactToast: "شكرًا لك! يتم فتح بريدك الإلكتروني لإرسال الاستفسار.",
     roles: {
-      md: "المدير الإداري",
+      md: "مدير",
       pricingHead: "رئيس التسعير",
       opHead: "رئيس العمليات",
-      branchManager: "مدير الفرع",
+      pricingManager: "مدير التسعير",
       salesManager: "مدير المبيعات",
     },
   },
@@ -759,6 +761,7 @@ const fa: Dict = {
     description:
       "برای دریافت قیمت، همکاری یا هر نیاز لجستیکی با ما تماس بگیرید. با شفافیت و دقت پاسخ می‌دهیم.",
     headOffice: "دفتر مرکزی",
+    offices: "دفاتر ما",
     sendEnquiry: "ارسال استعلام",
     namePh: "نام شما",
     emailPh: "نشانی ایمیل",
@@ -770,10 +773,10 @@ const fa: Dict = {
     onRequest: "در صورت درخواست",
     contactToast: "سپاس! ایمیل شما برای ارسال استعلام باز می‌شود.",
     roles: {
-      md: "مدیرعامل",
-      pricingHead: "مدیر قیمت‌گذاری",
+      md: "مدیر",
+      pricingHead: "سرپرست قیمت‌گذاری",
       opHead: "مدیر عملیات",
-      branchManager: "مدیر شعبه",
+      pricingManager: "مدیر قیمت‌گذاری",
       salesManager: "مدیر فروش",
     },
   },

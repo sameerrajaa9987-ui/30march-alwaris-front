@@ -29,16 +29,12 @@ export function LandingNav() {
       )}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href="#home" className="flex items-center gap-2.5 text-white">
-          <LogoMark className="size-10 shadow-lg shadow-brand/40" />
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-lg font-semibold tracking-tight">
-              {BRAND.name}
-            </span>
-            <span className="kicker text-[10px] uppercase text-ocean-light/80">
-              {t.nav.subBrand}
-            </span>
-          </span>
+        <a
+          href="#home"
+          className="flex items-center gap-3 text-white"
+          aria-label={BRAND.name}
+        >
+          <LogoMark className="size-14 shadow-lg shadow-black/20" />
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">

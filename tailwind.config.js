@@ -5,17 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Landing / brand palette — deep maritime navy + a single confident
-        // cerulean "ocean" accent (2026 logistics direction: Maersk/Flexport).
+        // Brand palette taken from the Al Waris logo: royal navy + gold.
+        // (`ocean` keeps its name for zero-churn, but now holds gold values.)
         brand: {
-          DEFAULT: "#0a2a43",
-          deep: "#06121f",
-          light: "#0e3a5c",
+          DEFAULT: "#10315f",
+          deep: "#0a1f3f",
+          light: "#1b4a86",
         },
         ocean: {
-          DEFAULT: "#0ba5c4",
-          light: "#5fd0e0",
-          dark: "#0a6a7d",
+          DEFAULT: "#c8972f", // rich gold
+          light: "#e6bd57", // bright gold — accents on dark navy
+          dark: "#8a6712", // deep gold — readable text on white
         },
         border: "var(--border)",
         input: "var(--input)",

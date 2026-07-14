@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Send, User2 } from "lucide-react";
-import { LEADERSHIP, OFFICE } from "../content";
+import { LEADERSHIP, OFFICE, OFFICES } from "../content";
 import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 
@@ -46,47 +46,71 @@ export function ContactSection() {
           <div>
             <div className="rounded-3xl border border-border bg-card p-7">
               <h3 className="text-lg font-semibold text-foreground">
-                {t.contact.headOffice}
+                {t.contact.offices}
               </h3>
-              <p className="mt-1 text-sm font-medium text-ocean-dark">
-                {OFFICE.agentName}
-              </p>
 
-              <ul className="mt-5 space-y-4 text-sm">
-                <li className="flex gap-3 text-muted-foreground">
-                  <MapPin className="mt-0.5 size-5 shrink-0 text-ocean-dark" />
-                  <span>{OFFICE.addressLines.join(", ")}</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Phone className="size-5 shrink-0 text-ocean-dark" />
-                  <a
-                    href={`tel:${OFFICE.phone.replace(/\s/g, "")}`}
-                    className="text-muted-foreground hover:text-foreground"
+              <div className="mt-5 divide-y divide-border">
+                {OFFICES.map((office) => (
+                  <div
+                    key={office.region}
+                    className="py-5 first:pt-0 last:pb-0"
                   >
-                    {OFFICE.phone}
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail className="size-5 shrink-0 text-ocean-dark" />
-                  <a
-                    href={`mailto:${OFFICE.email}`}
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    {OFFICE.email}
-                  </a>
-                </li>
-              </ul>
+                    <div className="flex items-center gap-2">
+                      <span className="kicker text-[11px] font-semibold uppercase text-ocean-dark">
+                        {office.region}
+                      </span>
+                      {office.primary && (
+                        <span className="rounded-full bg-ocean/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ocean-dark">
+                          HQ
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-1.5 text-sm font-semibold text-foreground">
+                      {office.company}
+                    </p>
 
-              <div className="mt-6 overflow-hidden rounded-2xl border border-border">
-                <iframe
-                  title="Office location"
-                  className="h-56 w-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                    OFFICE.mapsQuery,
-                  )}&output=embed`}
-                />
+                    <ul className="mt-2 space-y-2 text-sm">
+                      <li className="flex gap-3 text-muted-foreground">
+                        <MapPin className="mt-0.5 size-4 shrink-0 text-ocean-dark" />
+                        <span>{office.addressLines.join(", ")}</span>
+                      </li>
+                      {office.phone && (
+                        <li className="flex items-center gap-3" dir="ltr">
+                          <Phone className="size-4 shrink-0 text-ocean-dark" />
+                          <a
+                            href={`tel:${office.phone.replace(/\s/g, "")}`}
+                            className="text-muted-foreground hover:text-foreground"
+                          >
+                            {office.phone}
+                          </a>
+                        </li>
+                      )}
+                      {office.email && (
+                        <li className="flex items-center gap-3" dir="ltr">
+                          <Mail className="size-4 shrink-0 text-ocean-dark" />
+                          <a
+                            href={`mailto:${office.email}`}
+                            className="text-muted-foreground hover:text-foreground"
+                          >
+                            {office.email}
+                          </a>
+                        </li>
+                      )}
+                    </ul>
+
+                    <div className="mt-4 overflow-hidden rounded-2xl border border-border">
+                      <iframe
+                        title={`${office.region} office location`}
+                        className="h-48 w-full"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                          office.mapsQuery,
+                        )}&output=embed`}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -123,7 +147,7 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-ocean-dark px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:opacity-60"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:opacity-60"
                 >
                   <Send className="size-4" />
                   {t.contact.sendBtn}

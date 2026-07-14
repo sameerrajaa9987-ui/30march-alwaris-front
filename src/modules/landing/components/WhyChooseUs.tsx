@@ -65,7 +65,7 @@ export function WhyChooseUs() {
                 )}
               >
                 <div className="flex items-start justify-between">
-                  <span className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand to-ocean-dark text-white shadow-lg">
+                  <span className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand to-ocean text-white shadow-lg">
                     <Icon className="size-6" />
                   </span>
                   <ArrowUpRight

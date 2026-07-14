@@ -151,7 +151,7 @@ export const LEADERSHIP: Contact[] = [
     mobile: "+971 566838366",
     email: "ops2@alwarisshipping.com",
   },
-  { name: "Shabina Sayyed", roleKey: "branchManager" },
+  { name: "Shabina Sayyed", roleKey: "pricingManager" },
   {
     name: "Arbaz Nawab Shaikh",
     roleKey: "salesManager",
@@ -160,15 +160,46 @@ export const LEADERSHIP: Contact[] = [
   },
 ];
 
+export type Office = {
+  region: string;
+  company: string;
+  addressLines: string[];
+  phone?: string;
+  email?: string;
+  mapsQuery: string;
+  primary?: boolean;
+};
+
+export const OFFICES: Office[] = [
+  {
+    region: "Malaysia",
+    company: "Asia Sea Shipping and Logistic Sdn. Bhd.",
+    addressLines: [
+      "Suite #16-01, Level 16, Centro Mall",
+      "No. 8, Jalan Batu Tiga Lama, Klang",
+      "Selangor Darul Ehsan, Malaysia — 41300",
+    ],
+    mapsQuery:
+      "Centro Mall, Jalan Batu Tiga Lama, Klang, Selangor, Malaysia 41300",
+  },
+  {
+    region: "India",
+    company: "Trans Logicare Private Limited / Al Waris Shipping Lines LLC",
+    addressLines: [
+      "Skylark, Plot No. 63, Off B 101-110",
+      "Sector 11, CBD Belapur",
+      "Thane, Maharashtra, India — 400614",
+    ],
+    mapsQuery:
+      "Skylark, Sector 11, CBD Belapur, Navi Mumbai, Maharashtra 400614, India",
+  },
+];
+
+// The primary office backs the contact/quote mailto links and the footer.
 export const OFFICE = {
-  agentName: "Trans Vision Sea Shipping Lines Agent LLC",
-  addressLines: [
-    "B.M.I. Building, Bank Street, Office No. 508, 5th Floor",
-    "Khaleed Bin Waleed Street, D79",
-    "Al Mankhool — 3170233, Bur Dubai, UAE",
-  ],
-  email: "ops1@alwarisshipping.com",
-  phone: "+971 505384931",
-  mapsQuery:
-    "B.M.I. Building, Khalid Bin Al Waleed Street, Bur Dubai, Dubai, UAE",
+  agentName: OFFICES[0].company,
+  addressLines: OFFICES[0].addressLines,
+  email: OFFICES[0].email ?? "ops1@alwarisshipping.com",
+  phone: OFFICES[0].phone ?? "+971 505384931",
+  mapsQuery: OFFICES[0].mapsQuery,
 };
