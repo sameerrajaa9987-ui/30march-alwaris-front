@@ -1,6 +1,5 @@
 import { IMAGES, PILLAR_ICONS } from "../content";
 import { useT } from "../i18n/language";
-import { DuotoneImage } from "./DuotoneImage";
 
 export function AboutSection() {
   const t = useT();
@@ -11,11 +10,14 @@ export function AboutSection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Image */}
           <div className="relative">
-            <DuotoneImage
-              src={IMAGES.about}
-              alt="Logistics warehouse operations"
-              className="aspect-[4/5] w-full rounded-3xl shadow-2xl shadow-slate-900/20"
-            />
+            <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-2xl shadow-slate-900/20">
+              <img
+                src={IMAGES.about}
+                alt="Al Waris warehouse operations"
+                loading="lazy"
+                className="size-full object-cover"
+              />
+            </div>
             <div className="absolute -bottom-6 -end-2 hidden rounded-2xl border border-border bg-card p-5 shadow-xl sm:block lg:-end-6">
               <div className="font-display text-3xl font-semibold text-primary">
                 {t.about.badge}

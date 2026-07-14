@@ -1,5 +1,5 @@
 import { Quote as QuoteIcon } from "lucide-react";
-import { QUOTES } from "../content";
+import { IMAGES, QUOTES } from "../content";
 import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 
@@ -10,6 +10,14 @@ export function ValuesQuotes() {
       id="values"
       className="relative overflow-hidden bg-brand py-24 lg:py-32"
     >
+      {/* Faint trade-routes backdrop */}
+      <img
+        src={IMAGES.valuesBg}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="pointer-events-none absolute inset-0 size-full object-cover opacity-[0.10] mix-blend-luminosity"
+      />
       {/* Subtle pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"

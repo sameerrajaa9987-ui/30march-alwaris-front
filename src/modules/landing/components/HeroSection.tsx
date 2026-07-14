@@ -15,13 +15,13 @@ export function HeroSection() {
       <div className="absolute inset-0 -z-10">
         <img
           src={IMAGES.hero}
-          alt="Container ship at sea"
-          className="size-full object-cover grayscale-[0.55] contrast-[1.03]"
+          alt="Al Waris container ship at sunset"
+          className="size-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-brand opacity-40 mix-blend-color" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/92 to-brand-deep/55 rtl:bg-gradient-to-l" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/20 to-brand-deep/70" />
+        {/* Left gradient keeps the headline legible; the sunset shows on the right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/80 to-brand-deep/25 rtl:bg-gradient-to-l" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-transparent to-brand-deep/40" />
       </div>
 
       <div className="pointer-events-none absolute -right-24 top-1/4 size-96 rounded-full bg-ocean/20 blur-3xl" />

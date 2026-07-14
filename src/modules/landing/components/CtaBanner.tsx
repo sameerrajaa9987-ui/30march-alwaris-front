@@ -10,12 +10,11 @@ export function CtaBanner() {
       <div className="absolute inset-0">
         <img
           src={IMAGES.cta}
-          alt="Cargo trucks and container ship at sunset"
-          className="size-full object-cover grayscale-[0.55] contrast-[1.03]"
+          alt="Port at sunset with a container ship arriving"
+          className="size-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-brand opacity-40 mix-blend-color" />
-        <div className="absolute inset-0 bg-brand/85" />
+        <div className="absolute inset-0 bg-brand/80" />
       </div>
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-5 text-center lg:flex-row lg:justify-between lg:px-8 lg:text-start">

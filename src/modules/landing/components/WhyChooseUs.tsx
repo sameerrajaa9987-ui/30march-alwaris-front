@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { FEATURE_ICONS } from "../content";
+import { FEATURE_ICONS, IMAGES } from "../content";
 import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
@@ -38,6 +38,14 @@ export function WhyChooseUs() {
               SPANS[0],
             )}
           >
+            <img
+              src={IMAGES.featured}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="pointer-events-none absolute inset-0 size-full object-cover opacity-25 mix-blend-luminosity"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand via-brand/70 to-brand/40" />
             <div className="pointer-events-none absolute -end-16 -top-16 size-56 rounded-full bg-ocean/20 blur-3xl transition-transform duration-700 group-hover:scale-125" />
             <div className="relative grid size-14 place-items-center rounded-2xl bg-white/10 text-ocean-light ring-1 ring-white/15">
               <FeaturedIcon className="size-7" />

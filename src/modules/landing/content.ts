@@ -32,11 +32,21 @@ export const BRAND = {
   portalPath: "/login",
 };
 
+// Client-supplied photography (files live in /public).
 export const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2070&q=80",
-  about:
-    "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1600&q=80",
-  cta: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2070&q=80",
+  hero: "/hero-ship-sunset.jpg",
+  about: "/warehouse-interior.jpg",
+  cta: "/port-sunset.jpg",
+  featured: "/port-cranes-dusk.jpg", // Why-Us featured tile backdrop
+  valuesBg: "/trade-routes-map.jpg", // faint backdrop on the navy values section
+  gallery: [
+    "/container-ship-sea.jpg",
+    "/container-yard-aerial.jpg",
+    "/logistics-multimodal.jpg",
+    "/multimodal-truck-ship.jpg",
+    "/cargo-ship-worldmap.jpg",
+    "/global-network.jpg",
+  ],
 };
 
 // nav keys map to t.nav[key]

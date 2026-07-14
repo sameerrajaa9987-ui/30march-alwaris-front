@@ -8,6 +8,7 @@ import { Marquee } from "../components/Marquee";
 import { AboutSection } from "../components/AboutSection";
 import { WhyChooseUs } from "../components/WhyChooseUs";
 import { ServicesSection } from "../components/ServicesSection";
+import { GalleryStrip } from "../components/GalleryStrip";
 import { ProcessSection } from "../components/ProcessSection";
 import { ValuesQuotes } from "../components/ValuesQuotes";
 import { CtaBanner } from "../components/CtaBanner";
@@ -44,6 +45,7 @@ function LandingShell() {
         <AboutSection />
         <WhyChooseUs />
         <ServicesSection />
+        <GalleryStrip />
         <ProcessSection />
         <ValuesQuotes />
         <CtaBanner />
