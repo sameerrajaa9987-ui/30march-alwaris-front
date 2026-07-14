@@ -27,7 +27,7 @@ import type { Dict } from "./i18n/translations";
  */
 
 export const BRAND = {
-  name: "Al Waris Shipping Lines",
+  name: "Al Waris Shipping Lines LLC",
   legalName: "Al Waris Shipping Lines LLC",
   portalPath: "/login",
 };
@@ -70,11 +70,8 @@ export const MARQUEE_ITEMS = [
   "Sea Freight",
   "3PL Warehousing",
   "Inland Transport",
-  "Dubai → Nhava Sheva",
-  "Jebel Ali → Karachi",
-  "Bur Dubai → Mundra",
   "Own Containers",
-  "Customs & Documentation",
+  "Customs Clearance & Documentation",
   "Over-Dimension Cargo",
 ];
 
