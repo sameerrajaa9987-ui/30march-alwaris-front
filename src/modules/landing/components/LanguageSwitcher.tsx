@@ -51,13 +51,20 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                   setOpen(false);
                 }}
                 className={cn(
-                  "flex w-full items-center justify-between px-4 py-2.5 text-sm transition-colors hover:bg-secondary",
+                  "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-secondary",
                   l.code === lang && "font-semibold text-ocean-dark",
                 )}
-                dir={l.dir}
+                dir="ltr"
               >
-                {l.label}
-                {l.code === lang && <Check className="size-4" />}
+                <span className="flex items-baseline gap-2">
+                  <span dir={l.dir}>{l.label}</span>
+                  {l.english !== l.label && (
+                    <span className="text-xs text-muted-foreground">
+                      {l.english}
+                    </span>
+                  )}
+                </span>
+                {l.code === lang && <Check className="size-4 shrink-0" />}
               </button>
             </li>
           ))}

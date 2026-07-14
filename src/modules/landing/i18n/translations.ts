@@ -6,10 +6,15 @@
 
 export type Lang = "en" | "ar" | "fa";
 
-export const LANGS: { code: Lang; label: string; dir: "ltr" | "rtl" }[] = [
-  { code: "en", label: "English", dir: "ltr" },
-  { code: "ar", label: "العربية", dir: "rtl" },
-  { code: "fa", label: "فارسی", dir: "rtl" },
+export const LANGS: {
+  code: Lang;
+  label: string;
+  english: string;
+  dir: "ltr" | "rtl";
+}[] = [
+  { code: "en", label: "English", english: "English", dir: "ltr" },
+  { code: "ar", label: "العربية", english: "Arabic", dir: "rtl" },
+  { code: "fa", label: "فارسی", english: "Persian", dir: "rtl" },
 ];
 
 const en = {
