@@ -68,7 +68,7 @@ export const MARQUEE_ITEMS = [
   "Freight Forwarding",
   "Project Cargo",
   "Sea Freight",
-  "3PL Warehousing",
+  "Warehousing",
   "Inland Transport",
   "Own Containers",
   "Customs Clearance & Documentation",

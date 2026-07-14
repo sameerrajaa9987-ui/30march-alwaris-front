@@ -30,7 +30,7 @@ const en = {
     titlePre: "Moving Trust Across",
     titleHighlight: "Borders",
     subtitle:
-      "Al Waris Shipping Lines LLC — NVOCC, freight forwarding, project cargo, transportation and 3PL warehousing, managed with integrity, precision and unwavering reliability.",
+      "Al Waris Shipping Lines LLC — NVOCC, freight forwarding, project cargo, transportation and warehousing, managed with integrity, precision and unwavering reliability.",
     requestQuote: "Request a Quote",
     exploreServices: "Explore Services",
     trustLine: "Trusted handling · transparent pricing · 24/7 operations",
@@ -59,7 +59,7 @@ const en = {
       "FCL — Full Container Load",
       "LCL — Less than Container Load",
       "Project / Over-Dimension Cargo",
-      "Warehousing / 3PL",
+      "Warehousing",
       "Inland Transportation",
     ],
     quoteToast: "Great! Opening your email so our pricing desk can respond.",
@@ -165,7 +165,7 @@ const en = {
           "Reliable inland transportation and last-mile delivery, ensuring every consignment moves on time and arrives in perfect condition.",
       },
       {
-        title: "3PL Warehousing",
+        title: "Warehousing",
         description:
           "Third-party logistics and warehousing solutions — storage, inventory and distribution managed with responsibility and transparency.",
       },
@@ -218,7 +218,7 @@ const en = {
     items: [
       {
         q: "What shipping services do you provide?",
-        a: "We offer NVOCC services with our own containers, shipping-agency representation, freight forwarding, over-dimension and project cargo handling, inland transportation, and 3PL warehousing — end to end under one roof.",
+        a: "We offer NVOCC services with our own containers, shipping-agency representation, freight forwarding, over-dimension and project cargo handling, inland transportation, and warehousing — end to end under one roof.",
       },
       {
         q: "How do I get a quote?",
@@ -292,7 +292,7 @@ const ar: Dict = {
     titlePre: "ننقل الثقة عبر",
     titleHighlight: "الحدود",
     subtitle:
-      "الواريث شيبنغ لاينز ش.ذ.م.م — خدمات NVOCC، والشحن والتخليص، والبضائع المشاريعية، والنقل، والتخزين اللوجستي 3PL، تُدار بنزاهة ودقة وموثوقية لا تتزعزع.",
+      "الواريث شيبنغ لاينز ش.ذ.م.م — خدمات NVOCC، والشحن والتخليص، والبضائع المشاريعية، والنقل، والتخزين، تُدار بنزاهة ودقة وموثوقية لا تتزعزع.",
     requestQuote: "اطلب عرض سعر",
     exploreServices: "استكشف خدماتنا",
     trustLine: "مناولة موثوقة · تسعير شفّاف · عمليات على مدار الساعة",
@@ -320,7 +320,7 @@ const ar: Dict = {
       "FCL — حمولة حاوية كاملة",
       "LCL — أقل من حمولة حاوية",
       "بضائع مشاريعية / غير قياسية الأبعاد",
-      "تخزين / 3PL",
+      "تخزين",
       "النقل البري",
     ],
     quoteToast: "رائع! يتم فتح بريدك الإلكتروني ليتمكّن فريق التسعير من الرد.",
@@ -424,7 +424,7 @@ const ar: Dict = {
           "نقل برّي موثوق وتسليم حتى الميل الأخير، لضمان وصول كل شحنة في وقتها وبحالة مثالية.",
       },
       {
-        title: "تخزين لوجستي 3PL",
+        title: "التخزين",
         description:
           "حلول الطرف الثالث للخدمات اللوجستية والتخزين — تخزين وجرد وتوزيع يُدار بمسؤولية وشفافية.",
       },
@@ -476,7 +476,7 @@ const ar: Dict = {
     items: [
       {
         q: "ما الخدمات التي تقدّمونها في الشحن؟",
-        a: "نقدّم خدمات NVOCC بحاوياتنا الخاصة، وتمثيل وكالة الشحن، والشحن والتخليص، ومناولة البضائع غير القياسية والمشاريعية، والنقل البري، والتخزين اللوجستي 3PL — من البداية إلى النهاية تحت سقف واحد.",
+        a: "نقدّم خدمات NVOCC بحاوياتنا الخاصة، وتمثيل وكالة الشحن، والشحن والتخليص، ومناولة البضائع غير القياسية والمشاريعية، والنقل البري، والتخزين — من البداية إلى النهاية تحت سقف واحد.",
       },
       {
         q: "كيف أحصل على عرض سعر؟",
@@ -548,7 +548,7 @@ const fa: Dict = {
     titlePre: "انتقال اعتماد فراتر از",
     titleHighlight: "مرزها",
     subtitle:
-      "شرکت الواریث شیپینگ لاینز — NVOCC، حمل‌ونقل بار، محموله‌های پروژه‌ای، ترابری و انبارداری ۳PL، با درستکاری، دقت و قابلیت اطمینان بی‌وقفه مدیریت می‌شود.",
+      "شرکت الواریث شیپینگ لاینز — NVOCC، حمل‌ونقل بار، محموله‌های پروژه‌ای، ترابری و انبارداری، با درستکاری، دقت و قابلیت اطمینان بی‌وقفه مدیریت می‌شود.",
     requestQuote: "درخواست قیمت",
     exploreServices: "مشاهده خدمات",
     trustLine: "جابجایی مطمئن · قیمت‌گذاری شفاف · عملیات ۲۴/۷",
@@ -577,7 +577,7 @@ const fa: Dict = {
       "FCL — بار کامل کانتینر",
       "LCL — کمتر از یک کانتینر",
       "محموله پروژه‌ای / فوق‌ابعاد",
-      "انبارداری / 3PL",
+      "انبارداری",
       "حمل‌ونقل زمینی",
     ],
     quoteToast: "عالی! ایمیل شما باز می‌شود تا واحد قیمت‌گذاری ما پاسخ دهد.",
@@ -683,7 +683,7 @@ const fa: Dict = {
           "حمل زمینی مطمئن و تحویل تا آخرین مرحله، تا هر محموله به‌موقع و در وضعیت عالی برسد.",
       },
       {
-        title: "انبارداری 3PL",
+        title: "انبارداری",
         description:
           "راهکارهای لجستیک شخص ثالث و انبارداری — نگهداری، موجودی و توزیع با مسئولیت و شفافیت.",
       },
@@ -735,7 +735,7 @@ const fa: Dict = {
     items: [
       {
         q: "چه خدمات حمل‌ونقلی ارائه می‌دهید؟",
-        a: "خدمات NVOCC با کانتینرهای اختصاصی، نمایندگی کشتیرانی، حمل‌ونقل بار، جابجایی محموله‌های فوق‌ابعاد و پروژه‌ای، ترابری زمینی و انبارداری 3PL — سرتاسری و زیر یک سقف.",
+        a: "خدمات NVOCC با کانتینرهای اختصاصی، نمایندگی کشتیرانی، حمل‌ونقل بار، جابجایی محموله‌های فوق‌ابعاد و پروژه‌ای، ترابری زمینی و انبارداری — سرتاسری و زیر یک سقف.",
       },
       {
         q: "چگونه قیمت بگیرم؟",
