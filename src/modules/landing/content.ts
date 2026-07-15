@@ -86,7 +86,9 @@ export const MARQUEE_ITEMS = [
   "Warehousing",
   "Inland Transport",
   "Own Containers",
-  "Custom Clearance & Documentation",
+  "Custom Clearance",
+  "Cross Stuffing",
+  "Cross Trading",
   "Over-Dimension Cargo",
 ];
 
