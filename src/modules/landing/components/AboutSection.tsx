@@ -13,7 +13,7 @@ export function AboutSection() {
             <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-2xl shadow-slate-900/20">
               <img
                 src={IMAGES.about}
-                alt="Al Waris warehouse operations"
+                alt="Aerial view of Al Waris container terminal operations"
                 loading="lazy"
                 className="size-full object-cover"
               />

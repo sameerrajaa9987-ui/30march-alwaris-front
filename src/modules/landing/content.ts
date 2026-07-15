@@ -38,13 +38,15 @@ export const BRAND = {
 // Client-supplied photography (files live in /public).
 export const IMAGES = {
   hero: "/hero-ship-sunset.jpg",
-  about: "/warehouse-interior.jpg",
+  // Highest-resolution photo (1600x1167) — the About slot renders large, so a
+  // smaller source visibly softens on high-DPI screens.
+  about: "/container-yard-aerial.jpg",
   cta: "/port-sunset.jpg",
   featured: "/port-cranes-dusk.jpg", // Why-Us featured tile backdrop
   valuesBg: "/trade-routes-map.jpg", // faint backdrop on the navy values section
   gallery: [
     "/container-ship-sea.jpg",
-    "/container-yard-aerial.jpg",
+    "/warehouse-interior.jpg",
     "/logistics-multimodal.jpg",
     "/multimodal-truck-ship.jpg",
     "/cargo-ship-worldmap.jpg",

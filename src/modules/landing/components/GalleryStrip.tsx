@@ -2,7 +2,7 @@ import { IMAGES } from "../content";
 
 const ALTS = [
   "Container vessel at sea",
-  "Aerial view of a container terminal",
+  "Warehouse and storage operations",
   "Multimodal transport at sunset",
   "Cargo ship and road freight",
   "Global cargo shipping",
