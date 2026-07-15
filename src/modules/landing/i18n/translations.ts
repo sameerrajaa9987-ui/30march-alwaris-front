@@ -174,6 +174,21 @@ const en = {
         description:
           "Third-party logistics and warehousing solutions — storage, inventory and distribution managed with responsibility and transparency.",
       },
+      {
+        title: "Custom Clearance",
+        description:
+          "Complete customs documentation and clearance handled by our specialists — swift, compliant and transparent at every port.",
+      },
+      {
+        title: "Cross Stuffing",
+        description:
+          "Safe transfer of cargo between containers or trailers — carefully handled, fully supervised and documented at every step.",
+      },
+      {
+        title: "Cross Trading",
+        description:
+          "Third-country trade managed end to end — we move cargo between two overseas ports without it passing through your home country.",
+      },
     ],
   },
   process: {
@@ -433,6 +448,21 @@ const ar: Dict = {
         description:
           "حلول الطرف الثالث للخدمات اللوجستية والتخزين — تخزين وجرد وتوزيع يُدار بمسؤولية وشفافية.",
       },
+      {
+        title: "التخليص الجمركي",
+        description:
+          "إعداد كامل للمستندات الجمركية والتخليص على يد مختصّينا — بسرعة وامتثال وشفافية في كل ميناء.",
+      },
+      {
+        title: "إعادة التستيف بين الحاويات",
+        description:
+          "نقل آمن للبضائع بين الحاويات أو المقطورات — بمناولة دقيقة وإشراف كامل وتوثيق في كل خطوة.",
+      },
+      {
+        title: "التجارة العابرة",
+        description:
+          "تجارة الطرف الثالث تُدار من البداية إلى النهاية — ننقل البضائع بين ميناءين خارجيين دون مرورها ببلدك.",
+      },
     ],
   },
   process: {
@@ -691,6 +721,21 @@ const fa: Dict = {
         title: "انبارداری",
         description:
           "راهکارهای لجستیک شخص ثالث و انبارداری — نگهداری، موجودی و توزیع با مسئولیت و شفافیت.",
+      },
+      {
+        title: "ترخیص گمرکی",
+        description:
+          "تهیه‌ی کامل اسناد گمرکی و ترخیص توسط متخصصان ما — سریع، منطبق با مقررات و شفاف در هر بندر.",
+      },
+      {
+        title: "جابجایی بار بین کانتینرها",
+        description:
+          "انتقال ایمن بار میان کانتینرها یا تریلرها — با جابجایی دقیق، نظارت کامل و مستندسازی در هر مرحله.",
+      },
+      {
+        title: "تجارت سه‌جانبه",
+        description:
+          "تجارت کشور ثالث به‌صورت سرتاسری — بار را میان دو بندر خارجی جابجا می‌کنیم بدون آنکه از کشور شما عبور کند.",
       },
     ],
   },

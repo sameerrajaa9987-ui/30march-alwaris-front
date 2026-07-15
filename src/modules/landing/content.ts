@@ -16,6 +16,9 @@ import {
   ShieldCheck,
   Eye,
   Handshake,
+  FileCheck2,
+  Replace,
+  ArrowLeftRight,
   type LucideIcon,
 } from "lucide-react";
 import type { Dict } from "./i18n/translations";
@@ -65,7 +68,7 @@ export const STATS: {
   valueKey?: keyof Dict["stats"];
   labelKey: keyof Dict["stats"];
 }[] = [
-  { value: "6+", labelKey: "coreServices" },
+  { value: "9", labelKey: "coreServices" },
   { value: "100%", labelKey: "onTrust" },
   { value: "24/7", labelKey: "operationsSupport" },
   { valueKey: "globalValue", labelKey: "reachNetwork" },
@@ -81,7 +84,7 @@ export const MARQUEE_ITEMS = [
   "Warehousing",
   "Inland Transport",
   "Own Containers",
-  "Customs Clearance & Documentation",
+  "Custom Clearance & Documentation",
   "Over-Dimension Cargo",
 ];
 
@@ -93,6 +96,9 @@ export const SERVICE_ICONS: LucideIcon[] = [
   PackageOpen,
   Truck,
   Warehouse,
+  FileCheck2, // Custom Clearance
+  Replace, // Cross Stuffing
+  ArrowLeftRight, // Cross Trading
 ];
 
 export const FEATURE_ICONS: LucideIcon[] = [
