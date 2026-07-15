@@ -10,6 +10,11 @@ const LandingPage = lazy(() =>
     default: m.LandingPage,
   })),
 );
+const ServicePage = lazy(() =>
+  import("./modules/landing/pages/ServicePage").then((m) => ({
+    default: m.ServicePage,
+  })),
+);
 const LoginPage = lazy(() =>
   import("./modules/auth/pages/LoginPage").then((m) => ({
     default: m.LoginPage,
@@ -57,6 +62,7 @@ export default function App() {
       <Routes>
         {/* Public marketing website */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/services/:slug" element={<ServicePage />} />
         <Route path="/login" element={<LoginPage />} />
 
         {/* Authenticated portal (pathless layout route) */}

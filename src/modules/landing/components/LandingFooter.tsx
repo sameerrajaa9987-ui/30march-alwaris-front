@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin } from "lucide-react";
-import { BRAND, NAV_ITEMS, OFFICE } from "../content";
+import { BRAND, NAV_ITEMS, OFFICE, SERVICE_META } from "../content";
 import { useT } from "../i18n/language";
 import { LogoMark } from "./Logo";
 
@@ -60,14 +60,14 @@ export function LandingFooter() {
               {t.footer.services}
             </h4>
             <ul className="mt-4 space-y-3 text-sm">
-              {t.services.items.map((s) => (
+              {t.services.items.map((s, i) => (
                 <li key={s.title}>
-                  <a
-                    href="#services"
+                  <Link
+                    to={`/services/${SERVICE_META[i].slug}`}
                     className="text-slate-400 transition-colors hover:text-ocean-light"
                   >
                     {s.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

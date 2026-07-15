@@ -148,48 +148,114 @@ const en = {
         title: "NVOCC — Own Containers",
         description:
           "Non-Vessel Operating Common Carrier services with our own container fleet, giving you greater control, competitive rates and dependable space.",
+        highlights: [
+          "Our own container fleet — dependable equipment availability without third-party delays",
+          "Competitive, transparent box and slot rates",
+          "FCL and LCL options with consolidation support",
+          "Bill of Lading issuance and complete cargo documentation",
+        ],
       },
       {
         title: "NVOCC — Shipping Agency",
         description:
           "Full shipping-agency representation — bookings, documentation and port coordination handled with precision and accountability.",
+        highlights: [
+          "Vessel booking and space management",
+          "Port coordination, berthing and terminal liaison",
+          "Bills of Lading, manifests and cargo declarations",
+          "Local representation with clear, accountable reporting",
+        ],
       },
       {
         title: "Over Dimension / Project Cargo",
         description:
           "Specialised handling of heavy-lift, out-of-gauge and project cargo, engineered and executed with the highest level of care.",
+        highlights: [
+          "Route surveys and lift planning for out-of-gauge cargo",
+          "Flat-rack, open-top and breakbulk solutions",
+          "Heavy-lift coordination with certified equipment",
+          "End-to-end supervision from origin to final site",
+        ],
       },
       {
         title: "Freight Forwarding",
         description:
           "End-to-end sea and multimodal freight forwarding, connecting your business across borders with clear communication at every step.",
+        highlights: [
+          "Door-to-door sea and multimodal forwarding",
+          "FCL, LCL and consolidation services",
+          "Cargo insurance and documentation support",
+          "Clear milestone updates at every stage",
+        ],
       },
       {
         title: "Transportation",
         description:
           "Reliable inland transportation and last-mile delivery, ensuring every consignment moves on time and arrives in perfect condition.",
+        highlights: [
+          "Inland haulage and last-mile delivery",
+          "Container trucking and trailer movements",
+          "Time-bound scheduling with live coordination",
+          "Careful handling for sensitive consignments",
+        ],
       },
       {
         title: "Warehousing",
         description:
           "Third-party logistics and warehousing solutions — storage, inventory and distribution managed with responsibility and transparency.",
+        highlights: [
+          "Secure short-term and long-term storage",
+          "Inventory management and stock reporting",
+          "Pick, pack and distribution support",
+          "Cargo handling with full accountability",
+        ],
       },
       {
         title: "Custom Clearance",
         description:
           "Complete customs documentation and clearance handled by our specialists — swift, compliant and transparent at every port.",
+        highlights: [
+          "Import and export customs documentation",
+          "Duty, tariff and HS-code guidance",
+          "Regulatory compliance at every port",
+          "Fast clearance with transparent status updates",
+        ],
       },
       {
         title: "Cross Stuffing",
         description:
           "Safe transfer of cargo between containers or trailers — carefully handled, fully supervised and documented at every step.",
+        highlights: [
+          "Container-to-container and container-to-trailer transfers",
+          "Supervised handling that protects cargo integrity",
+          "Re-packing, re-labelling and load optimisation",
+          "Photo documentation and condition reports",
+        ],
       },
       {
         title: "Cross Trading",
         description:
           "Third-country trade managed end to end — we move cargo between two overseas ports without it passing through your home country.",
+        highlights: [
+          "Third-country shipments between two overseas ports",
+          "Neutral documentation and switch Bill of Lading handling",
+          "Coordinated agents at both origin and destination",
+          "Confidential and fully compliant trade execution",
+        ],
       },
     ],
+  },
+  serviceDetail: {
+    home: "Home",
+    services: "Services",
+    overview: "Overview",
+    whatWeHandle: "What we handle",
+    whyTitle: "Why work with us",
+    otherServices: "Other services",
+    viewAll: "All services",
+    ctaTitle: "Need this service?",
+    ctaText:
+      "Tell us your cargo, route and timeline — our team will respond with a clear, competitive quote.",
   },
   process: {
     kicker: "How It Works",
@@ -422,48 +488,114 @@ const ar: Dict = {
         title: "NVOCC — حاويات خاصة",
         description:
           "خدمات الناقل العام غير المشغّل للسفن بأسطول حاوياتنا الخاص، ما يمنحك تحكّمًا أكبر وأسعارًا تنافسية ومساحة موثوقة.",
+        highlights: [
+          "أسطول حاويات خاص بنا — توافر موثوق للمعدات دون تأخير من أطراف أخرى",
+          "أسعار تنافسية وشفّافة للحاويات والمساحات",
+          "خيارات FCL وLCL مع خدمات التجميع",
+          "إصدار بوالص الشحن وجميع مستندات البضائع",
+        ],
       },
       {
         title: "NVOCC — وكالة شحن",
         description:
           "تمثيل وكالة شحن متكامل — الحجوزات والوثائق وتنسيق الموانئ بدقة ومسؤولية.",
+        highlights: [
+          "حجز السفن وإدارة المساحات",
+          "تنسيق الموانئ والرسو والتواصل مع المحطات",
+          "بوالص الشحن والبيانات وإقرارات البضائع",
+          "تمثيل محلي مع تقارير واضحة وقابلة للمساءلة",
+        ],
       },
       {
         title: "بضائع غير قياسية / مشاريعية",
         description:
           "مناولة متخصّصة للبضائع الثقيلة وغير القياسية والمشاريعية، تُهندَس وتُنفَّذ بأعلى درجات العناية.",
+        highlights: [
+          "دراسات المسارات وتخطيط الرفع للبضائع غير القياسية",
+          "حلول الحاويات المسطّحة والمفتوحة والبضائع السائبة",
+          "تنسيق الرفع الثقيل بمعدات معتمدة",
+          "إشراف كامل من المنشأ حتى الموقع النهائي",
+        ],
       },
       {
         title: "الشحن والتخليص",
         description:
           "شحن بحري ومتعدّد الوسائط من الباب إلى الباب، يربط أعمالك عبر الحدود بتواصل واضح في كل خطوة.",
+        highlights: [
+          "شحن بحري ومتعدّد الوسائط من الباب إلى الباب",
+          "خدمات FCL وLCL والتجميع",
+          "دعم التأمين على البضائع والمستندات",
+          "تحديثات واضحة في كل مرحلة",
+        ],
       },
       {
         title: "النقل",
         description:
           "نقل برّي موثوق وتسليم حتى الميل الأخير، لضمان وصول كل شحنة في وقتها وبحالة مثالية.",
+        highlights: [
+          "النقل البري والتسليم حتى الميل الأخير",
+          "نقل الحاويات وحركة المقطورات",
+          "جدولة زمنية دقيقة مع تنسيق مباشر",
+          "مناولة عناية فائقة للشحنات الحسّاسة",
+        ],
       },
       {
         title: "التخزين",
         description:
           "حلول الطرف الثالث للخدمات اللوجستية والتخزين — تخزين وجرد وتوزيع يُدار بمسؤولية وشفافية.",
+        highlights: [
+          "تخزين آمن لفترات قصيرة وطويلة",
+          "إدارة المخزون وتقارير الجرد",
+          "دعم التجهيز والتغليف والتوزيع",
+          "مناولة البضائع بمسؤولية كاملة",
+        ],
       },
       {
         title: "التخليص الجمركي",
         description:
           "إعداد كامل للمستندات الجمركية والتخليص على يد مختصّينا — بسرعة وامتثال وشفافية في كل ميناء.",
+        highlights: [
+          "مستندات التخليص الجمركي للاستيراد والتصدير",
+          "إرشاد بشأن الرسوم والتعريفات ورموز HS",
+          "الامتثال التنظيمي في كل ميناء",
+          "تخليص سريع مع تحديثات شفّافة للحالة",
+        ],
       },
       {
         title: "إعادة التستيف بين الحاويات",
         description:
           "نقل آمن للبضائع بين الحاويات أو المقطورات — بمناولة دقيقة وإشراف كامل وتوثيق في كل خطوة.",
+        highlights: [
+          "النقل من حاوية إلى حاوية ومن حاوية إلى مقطورة",
+          "مناولة تحت إشراف تحافظ على سلامة البضائع",
+          "إعادة التغليف وإعادة الوسم وتحسين التحميل",
+          "توثيق مصوّر وتقارير عن حالة البضاعة",
+        ],
       },
       {
         title: "التجارة العابرة",
         description:
           "تجارة الطرف الثالث تُدار من البداية إلى النهاية — ننقل البضائع بين ميناءين خارجيين دون مرورها ببلدك.",
+        highlights: [
+          "شحنات الطرف الثالث بين ميناءين خارجيين",
+          "مستندات محايدة والتعامل مع بوالص الشحن البديلة",
+          "وكلاء منسّقون في المنشأ والوجهة معًا",
+          "تنفيذ تجاري سرّي ومتوافق تمامًا",
+        ],
       },
     ],
+  },
+  serviceDetail: {
+    home: "الرئيسية",
+    services: "الخدمات",
+    overview: "نظرة عامة",
+    whatWeHandle: "ما نتولّاه",
+    whyTitle: "لماذا تعمل معنا",
+    otherServices: "خدمات أخرى",
+    viewAll: "جميع الخدمات",
+    ctaTitle: "هل تحتاج هذه الخدمة؟",
+    ctaText:
+      "أخبرنا ببضاعتك ومسارك وجدولك الزمني — وسيردّ فريقنا بعرض سعر واضح وتنافسي.",
   },
   process: {
     kicker: "كيف نعمل",
@@ -696,48 +828,114 @@ const fa: Dict = {
         title: "NVOCC — کانتینرهای اختصاصی",
         description:
           "خدمات حامل عمومی بدون کشتی با ناوگان کانتینری خودمان، که کنترل بیشتر، نرخ رقابتی و فضای مطمئن می‌دهد.",
+        highlights: [
+          "ناوگان کانتینری اختصاصی — تأمین مطمئن تجهیزات بدون تأخیر شخص ثالث",
+          "نرخ‌های رقابتی و شفاف برای کانتینر و فضا",
+          "گزینه‌های FCL و LCL همراه با خدمات تجمیع",
+          "صدور بارنامه و تمام اسناد بار",
+        ],
       },
       {
         title: "NVOCC — نمایندگی کشتیرانی",
         description:
           "نمایندگی کامل کشتیرانی — رزرو، اسناد و هماهنگی بندری با دقت و پاسخ‌گویی.",
+        highlights: [
+          "رزرو کشتی و مدیریت فضا",
+          "هماهنگی بندری، پهلوگیری و ارتباط با ترمینال",
+          "بارنامه، مانیفست و اظهارنامه‌های بار",
+          "نمایندگی محلی با گزارش‌دهی شفاف و پاسخ‌گو",
+        ],
       },
       {
         title: "محموله فوق‌ابعاد / پروژه‌ای",
         description:
           "جابجایی تخصصی بارهای سنگین، فوق‌ابعاد و پروژه‌ای، با بالاترین دقت طراحی و اجرا می‌شود.",
+        highlights: [
+          "بررسی مسیر و برنامه‌ریزی بارگیری برای بارهای فوق‌ابعاد",
+          "راهکارهای فلت‌رک، اوپن‌تاپ و بار فله",
+          "هماهنگی حمل سنگین با تجهیزات دارای گواهی",
+          "نظارت کامل از مبدأ تا محل نهایی",
+        ],
       },
       {
         title: "حمل‌ونقل بار",
         description:
           "حمل دریایی و چندوجهی سرتاسری که کسب‌وکار شما را با ارتباط شفاف در هر مرحله، فراتر از مرزها پیوند می‌دهد.",
+        highlights: [
+          "حمل دریایی و چندوجهی درب به درب",
+          "خدمات FCL، LCL و تجمیع بار",
+          "پشتیبانی بیمه‌ی بار و اسناد",
+          "به‌روزرسانی شفاف در هر مرحله",
+        ],
       },
       {
         title: "ترابری",
         description:
           "حمل زمینی مطمئن و تحویل تا آخرین مرحله، تا هر محموله به‌موقع و در وضعیت عالی برسد.",
+        highlights: [
+          "حمل زمینی و تحویل تا آخرین مرحله",
+          "حمل کانتینر و جابجایی تریلر",
+          "زمان‌بندی دقیق با هماهنگی زنده",
+          "جابجایی با دقت برای محموله‌های حساس",
+        ],
       },
       {
         title: "انبارداری",
         description:
           "راهکارهای لجستیک شخص ثالث و انبارداری — نگهداری، موجودی و توزیع با مسئولیت و شفافیت.",
+        highlights: [
+          "نگهداری ایمن کوتاه‌مدت و بلندمدت",
+          "مدیریت موجودی و گزارش‌دهی انبار",
+          "پشتیبانی جمع‌آوری، بسته‌بندی و توزیع",
+          "جابجایی بار با پاسخ‌گویی کامل",
+        ],
       },
       {
         title: "ترخیص گمرکی",
         description:
           "تهیه‌ی کامل اسناد گمرکی و ترخیص توسط متخصصان ما — سریع، منطبق با مقررات و شفاف در هر بندر.",
+        highlights: [
+          "اسناد گمرکی واردات و صادرات",
+          "راهنمایی درباره‌ی عوارض، تعرفه و کد HS",
+          "انطباق با مقررات در هر بندر",
+          "ترخیص سریع با اعلام شفاف وضعیت",
+        ],
       },
       {
         title: "جابجایی بار بین کانتینرها",
         description:
           "انتقال ایمن بار میان کانتینرها یا تریلرها — با جابجایی دقیق، نظارت کامل و مستندسازی در هر مرحله.",
+        highlights: [
+          "انتقال کانتینر به کانتینر و کانتینر به تریلر",
+          "جابجایی تحت نظارت برای حفظ سلامت بار",
+          "بسته‌بندی مجدد، برچسب‌گذاری و بهینه‌سازی بار",
+          "مستندسازی تصویری و گزارش وضعیت",
+        ],
       },
       {
         title: "تجارت سه‌جانبه",
         description:
           "تجارت کشور ثالث به‌صورت سرتاسری — بار را میان دو بندر خارجی جابجا می‌کنیم بدون آنکه از کشور شما عبور کند.",
+        highlights: [
+          "حمل کشور ثالث میان دو بندر خارجی",
+          "اسناد بی‌طرف و مدیریت بارنامه‌ی جایگزین",
+          "نمایندگان هماهنگ در مبدأ و مقصد",
+          "اجرای تجاری محرمانه و کاملاً منطبق با مقررات",
+        ],
       },
     ],
+  },
+  serviceDetail: {
+    home: "خانه",
+    services: "خدمات",
+    overview: "نگاه کلی",
+    whatWeHandle: "آنچه انجام می‌دهیم",
+    whyTitle: "چرا با ما کار کنید",
+    otherServices: "خدمات دیگر",
+    viewAll: "همه‌ی خدمات",
+    ctaTitle: "به این خدمت نیاز دارید؟",
+    ctaText:
+      "بار، مسیر و زمان‌بندی خود را بگویید — تیم ما با قیمتی روشن و رقابتی پاسخ می‌دهد.",
   },
   process: {
     kicker: "چگونه کار می‌کنیم",

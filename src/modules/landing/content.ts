@@ -103,6 +103,23 @@ export const SERVICE_ICONS: LucideIcon[] = [
   ArrowLeftRight, // Cross Trading
 ];
 
+/**
+ * Per-service slug + hero image. Index-aligned with `services.items` in every
+ * translation dictionary and with SERVICE_ICONS above. Each entry gets its own
+ * page at /services/<slug>.
+ */
+export const SERVICE_META: { slug: string; image: string }[] = [
+  { slug: "nvocc-own-containers", image: "/container-yard-aerial.jpg" },
+  { slug: "shipping-agency", image: "/port-cranes-dusk.jpg" },
+  { slug: "project-cargo", image: "/logistics-multimodal.jpg" },
+  { slug: "freight-forwarding", image: "/hero-ship-sunset.jpg" },
+  { slug: "transportation", image: "/multimodal-truck-ship.jpg" },
+  { slug: "warehousing", image: "/warehouse-interior.jpg" },
+  { slug: "custom-clearance", image: "/port-sunset.jpg" },
+  { slug: "cross-stuffing", image: "/container-yard-aerial.jpg" },
+  { slug: "cross-trading", image: "/cargo-ship-worldmap.jpg" },
+];
+
 export const FEATURE_ICONS: LucideIcon[] = [
   Container,
   Headset,
