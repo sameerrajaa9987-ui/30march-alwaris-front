@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Send, User2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { LEADERSHIP, OFFICE, OFFICES } from "../content";
 import { useT } from "../i18n/language";
 import { SectionHeader } from "./SectionHeader";
@@ -59,11 +60,18 @@ export function ContactSection() {
                       <span className="kicker text-[11px] font-semibold uppercase text-ocean-dark">
                         {office.region}
                       </span>
-                      {office.primary && (
-                        <span className="rounded-full bg-ocean/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ocean-dark">
-                          HQ
-                        </span>
-                      )}
+                      <span
+                        className={cn(
+                          "rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+                          office.primary
+                            ? "bg-ocean/15 text-ocean-dark"
+                            : "bg-secondary text-muted-foreground",
+                        )}
+                      >
+                        {office.primary
+                          ? t.contact.headOffice
+                          : t.contact.branch}
+                      </span>
                     </div>
                     <p className="mt-1.5 text-sm font-semibold text-foreground">
                       {office.company}

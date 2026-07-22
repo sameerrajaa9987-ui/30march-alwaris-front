@@ -206,15 +206,12 @@ export type Office = {
 
 export const OFFICES: Office[] = [
   {
-    region: "Malaysia",
-    company: "Asia Sea Shipping and Logistic Sdn. Bhd.",
-    addressLines: [
-      "Suite #16-01, Level 16, Centro Mall",
-      "No. 8, Jalan Batu Tiga Lama, Klang",
-      "Selangor Darul Ehsan, Malaysia — 41300",
-    ],
-    mapsQuery:
-      "Centro Mall, Jalan Batu Tiga Lama, Klang, Selangor, Malaysia 41300",
+    region: "United Arab Emirates",
+    company: "Al Waris Shipping Lines LLC",
+    addressLines: ["BMI Building, Unit #508", "Bur Dubai, UAE"],
+    email: "ops1@alwarisshipping.com",
+    mapsQuery: "BMI Building, Bank Street, Bur Dubai, Dubai, UAE",
+    primary: true,
   },
   {
     region: "India",
@@ -226,6 +223,17 @@ export const OFFICES: Office[] = [
     ],
     mapsQuery:
       "Skylark, Sector 11, CBD Belapur, Navi Mumbai, Maharashtra 400614, India",
+  },
+  {
+    region: "Malaysia",
+    company: "Asia Sea Shipping and Logistic Sdn. Bhd.",
+    addressLines: [
+      "Suite #16-01, Level 16, Centro Mall",
+      "No. 8, Jalan Batu Tiga Lama, Klang",
+      "Selangor Darul Ehsan, Malaysia — 41300",
+    ],
+    mapsQuery:
+      "Centro Mall, Jalan Batu Tiga Lama, Klang, Selangor, Malaysia 41300",
   },
 ];
 

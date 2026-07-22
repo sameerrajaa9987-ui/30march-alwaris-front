@@ -330,6 +330,7 @@ const en = {
     description:
       "Reach out for quotes, partnerships or any logistics requirement. We respond with clarity and care.",
     headOffice: "Head Office",
+    branch: "Branch",
     offices: "Our Offices",
     sendEnquiry: "Send an Enquiry",
     namePh: "Your name",
@@ -669,6 +670,7 @@ const ar: Dict = {
     description:
       "تواصل معنا للحصول على عروض الأسعار أو الشراكات أو أي متطلّب لوجستي. نردّ بوضوح وعناية.",
     headOffice: "المكتب الرئيسي",
+    branch: "فرع",
     offices: "مكاتبنا",
     sendEnquiry: "أرسل استفسارًا",
     namePh: "اسمك",
@@ -1009,6 +1011,7 @@ const fa: Dict = {
     description:
       "برای دریافت قیمت، همکاری یا هر نیاز لجستیکی با ما تماس بگیرید. با شفافیت و دقت پاسخ می‌دهیم.",
     headOffice: "دفتر مرکزی",
+    branch: "شعبه",
     offices: "دفاتر ما",
     sendEnquiry: "ارسال استعلام",
     namePh: "نام شما",
